@@ -1,0 +1,1 @@
+Este repositorio nos servirá para mantener el código actualizado del frontend de nuestra aplicación.
