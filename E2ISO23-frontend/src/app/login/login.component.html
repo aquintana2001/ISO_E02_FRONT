@@ -1,0 +1,17 @@
+<!-- login.component.html -->
+<div class="login-container">
+    <div class="login-card">
+        <h1>Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-control">
+                <label for="username">Username</label>
+                <input id="username" type="text" formControlName="username">
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input id="password" type="password" formControlName="password">
+            </div>
+            <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        </form>
+    </div>
+</div>
