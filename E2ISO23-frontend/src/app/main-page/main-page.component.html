@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>La manera de desplazarte fácilmente por ciudad real ha llegado</h1>
+        </div>
+    </div>
+    <div class="row" id="row2">
+        <div class="col-5">
+            <img src="../../assets/img/coche-main-page.png" alt="No image" />
+        </div>
+        <div class="col-5" id="colUser">
+            <div class="row" id="rowUser">
+                <div class="col-6" id="registerbutton">
+                    <button (click)="showRegister()">Registrarse</button>
+                </div>
+                <div class="col-6" id="loginbutton">
+                    <button (click)="showLogin()">Iniciar sesión</button>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<app-register *ngIf="showRegisterComponent"></app-register>
+<app-login *ngIf="showLoginComponent"></app-login>
