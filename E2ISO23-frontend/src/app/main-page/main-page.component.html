@@ -8,8 +8,10 @@
         <div class="col-5">
             <img src="../../assets/img/coche-main-page.png" alt="No image" />
         </div>
-        <div class="col-5" id="colUser">
+        <div class="col-7" id="colUser">
             <div class="row" id="rowUser">
+                <app-register *ngIf="showRegisterComponent"></app-register>
+                <app-login *ngIf="showLoginComponent"></app-login>
                 <div class="col-6" id="registerbutton">
                     <button (click)="showRegister()">Registrarse</button>
                 </div>
@@ -21,5 +23,3 @@
     </div>
 </div>
 
-<app-register *ngIf="showRegisterComponent"></app-register>
-<app-login *ngIf="showLoginComponent"></app-login>

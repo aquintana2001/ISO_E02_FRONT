@@ -26,6 +26,7 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    width: 400px;
 }
 #registerbutton{
     margin-bottom: 2%;
@@ -44,6 +45,7 @@ button {
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
+    width: 100%;
     transition: background-color 0.2s;
 }
 
