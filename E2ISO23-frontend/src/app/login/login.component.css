@@ -6,9 +6,8 @@ body {
 .login-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    align-items: center;    
+    margin-bottom: 3%;
     padding: 0;
 }
 

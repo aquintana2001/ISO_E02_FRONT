@@ -1,13 +1,30 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../user.service';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent{
+  registerForm = new FormGroup({
+    'nombre': new FormControl('', Validators.required),
+    'apellidos': new FormControl('', Validators.required),
+    'email': new FormControl('', Validators.required),
+    'password1': new FormControl('', Validators.required),
+    'password2': new FormControl('', Validators.required),
+    'ciudad': new FormControl('', Validators.required),
+    'carnet': new FormControl('', Validators.required),
+    'telefono': new FormControl('', Validators.required),
+    'dni': new FormControl('', Validators.required),
+  });
+  
   nombre?: String
   apellidos?: String
   email?: String
@@ -45,4 +62,5 @@ export class RegisterComponent{
       alert(error.error.message)
     })
   }
+
 }

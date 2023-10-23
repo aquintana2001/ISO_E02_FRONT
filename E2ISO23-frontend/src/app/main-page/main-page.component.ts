@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class MainPageComponent {
  showRegisterComponent = false;
- showLoginComponent = false;
+ showLoginComponent = true;
 
  showRegister() {
     this.showRegisterComponent = true;
