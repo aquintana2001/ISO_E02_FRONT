@@ -1,8 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from '../user.service';
-import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
@@ -35,12 +33,6 @@ export class RegisterComponent{
   telefono?: String
   dni?: String
 
-  constructor(private userService : AccountService) { 
-  }
-
-  ngOnInit(): void {
-  }
-
   register(){
     let info = {
       nombre : this.nombre,
@@ -53,14 +45,6 @@ export class RegisterComponent{
       telefono:this.telefono,
       dni:this.dni
     }
-
-    this.userService.register(info).subscribe(
-      respuesta =>{
-      alert(respuesta)
-      console.log(respuesta)
-    },error => {
-      alert(error.error.message)
-    })
   }
 
 }
