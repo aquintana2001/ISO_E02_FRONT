@@ -1,6 +1,9 @@
 
-import { Component, OnInit } from '@angular/core';
+//import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from '../user.service';
+import { Component } from '@angular/core';
+
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
@@ -14,7 +17,7 @@ export class RegisterComponent{
   registerForm = new FormGroup({
     'nombre': new FormControl('', Validators.required),
     'apellidos': new FormControl('', Validators.required),
-    'email': new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
     'password1': new FormControl('', Validators.required),
     'password2': new FormControl('', Validators.required),
     'ciudad': new FormControl('', Validators.required),
@@ -32,6 +35,14 @@ export class RegisterComponent{
   carnet?: boolean
   telefono?: String
   dni?: String
+  accountService: any;
+
+
+constructor(private userService : AccountService) { 
+}
+
+  ngOnInit(): void {
+  }
 
   register(){
     let info = {
@@ -45,6 +56,15 @@ export class RegisterComponent{
       telefono:this.telefono,
       dni:this.dni
     }
+
+
+    this.accountService.register(info).subscribe(
+      (      respuesta: any) =>{
+      alert(respuesta)
+      console.log(respuesta)
+    },(error: { error: { message: any; }; }) => {
+      alert(error.error.message)
+    })
   }
 
 }
