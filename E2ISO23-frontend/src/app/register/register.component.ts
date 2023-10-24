@@ -3,6 +3,7 @@
 import { Router } from '@angular/router';
 //import { AccountService } from '../user.service';
 import { Component } from '@angular/core';
+
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
@@ -36,10 +37,9 @@ export class RegisterComponent{
   dni?: String
   accountService: any;
 
+
  // constructor(private userService : AccountService) { 
   //}
-
-  
 
   ngOnInit(): void {
   }
@@ -56,6 +56,7 @@ export class RegisterComponent{
       telefono:this.telefono,
       dni:this.dni
     }
+
 
     this.accountService.register(info).subscribe(
       (      respuesta: any) =>{
