@@ -1,7 +1,7 @@
 
 //import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { AccountService } from '../user.service';
+import { AccountService } from '../user.service';
 import { Component } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -38,8 +38,8 @@ export class RegisterComponent{
   accountService: any;
 
 
- // constructor(private userService : AccountService) { 
-  //}
+constructor(private userService : AccountService) { 
+}
 
   ngOnInit(): void {
   }
