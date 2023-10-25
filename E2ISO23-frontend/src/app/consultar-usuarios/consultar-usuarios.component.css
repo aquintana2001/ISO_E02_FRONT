@@ -1,113 +1,26 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #322C2C;
-}
-
-.container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #e0e0e0;
-    text-shadow: 4px 4px 2px black;
-}
-.container h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #e0e0e0;
-    text-shadow: 4px 4px 2px black;
-}
-.container p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    color: #e0e0e0;
-    text-shadow: 4px 4px 2px black;
-}
-#row2{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    align-items: center;
-    padding: 2%;
-}
-#colUser{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    width: 50%;
-}
-#rowUser{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    width: 400px;
-    box-shadow: 20px 20px 60px;
-}
-#registerbutton{
-    margin-bottom: 2%;
-}
-#loginbutton{
-    margin-top: 2%;
-}
-#imgGrande{
-    max-width: 55%;
-    max-height: 60%;
-    box-shadow: 20px 20px 40px;
-}
-#imgLogo{
-    max-width: 100px;
-    max-height: 100px;
-    box-shadow: 20px 20px 60px;
-}
-#col-imgGrande{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
-#rowLogo{
-    margin: 40px;
-}
-#rowMover{
-    margin: 40px;
-}
-#vehiculoImg{
-    max-width: 40%;
-    max-height: 60%;
-    box-shadow: 20px 20px 60px;
-}
-#vehiculoRow{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 4%;
-    width: 60%;
-}
-#vehiculoColImg{
-    display: flex;
-    width: 80%;
-    justify-content: center;
-}
-#vehiculoInfo{
-    justify-content: left;
-    justify-self: end;
-    width: 40%;
-}
-.buttons {
-    display: flex;
-    gap: 1rem;
-}
-
-button {
-    font-size: 1.25rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+  }
+  
+  table {
+    border-collapse: collapse;
     width: 100%;
-    transition: background-color 0.2s;
-}
-
-button:hover {
-    background-color: #e0e0e0;
-}
+    margin: 0 auto;
+  }
+  
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  
