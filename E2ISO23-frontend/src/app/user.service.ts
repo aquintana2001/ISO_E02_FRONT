@@ -11,4 +11,7 @@ export class AccountService {
   register(info:any):Observable<any>{
    return this.httpClient.post("http://localhost:8080/users/register",info)
   }
+  obtenerClientes() {
+    return this.httpClient.get<any[]>('http://localhost:8080/users/consultar-usuarios');
+  }
 }
