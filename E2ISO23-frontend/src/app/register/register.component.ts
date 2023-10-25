@@ -17,31 +17,31 @@ export class RegisterComponent{
   registerForm = new FormGroup({
     'nombre': new FormControl('', Validators.required),
     'apellidos': new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    'email': new FormControl('', [Validators.required, Validators.email]),
     'password1': new FormControl('', Validators.required),
     'password2': new FormControl('', Validators.required),
-    'ciudad': new FormControl('', Validators.required),
+    'fechaNacimiento': new FormControl('', Validators.required),
     'carnet': new FormControl('', Validators.required),
     'telefono': new FormControl('', Validators.required),
     'dni': new FormControl('', Validators.required),
   });
   
-  nombre?: String
-  apellidos?: String
-  email?: String
-  password1?: String
-  password2?: String
-  ciudad?: String
-  carnet?: boolean
-  telefono?: String
-  dni?: String
-  accountService: any;
+  nombre?: string = "Guillermo"
+  apellidos?: string = "Santos"
+  email?: string = "guillermo.santos1@alu.uclm.es"
+  password1?: string = "Pepito123*"
+  password2?: string = "Pepito123*"
+  fechaNacimiento?: string = "11-12-1999"
+  carnet?: string = "A"
+  telefono?: string = "626165188"
+  dni?: string = "039432343Q"
 
 
-constructor(private userService : AccountService) { 
+constructor(private accountService : AccountService) { 
 }
 
   ngOnInit(): void {
+
   }
 
   register(){
@@ -51,12 +51,12 @@ constructor(private userService : AccountService) {
       email:this.email,
       password1:this.password1,
       password2:this.password2,
-      ciudad:this.ciudad,
+      fechaNacimiento:this.fechaNacimiento,
       carnet:this.carnet,
       telefono:this.telefono,
       dni:this.dni
     }
-
+    console.log(info);
 
     this.accountService.register(info).subscribe(
       (      respuesta: any) =>{
