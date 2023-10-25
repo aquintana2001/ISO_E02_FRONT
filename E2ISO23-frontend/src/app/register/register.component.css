@@ -24,7 +24,9 @@ h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
-
+#fechaNacimiento {
+    margin-right: 05rem;
+}
 #form-control {
     display: flex;
     flex-direction: row;

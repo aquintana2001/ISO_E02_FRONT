@@ -8,7 +8,14 @@ import { Observable } from 'rxjs';
 export class AccountService {
   constructor(private httpClient:HttpClient) { }
 
-  register(info:any):Observable<any>{
-   return this.httpClient.post("http://localhost:8080/users/register",info)
-  }
+  register (info : any) {
+    this.httpClient.post("http://localhost:8080/users/register",info)
+    .subscribe(
+      respuesta => {
+      console.log(respuesta)
+      },
+      _error =>{
+          alert("Error");
+      })
+    }
 }
