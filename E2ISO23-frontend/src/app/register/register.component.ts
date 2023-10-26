@@ -14,57 +14,51 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 
 export class RegisterComponent{
-  registerForm = new FormGroup({
-    'nombre': new FormControl('', Validators.required),
-    'apellidos': new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    'password1': new FormControl('', Validators.required),
-    'password2': new FormControl('', Validators.required),
-    'ciudad': new FormControl('', Validators.required),
-    'carnet': new FormControl('', Validators.required),
-    'telefono': new FormControl('', Validators.required),
-    'dni': new FormControl('', Validators.required),
-  });
-  
-  nombre?: String
-  apellidos?: String
-  email?: String
-  password1?: String
-  password2?: String
-  ciudad?: String
-  carnet?: boolean
-  telefono?: String
-  dni?: String
-  accountService: any;
+  registerForm: FormGroup;
 
-
-constructor(private userService : AccountService) { 
-}
+  constructor(private accountService : AccountService) { 
+    this.registerForm = new FormGroup({
+      'nombre': new FormControl('', Validators.required),
+      'apellidos': new FormControl('', Validators.required),
+      'email': new FormControl('', [Validators.required, Validators.email]),
+      'password1': new FormControl('', Validators.required),
+      'password2': new FormControl('', Validators.required),
+      'fechaNacimiento': new FormControl('', Validators.required),
+      'carnet': new FormControl('', Validators.required),
+      'telefono': new FormControl('', Validators.required),
+      'dni': new FormControl('', Validators.required),
+    });
+  }
 
   ngOnInit(): void {
+
   }
 
   register(){
-    let info = {
-      nombre : this.nombre,
-      apellidos:this.apellidos,
-      email:this.email,
-      password1:this.password1,
-      password2:this.password2,
-      ciudad:this.ciudad,
-      carnet:this.carnet,
-      telefono:this.telefono,
-      dni:this.dni
+    console.log(this.registerForm.value)
+    if(!this.checkDataInput()){
+      // this.accountService.register(this.registerForm.value);
     }
-
-
-    this.accountService.register(info).subscribe(
-      (      respuesta: any) =>{
-      alert(respuesta)
-      console.log(respuesta)
-    },(error: { error: { message: any; }; }) => {
-      alert(error.error.message)
-    })
+  }
+  checkDataInput(){
+    if(this.checkSamePasword() || this.checkDNI()){
+      return true;
+    }
+    return false;
+  }
+  checkDNI() {
+    throw new Error('Method not implemented.');
+    return false;
+  }
+  checkSamePasword(){
+    const password1 = this.registerForm.get('password1');
+    const password2 = this.registerForm.get('password2');
+  
+    if (password1 && password2 && password1.value && password2.value && password1.value === password2.value) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
