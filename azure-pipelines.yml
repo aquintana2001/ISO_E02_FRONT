@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 name: Sync to Azure Repos
 
 trigger:
@@ -14,10 +9,14 @@ pr:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: |
-    git config user.email "guillermo.santos1@alu.uclm.es" 
-    git config user.name "GuillermoSantosMolero" 
-    git remote add azure-repos https://${{ secrets.AZURE_REPOS_PAT }}@dev.azure.com/GuillermoSantos1/ISO2023E2/_git/ISO2023E2
-    git push azure-repos HEAD:refs/heads/main
-  displayName: 'Push to Azure Repos'
+jobs:
+- job: SyncToAzureRepos
+  steps:
+  - script: |
+      echo "Syncing to Azure Repos"
+      git config user.email "guillermo.santos1@alu.uclm.es"
+      git config user.name "GuillermoSantosMolero"
+      export AZURE_REPOS_PAT=${{ secrets.AZURE_REPOS_PAT }}
+      git remote add azure-repos https://$AZURE_REPOS_PAT@dev.azure.com/GuillermoSantos1/ISO2023E2/_git/ISO2023E2
+      git push azure-repos HEAD:refs/heads/main
+    displayName: 'Push to Azure Repos'
