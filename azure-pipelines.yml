@@ -5,10 +5,11 @@
 
 name: Sync to Azure Repos
 
-on:
-  push:
-    branches:
-      - master
+trigger:
+- main
+
+pr:
+- '*'
 
 jobs:
   build:
