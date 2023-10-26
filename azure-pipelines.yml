@@ -3,17 +3,26 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+name: Sync to Azure Repos
 
-pool:
-  vmImage: ubuntu-latest
+on:
+  push:
+    branches:
+      - master
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Push to Azure Repos
+      run: |
+        git config user.email "guillermo.santos1@alu.uclm.es"
+        git config user.name "GuillermoSantosMolero"
+        git remote add azure-repos https://GuillermoSantos1@dev.azure.com/GuillermoSantos1/ISO2023E2/_git/ISO2023E2
+        git push azure-repos HEAD:refs/heads/main
+      env:
+        AZURE_REPOS_PAT: ${{ secrets.AZURE_REPOS_PAT }}
