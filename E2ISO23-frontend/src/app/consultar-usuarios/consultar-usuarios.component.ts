@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AccountService } from '../user.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-consultar-usuarios',
@@ -7,14 +9,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./consultar-usuarios.component.css']
 })
 export class ConsultarUsuariosComponent implements OnInit {
-    clientes: any[] = []; 
-    HttpClient: any;
+  usuarios: any[] = [];
 
-  constructor(private AccountService: HttpClient) { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit() {
-    this.HttpClient.obtenerClientes().subscribe((data: any[]) => {
-      this.clientes = data;
+    this.accountService.getClientes().subscribe((data: any[]) => {
+      this.usuarios = data;
     });
   }
 }

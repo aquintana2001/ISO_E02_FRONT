@@ -16,8 +16,16 @@
       <th>Carnet</th>
       <th>Activo</th>
     </tr>
-    
-    <!-- Agrega aquí filas de datos de tus clientes -->
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.apellidos }}</td>
+      <td>{{ usuario.email || 'No disponible' }}</td>
+      <td>{{ usuario.dni }}</td>
+      <td>{{ usuario.telefono }}</td>
+      <td>{{ usuario.fechaNacimiento }}</td>
+      <td>{{ usuario.carnet }}</td>
+      <td>{{ usuario.activo ? 'Sí' : 'No' }}</td>
+    </tr>
   </table>
 </body>
 </html>
