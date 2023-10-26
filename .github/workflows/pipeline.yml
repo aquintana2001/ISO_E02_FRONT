@@ -19,6 +19,6 @@ jobs:
         git config user.name "GuillermoSantosMolero"
         git config user.password $PAT_AZURE_REPOS
         git remote add azure-repos https://GuillermoSantos1:$PAT_AZURE_REPOS@dev.azure.com/GuillermoSantos1/ISO2023E2/_git/ISO2023E2
-        git push azure-repos HEAD:refs/heads/main
+        git push -f azure-repos HEAD:refs/heads/main
       env:
         PAT_AZURE_REPOS: ${{ secrets.AZURE_REPOS_PAT }}
