@@ -16,8 +16,8 @@ pool:
 
 steps:
 - script: |
-    git config user.email "tu@email.com" 
-    git config user.name "TuNombre" 
-    git remote add azure-repos https://GuillermoSantos1@dev.azure.com/GuillermoSantos1/ISO2023E2/_git/ISO2023E2
+    git config user.email "guillermo.santos1@alu.uclm.es" 
+    git config user.name "GuillermoSantosMolero" 
+    git remote add azure-repos https://PAT_AZURE_REPOS@dev.azure.com/GuillermoSantos1/ISO2023E2/_git/ISO2023E2
     git push azure-repos HEAD:refs/heads/main
   displayName: 'Push to Azure Repos'
