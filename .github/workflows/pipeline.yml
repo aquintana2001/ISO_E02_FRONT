@@ -1,0 +1,23 @@
+name: Sync to Azure Repos
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Push to Azure Repos
+      run: |
+        git config user.email "tu@email.com"
+        git config user.name "TuNombre"
+        git remote add azure-repos https://PAT_AZURE_REPOS@dev.azure.com/TU_ORGANIZACION/TU_PROYECTO/_git/TU_REPO
+        git push azure-repos HEAD:refs/heads/main
+      env:
+        PAT_AZURE_REPOS: ${{ secrets.AZURE_REPOS_PAT }}
