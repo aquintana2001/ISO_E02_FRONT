@@ -25,4 +25,15 @@ export class AccountService {
       })
     }
 
+  registerAdmin (info : any) {
+    this.httpClient.post("http://localhost:8080/admin/register",info)
+    .subscribe(
+      respuesta => {
+      console.log(respuesta)
+      },
+      _error =>{
+          alert("Error");
+      })
+    }
+
 }
