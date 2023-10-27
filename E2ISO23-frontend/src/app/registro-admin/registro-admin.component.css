@@ -1,0 +1,64 @@
+/* Agrega este código CSS en tu archivo de estilos (por ejemplo, styles.css) */
+
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f3f3; /* Fondo gris claro */
+  }
+  
+  #login-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 400px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333; /* Color del texto principal */
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #form-control {
+    margin: 15px 0; /* Mayor espacio vertical entre controles */
+  }
+  
+  label {
+    font-weight: bold;
+    color: #555; /* Color del texto de la etiqueta */
+    margin-bottom: 5px; /* Separación entre etiqueta y entrada */
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0; /* Mayor espacio vertical entre controles */
+  }
+  
+  button {
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px; /* Mayor espacio vertical sobre el botón */
+  }
+  
+  button:disabled {
+    background-color: #ccc; /* Color del botón deshabilitado */
+    cursor: not-allowed;
+  }
+  

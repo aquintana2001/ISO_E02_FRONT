@@ -3,20 +3,21 @@ import { Router } from '@angular/router';
 import { AccountService } from '../user.service';
 import { Component } from '@angular/core';
 
+
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-registro-admin',
+  templateUrl: './registro-admin.component.html',
+  styleUrls: ['./registro-admin.component.css']
 })
 
-export class RegisterComponent{
-  registerForm: FormGroup;
+export class RegistroAdminComponent{
+    registroAdminForm: FormGroup; // Declaración de FormGroup
 
   constructor(private accountService : AccountService) { 
-    this.registerForm = new FormGroup({
+    this.registroAdminForm = new FormGroup({
       'nombre': new FormControl('', Validators.required),
       'apellidos': new FormControl('', Validators.required),
       'email': new FormControl('', [Validators.required, Validators.email]),
@@ -33,8 +34,8 @@ export class RegisterComponent{
 
   }
 
-  register(){
-    console.log(this.registerForm.value)
+  registerAdmin(){
+    console.log(this.registroAdminForm.value)
     if(!this.checkDataInput()){
       // this.accountService.register(this.registerForm.value);
     }
@@ -50,8 +51,8 @@ export class RegisterComponent{
     return false;
   }
   checkSamePasword(){
-    const password1 = this.registerForm.get('password1');
-    const password2 = this.registerForm.get('password2');
+    const password1 = this.registroAdminForm.get('password1');
+    const password2 = this.registroAdminForm.get('password2');
   
     if (password1 && password2 && password1.value && password2.value && password1.value === password2.value) {
       return true;

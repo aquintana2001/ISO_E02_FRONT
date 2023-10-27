@@ -12,13 +12,18 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ConsultarUsuariosComponent } from './consultar-usuarios/consultar-usuarios.component';
+import { RegistroAdminComponent } from './registro-admin/registro-admin.component';
 
 @NgModule({
  declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    MainPageComponent
+    MainPageComponent,
+    ConsultarUsuariosComponent,
+    RegistroAdminComponent
+    
  ],
  imports: [
     BrowserModule,

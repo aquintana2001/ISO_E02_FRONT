@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component'; 
 import { ConsultarUsuariosComponent } from './consultar-usuarios/consultar-usuarios.component'; 
+import { RegistroAdminComponent } from './registro-admin/registro-admin.component'; 
+
 
 
 const routes: Routes = [ 
     { path: '', component: MainPageComponent }, // Ruta para la página de inicio
-    { path: 'consultar-usuarios', component: ConsultarUsuariosComponent }// Ruta para consultar usuarios
+    { path: 'consultar-usuarios', component: ConsultarUsuariosComponent },// Ruta para consultar usuarios
+    { path: 'registro-admin', component: RegistroAdminComponent }// Ruta para registrar administrador o personal de mantenimiento
+
 
 ];
 
