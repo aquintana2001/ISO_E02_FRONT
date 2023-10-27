@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Vehiculos</title>
+</head>
+<body>
+  <h1>Lista de Vehiculos</h1>
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo Electrónico</th>
+      <th>DNI</th>
+      <th>Teléfono</th>
+      <th>Fecha de nacimiento</th>
+      <th>Carnet</th>
+      <th>Activo</th>
+    </tr>
+    <tr *ngFor="let vehiculo of vehiculos">
+      <td>{{ vehiculo.nombre }}</td>
+      <td>{{ vehiculo.apellidos }}</td>
+      <td>{{ vehiculo.email || 'No disponible' }}</td>
+      <td>{{ vehiculo.dni }}</td>
+      <td>{{ vehiculo.telefono }}</td>
+      <td>{{ vehiculo.fechaNacimiento }}</td>
+      <td>{{ vehiculo.carnet }}</td>
+      <td>{{ vehiculo.activo ? 'Sí' : 'No' }}</td>
+    </tr>
+  </table>
+</body>
+</html>
