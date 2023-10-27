@@ -1,4 +1,3 @@
-/* Agrega este código CSS en tu archivo de estilos (por ejemplo, styles.css) */
 
 #login-container {
     display: flex;
@@ -17,9 +16,12 @@
   }
   
   h1 {
-    text-align: center;
-    color: #333; /* Color del texto principal */
-  }
+    font-size: 24px; /* Tamaño de fuente más grande */
+    color: #007BFF; /* Color azul para el título */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    text-align: center; /* Centro del título */
+    margin-bottom: 20px; /* Mayor separación entre el título y el formulario */
+}
   
   form {
     display: flex;
@@ -40,7 +42,7 @@
   input[type="password"],
   input[type="date"],
   select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -52,13 +54,17 @@
     color: #fff; /* Color del texto del botón */
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding: 15px;
     cursor: pointer;
-    margin-top: 10px; /* Mayor espacio vertical sobre el botón */
+    margin-top: 10px; 
   }
   
   button:disabled {
     background-color: #ccc; /* Color del botón deshabilitado */
     cursor: not-allowed;
   }
+  .row2 {
+    text-align: center; 
+}
+
   
