@@ -2,26 +2,10 @@
 <div id="login-container" class="row">
     <div id="login-card" class="col-12">
         <div class="row">
-            <h1>Registro Administrador</h1>
+            <h1>Registro de administrador</h1>
         </div>
         <div class="row">
             <form [formGroup]="registroAdminForm" (ngSubmit)="registerAdmin()" class="col-12">
-                <div id="form-control" class="row">
-                    <div class="col-5">
-                        <label for="nombre">Nombre:</label>
-                    </div>
-                    <div class="col-6">
-                        <input id="nombre" formControlName="nombre" type="text" formControlName="nombre">
-                    </div>
-                </div>
-                <div id="form-control" class="row">
-                    <div class="col-5">
-                        <label for="apellidos">Apellidos:</label>
-                    </div>
-                    <div class="col-6">
-                        <input id="apellidos" formControlName="apellidos" type="text" formControlName="apellidos">
-                    </div>
-                </div>
                 <div id="form-control" class="row">
                     <div class="col-5">
                         <label for="email">Email:</label>
@@ -46,7 +30,31 @@
                         <input id="password2" formControlName="password2" type="password" formControlName="password2">
                     </div>
                 </div>
-                <div class="row2">
+                <div id="form-control" class="row">
+                    <div class="col-5">
+                        <label for="nombre">Nombre:</label>
+                    </div>
+                    <div class="col-6">
+                        <input id="nombre" formControlName="nombre" type="text" formControlName="nombre">
+                    </div>
+                </div>
+                <div id="form-control" class="row">
+                    <div class="col-5">
+                        <label for="apellidos">Apellidos:</label>
+                    </div>
+                    <div class="col-6">
+                        <input id="apellidos" formControlName="apellidos" type="text" formControlName="apellidos">
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="mostrarError==1" id="error">
+                    <p>{{ mensajeinfo }}</p>
+                    
+                </div>
+                <div class="row" *ngIf="mostrarConfirmacion==1" id="confirmacion">
+                    {{ mensajeinfo }}
+                </div>
+                <div class="row">
                     <button type="submit" [disabled]="!registroAdminForm.valid">Registrarse</button>
                 </div>
             </form>
