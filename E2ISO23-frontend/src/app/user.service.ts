@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { ConsultarUsuariosComponent } from './consultar-usuarios/consultar-usuarios.component';
-
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -33,18 +33,7 @@ export class AccountService {
         }
       );
   }
-
-  registerAdmin(info: any) {
-    this.httpClient.post("http://localhost:8080/admin/register", info)
-      .subscribe(
-        respuesta => {
-          console.log(respuesta);
-        },
-        error => {
-          alert("Error");
-        }
-      );
-  }
+  
   actualizarCliente(cliente: any): Observable<any> {
     const url = `${this.baseURLAdminActualizarCliente}`; 
     return this.httpClient.put(url, cliente);
