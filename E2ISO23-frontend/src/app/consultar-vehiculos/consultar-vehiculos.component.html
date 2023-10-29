@@ -1,31 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Lista de Vehiculos</title>
-</head>
-<body>
-  <h1>Lista de Vehiculos</h1>
-  <table>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Correo Electrónico</th>
-      <th>DNI</th>
-      <th>Teléfono</th>
-      <th>Fecha de nacimiento</th>
-      <th>Carnet</th>
-      <th>Activo</th>
-    </tr>
-    <tr *ngFor="let vehiculo of vehiculos">
-      <td>{{ vehiculo.nombre }}</td>
-      <td>{{ vehiculo.apellidos }}</td>
-      <td>{{ vehiculo.email || 'No disponible' }}</td>
-      <td>{{ vehiculo.dni }}</td>
-      <td>{{ vehiculo.telefono }}</td>
-      <td>{{ vehiculo.fechaNacimiento }}</td>
-      <td>{{ vehiculo.carnet }}</td>
-      <td>{{ vehiculo.activo ? 'Sí' : 'No' }}</td>
-    </tr>
-  </table>
-</body>
-</html>
+<h1>Lista de Vehiculos</h1>
+<table>
+  <tr>
+    <th>Matricula</th>
+    <th>Modelo</th>
+    <th>Bateria</th>
+    <th>Estado</th>
+    <th>Direccion</th>
+    <th>Tipo</th>
+    <th>Nº de plazas</th>
+  </tr>
+  <tr *ngFor="let vehiculo of vehiculos; let i = index">
+    <td [contentEditable]="vehiculo.editable" (blur)="actualizarMatricula($event, i)">{{ vehiculo.matricula }}</td>
+    <td [contentEditable]="vehiculo.editable" (blur)="actualizarModelo($event, i)">{{ vehiculo.modelo }}</td>
+    <td [contentEditable]="vehiculo.editable" (blur)="actualizarBateria($event, i)">{{ vehiculo.bateria }}</td>
+    <td [contentEditable]="vehiculo.editable" (blur)="actualizarEstado($event, i)">{{ vehiculo.estado }}</td>
+    <td [contentEditable]="vehiculo.editable" (blur)="actualizarDireccion($event, i)">{{ vehiculo.direccion }}</td>
+    <td [contentEditable]="vehiculo.editable" (blur)="actualizarTipo($event, i)">{{ vehiculo.tipo }}</td>
+    <td [contentEditable]="vehiculo.editable" (blur)="actualizarPlazas($event, i)">{{ vehiculo.nPlaza }}</td>
+    <td>
+      <button (click)="editarFila(i)">Editar</button>
+      <button (click)="eliminarFila(i)">Eliminar</button>
+      <button *ngIf="vehiculo.editable" (click)="guardarCambios(i)">Guardar</button>
+      <button *ngIf="vehiculo.editable" (click)="cancelarEdicion(i)">Cancelar</button>
+    </td>
+  </tr>
+</table>
