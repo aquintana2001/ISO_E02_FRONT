@@ -22,7 +22,7 @@
     <td [contentEditable]="usuario.editable" (blur)="actualizarActivo($event, i)">{{ usuario.activo }}</td>
     <td>
       <button (click)="editarFila(i)">Editar</button>
-      <button (click)="eliminarFila(i)">Eliminar</button>
+      <!-- <button (click)="eliminarFila(i)">Eliminar</button> -->
       <button *ngIf="usuario.editable" (click)="guardarCambios(i)">Guardar</button>
       <button *ngIf="usuario.editable" (click)="cancelarEdicion(i)">Cancelar</button>
     </td>
