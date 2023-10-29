@@ -1,0 +1,84 @@
+<div id="login-container" class="row">
+    <div id="login-card" class="col-12">
+        <div class="row">
+            <h1>Alta de vehículo</h1>
+        </div>
+        <div class="row">
+            <form [formGroup]="altaVehiculoForm" (ngSubmit)="AltaVehiculoAdmin()" class="col-12">
+                <div id="form-control" class="row">
+                    <div class="col-5">
+                        <label for="matricula">Matrícula</label>
+                    </div>
+                    <div class="col-6">
+                        <input id="matricula" formControlName="matricula" type="text" formControlName="matricula">
+                    </div>
+                </div>
+                <div id="form-control" class="row">
+                    <div class="col-5">
+                        <label for="modelo">Modelo:</label>
+                    </div>
+                    <div class="col-6">
+                        <input id="modelo" formControlName="modelo" type="text" formControlName="modelo">
+                    </div>
+                </div>
+                <div id="form-control" class="row">
+                    <div class="col-5">
+                        <label for="direccion">Dirección:</label>
+                    </div>
+                    <div class="col-6">
+                        <input id="direccion" formControlName="direccion" type="text" formControlName="direccion">
+                    </div>
+                </div>
+                <div id="form-control" class="row">
+                    <div class="col-5">
+                        <label for="carnet">Tipo:</label>
+                    </div>
+                    <div class="col-6" id="carnetcol">
+                       <select formControlName="tipo" name="tipo" id="tipo">
+                            <option value="patinete" selected>Patinete</option>
+                            <option value="coche">Coche</option>
+                            <option value="moto">Moto</option>
+                       </select>
+                    </div>
+                </div>
+                <div id="form-control" class="row" *ngIf="altaVehiculoForm.get('tipo')?.value === 'moto'">
+                    <div class="col-5">
+                        <label for="carnet">Casco:</label>
+                    </div>
+                    <div class="col-6" id="carnetcol" >
+                       <select formControlName="casco" name="casco" id="casco">
+                            <option value="true" selected>Sí</option>
+                            <option value="false">No</option>
+                       </select>
+                    </div>
+                </div>
+                <div id="form-control" class="row" *ngIf="altaVehiculoForm.get('tipo')?.value === 'coche'">
+                    <div class="col-5">
+                        <label for="nPlazas">Número de plazas:</label>
+                    </div>
+                    <div class="col-6">
+                        <input id="nPlazas" formControlName="nPlazas" type="text" formControlName="nPlazas">
+                    </div>
+                </div>
+                <div id="form-control" class="row" *ngIf="altaVehiculoForm.get('tipo')?.value === 'patinete'">
+                    <div class="col-5">
+                        <label for="color">Color:</label>
+                    </div>
+                    <div class="col-6">
+                        <input id="color" formControlName="color" type="text" formControlName="color">
+                    </div>
+                </div>
+                <div class="row" *ngIf="mostrarError==1" id="error">
+                    <p>{{ mensajeinfo }}</p>
+                    
+                </div>
+                <div class="row" *ngIf="mostrarConfirmacion==1" id="confirmacion">
+                    {{ mensajeinfo }}
+                </div>
+                <div class="row">
+                    <button type="submit" [disabled]="!altaVehiculoForm.valid">Registrarse</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AccountService } from '../user.service';
+import { AdminServiceService } from '../admin-service.service';
 import { isNgContent } from '@angular/compiler';
 
 // Define una interfaz para el tipo de usuario
@@ -12,7 +12,9 @@ interface Vehiculo {
   estado: string;
   direccion: string;
   nPlaza: string;
-  editable: boolean; // Agrega la propiedad 'editable'
+  editable: boolean;
+  casco: string;
+  color: string; // Agrega la propiedad 'editable'
 }
 
 @Component({
@@ -22,20 +24,20 @@ interface Vehiculo {
 })
 export class ConsultarVehiculosComponent {
   vehiculos: Vehiculo[] = [];
-  constructor(private accountService: AccountService) { }
+  constructor(private adminService : AdminServiceService) { }
   vehiculoBackUp: Vehiculo[] = [];
 
 
   editarFila(index: number) {
     this.vehiculos[index].editable = true;
   }
-  eliminarFila(index: number) {
-    console.log(this.vehiculoBackUp[index].id);
+  // eliminarFila(index: number) {
+  //   console.log(this.vehiculoBackUp[index].id);
 
-    this.accountService.eliminarVehiculo(this.vehiculoBackUp[index].id);
-    this.vehiculos.splice(index,1)
-    this.vehiculoBackUp.splice(index,1)
-  }
+  //   this.adminService.eliminarVehiculo(this.vehiculoBackUp[index].id);
+  //   this.vehiculos.splice(index,1)
+  //   this.vehiculoBackUp.splice(index,1)
+  // }
   actualizarMatricula(event: any, index: number) {
     this.vehiculos[index].matricula = event.target.textContent;
   }
@@ -64,7 +66,7 @@ export class ConsultarVehiculosComponent {
 
     console.log(vehiculo);
     try {
-      this.accountService.actualizarVehiculo(vehiculo).subscribe({
+      this.adminService.actualizarVehiculo(vehiculo).subscribe({
         error: (error) =>{
           if (error.status==200){
             console.log("La actualización se ha realizado con éxito");
@@ -91,7 +93,7 @@ export class ConsultarVehiculosComponent {
   }
 
   ngOnInit() {
-    this.accountService.getVehiculos().subscribe((data: any[]) => {
+    this.adminService.getVehiculos().subscribe((data: any[]) => {
       this.vehiculos = data.map(vehiculo => ({
         id: vehiculo.id,
         matricula: vehiculo.matricula,
@@ -101,7 +103,9 @@ export class ConsultarVehiculosComponent {
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
         nPlaza: vehiculo.nPlaza,
-        editable: false
+        editable: false,
+        casco: vehiculo.casco,
+        color: vehiculo.color
       }));
       this.vehiculoBackUp = data.map(vehiculo => ({
         id: vehiculo.id,
@@ -112,7 +116,9 @@ export class ConsultarVehiculosComponent {
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
         nPlaza: vehiculo.nPlaza,
-        editable: false
+        editable: false,
+        casco: vehiculo.casco,
+        color: vehiculo.color
       }));
     });
 

@@ -1,0 +1,88 @@
+
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #322C2C; /* Fondo gris claro */
+  }
+  
+  #login-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 400px;
+  }
+  
+  h1 {
+    font-size: 24px; /* Tamaño de fuente más grande */
+    color: #007BFF; /* Color azul para el título */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    text-align: center; /* Centro del título */
+    margin-bottom: 20px; /* Mayor separación entre el título y el formulario */
+}
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  #error{
+    display: flex;
+    background-color: #ffd6cc;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    align-items: center;
+    align-items: flex-end;
+    justify-content: center;
+}
+#confirmacion{
+    background-color: #c6ecc6;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    align-items: center;
+    align-items: flex-end;
+    justify-content: center;
+}
+  #form-control {
+    margin: 15px 0; /* Mayor espacio vertical entre controles */
+  }
+  
+  label {
+    font-weight: bold;
+    color: #555; /* Color del texto de la etiqueta */
+    margin-bottom: 5px; /* Separación entre etiqueta y entrada */
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  select {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0; /* Mayor espacio vertical entre controles */
+  }
+  
+  button {
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    margin-top: 10px; 
+  }
+  
+  button:disabled {
+    background-color: #ccc; /* Color del botón deshabilitado */
+    cursor: not-allowed;
+  }
+  .row2 {
+    text-align: center; 
+}
