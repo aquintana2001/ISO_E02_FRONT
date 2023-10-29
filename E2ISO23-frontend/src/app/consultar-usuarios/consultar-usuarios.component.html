@@ -1,0 +1,30 @@
+<h1>Lista de Clientes</h1>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Correo Electrónico</th>
+    <th>DNI</th>
+    <th>Teléfono</th>
+    <th>Fecha de nacimiento</th>
+    <th>Carnet</th>
+    <th>Activo</th>
+    <th>Acciones</th>
+  </tr>
+  <tr *ngFor="let usuario of usuarios; let i = index">
+    <td [contentEditable]="usuario.editable" (blur)="actualizarNombre($event, i)">{{ usuario.nombre }}</td>
+    <td [contentEditable]="usuario.editable" (blur)="actualizarApellidos($event, i)">{{ usuario.apellidos }}</td>
+    <td [contentEditable]="usuario.editable" (blur)="actualizarEmail($event, i)">{{ usuario.email }}</td>
+    <td [contentEditable]="usuario.editable" (blur)="actualizarDni($event, i)">{{ usuario.dni }}</td>
+    <td [contentEditable]="usuario.editable" (blur)="actualizarTelefono($event, i)">{{ usuario.telefono }}</td>
+    <td [contentEditable]="usuario.editable" (blur)="actualizarFechaNacimiento($event, i)">{{ usuario.fechaNacimiento }}</td>
+    <td [contentEditable]="usuario.editable" (blur)="actualizarCarnet($event, i)">{{ usuario.carnet }}</td>
+    <td [contentEditable]="usuario.editable" (blur)="actualizarActivo($event, i)">{{ usuario.activo }}</td>
+    <td>
+      <button (click)="editarFila(i)">Editar</button>
+      <button (click)="eliminarFila(i)">Eliminar</button>
+      <button *ngIf="usuario.editable" (click)="guardarCambios(i)">Guardar</button>
+      <button *ngIf="usuario.editable" (click)="cancelarEdicion(i)">Cancelar</button>
+    </td>
+  </tr>
+</table>

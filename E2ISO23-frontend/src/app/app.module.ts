@@ -11,13 +11,21 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ConsultarUsuariosComponent } from './consultar-usuarios/consultar-usuarios.component';
+import { RegistroAdminComponent } from './registro-admin/registro-admin.component';
+import { ConsultarVehiculosComponent } from './consultar-vehiculos/consultar-vehiculos.component';
 
 @NgModule({
  declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    MainPageComponent
+    MainPageComponent,
+    ConsultarUsuariosComponent,
+    ConsultarVehiculosComponent,
+    RegistroAdminComponent
+    
  ],
  imports: [
     BrowserModule,
@@ -28,7 +36,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
  ],
  providers: [],
  bootstrap: [AppComponent]

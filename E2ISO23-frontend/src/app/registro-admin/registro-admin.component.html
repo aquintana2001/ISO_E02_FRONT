@@ -1,11 +1,11 @@
-<!-- register.component.html -->
+<!-- registro-admin.component.html -->
 <div id="login-container" class="row">
     <div id="login-card" class="col-12">
         <div class="row">
-            <h1>Registro</h1>
+            <h1>Registro de administrador</h1>
         </div>
         <div class="row">
-            <form [formGroup]="registerForm" (ngSubmit)="register()" class="col-12">
+            <form [formGroup]="registroAdminForm" (ngSubmit)="registerAdmin()" class="col-12">
                 <div id="form-control" class="row">
                     <div class="col-5">
                         <label for="email">Email:</label>
@@ -46,42 +46,7 @@
                         <input id="apellidos" formControlName="apellidos" type="text" formControlName="apellidos">
                     </div>
                 </div>
-                <div id="form-control" class="row">
-                    <div class="col-5">
-                        <label for="telefono">Teléfono:</label>
-                    </div>
-                    <div class="col-6">
-                        <input id="telefono" formControlName="telefono" type="text" formControlName="telefono">
-                    </div>
-                </div>
-                <div id="form-control" class="row">
-                    <div class="col-5">
-                        <label for="fechaNacimiento">Fecha de nacimiento: </label>
-                    </div>
-                    <div class="col-6">
-                        <input type="date" id="fechaNacimiento" formControlName="fechaNacimiento" name="trip-start" value="1999-11-12" min="1910-01-01" max="2005-01-01" />
-                    </div>
-                </div>
-                <div id="form-control" class="row">
-                    <div class="col-5">
-                        <label for="dni">DNI:</label>
-                    </div>
-                    <div class="col-6">
-                        <input id="dni" formControlName="dni" type="text" formControlName="dni">
-                    </div>
-                </div>
-                <div id="form-control" class="row">
-                    <div class="col-5">
-                        <label for="carnet">Carnet:</label>
-                    </div>
-                    <div class="col-6" id="carnetcol">
-                       <select formControlName="carnet" name="Carnet" id="carnet">
-                            <option value="no" selected>No</option>
-                            <option value="coche">Coche</option>
-                            <option value="moto">Moto</option>
-                       </select>
-                    </div>
-                </div>
+
                 <div class="row" *ngIf="mostrarError==1" id="error">
                     <p>{{ mensajeinfo }}</p>
                     
@@ -90,7 +55,7 @@
                     {{ mensajeinfo }}
                 </div>
                 <div class="row">
-                    <button type="submit" [disabled]="!registerForm.valid">Registrarse</button>
+                    <button type="submit" [disabled]="!registroAdminForm.valid">Registrarse</button>
                 </div>
             </form>
         </div>
