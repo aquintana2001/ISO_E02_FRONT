@@ -63,3 +63,24 @@ button[type="submit"]:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+#error{
+    display: flex;
+    background-color: #ffd6cc;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    align-items: center;
+    align-items: flex-end;
+    justify-content: center;
+}
+#confirmacion{
+    background-color: #c6ecc6;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    align-items: center;
+    align-items: flex-end;
+    justify-content: center;
+}

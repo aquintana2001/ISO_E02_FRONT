@@ -5,11 +5,18 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-control">
                 <label for="email">Email</label>
-                <input id="email2" type="text" formControlName="email2">
+                <input id="email" type="text" formControlName="email">
             </div>
             <div class="form-control">
                 <label for="password">Contraseña</label>
                 <input id="password" type="password" formControlName="password">
+            </div>
+            <div class="row" *ngIf="mostrarError==1" id="error">
+                <p>{{ mensajeinfo }}</p>
+                
+            </div>
+            <div class="row" *ngIf="mostrarConfirmacion==1" id="confirmacion">
+                {{ mensajeinfo }}
             </div>
             <button type="submit" [disabled]="!loginForm.valid">Login</button>
         </form>

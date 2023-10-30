@@ -14,6 +14,10 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ConsultarUsuariosComponent } from './consultar-usuarios/consultar-usuarios.component';
 import { RegistroAdminComponent } from './registro-admin/registro-admin.component';
+import { ConsultarVehiculosComponent } from './consultar-vehiculos/consultar-vehiculos.component';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import { ClientViewComponent } from './client-view/client-view.component';
+import { AltaVehiculoComponent } from './alta-vehiculo/alta-vehiculo.component';
 
 @NgModule({
  declarations: [
@@ -22,7 +26,11 @@ import { RegistroAdminComponent } from './registro-admin/registro-admin.componen
     RegisterComponent,
     MainPageComponent,
     ConsultarUsuariosComponent,
-    RegistroAdminComponent
+    ConsultarVehiculosComponent,
+    RegistroAdminComponent,
+    AdminViewComponent,
+    ClientViewComponent,
+    AltaVehiculoComponent
     
  ],
  imports: [
