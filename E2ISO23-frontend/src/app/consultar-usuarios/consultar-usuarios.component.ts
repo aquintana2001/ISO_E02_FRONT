@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AccountService } from '../user.service';
-import { isNgContent } from '@angular/compiler';
+import { AdminServiceService } from '../admin-service.service';
 
 // Define una interfaz para el tipo de usuario
 interface Usuario {
@@ -22,18 +21,18 @@ interface Usuario {
 })
 export class ConsultarUsuariosComponent {
   usuarios: Usuario[] = [];
-  constructor(private accountService: AccountService) { }
+  constructor(private adminService : AdminServiceService) { }
   usuarioBackUp: Usuario[] = [];
 
 
   editarFila(index: number) {
     this.usuarios[index].editable = true;
   }
-  eliminarFila(index: number) {
-    this.accountService.eliminarCliente(this.usuarioBackUp[index].email);
-    this.usuarios.splice(index,1)
-    this.usuarioBackUp.splice(index,1)
-  }
+  // eliminarFila(index: number) {
+  //   this.adminService.eliminarCliente(this.usuarioBackUp[index].email);
+  //   this.usuarios.splice(index,1)
+  //   this.usuarioBackUp.splice(index,1)
+  // }
   actualizarNombre(event: any, index: number) {
     this.usuarios[index].nombre = event.target.textContent;
   }
@@ -64,7 +63,7 @@ export class ConsultarUsuariosComponent {
 
     console.log(cliente);
     try {
-      this.accountService.actualizarCliente(cliente).subscribe({
+      this.adminService.actualizarCliente(cliente).subscribe({
         error: (error) =>{
           if (error.status==200){
             console.log("La actualización se ha realizado con éxito");
@@ -91,7 +90,7 @@ export class ConsultarUsuariosComponent {
   }
 
   ngOnInit() {
-    this.accountService.getClientes().subscribe((data: any[]) => {
+    this.adminService.getClientes().subscribe((data: any[]) => {
       this.usuarios = data.map(usuario => ({
         email: usuario.email,
         nombre: usuario.nombre,
