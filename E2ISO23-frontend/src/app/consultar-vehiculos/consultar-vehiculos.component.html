@@ -22,10 +22,13 @@
     <td [contentEditable]="vehiculo.editable" (blur)="actualizarPlazas($event, i)">{{ vehiculo.color }}</td>
     <td [contentEditable]="vehiculo.editable" (blur)="actualizarPlazas($event, i)">{{ vehiculo.casco }}</td>
     <td>
+      <button (click)="eliminarVehiculo(i)">Dar de baja</button>
+    </td>
+    <!-- <td>
       <button (click)="editarFila(i)">Editar</button>
-      <!-- <button (click)="eliminarFila(i)">Eliminar</button> -->
+      <button (click)="eliminarFila(i)">Eliminar</button>
       <button *ngIf="vehiculo.editable" (click)="guardarCambios(i)">Guardar</button>
       <button *ngIf="vehiculo.editable" (click)="cancelarEdicion(i)">Cancelar</button>
-    </td>
+    </td> -->
   </tr>
 </table>
