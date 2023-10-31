@@ -20,7 +20,7 @@ interface Vehiculo {
 @Component({
   selector: 'app-consultar-vehiculos',
   templateUrl: './consultar-vehiculos.component.html',
-  styleUrls: ['./consultar-vehiculos.component.css']
+  styleUrls: ['../consultar-usuarios/consultar-usuarios.component.css']
 })
 export class ConsultarVehiculosComponent {
   vehiculos: Vehiculo[] = [];
