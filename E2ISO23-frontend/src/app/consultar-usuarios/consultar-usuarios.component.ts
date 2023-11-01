@@ -28,11 +28,24 @@ export class ConsultarUsuariosComponent {
   editarFila(index: number) {
     this.usuarios[index].editable = true;
   }
-  // eliminarFila(index: number) {
-  //   this.adminService.eliminarCliente(this.usuarioBackUp[index].email);
-  //   this.usuarios.splice(index,1)
-  //   this.usuarioBackUp.splice(index,1)
-  // }
+  eliminarCliente(index:number){
+    try {
+          this.adminService.eliminarCliente(this.usuarioBackUp[index].email).subscribe({
+            error: (error) =>{
+              if (error.status==200){
+                console.log("Se ha eliminado al cliente correctamente");
+                this.usuarios.splice(index,1)
+                this.usuarioBackUp.splice(index,1)
+              }
+              else{
+                console.log(error);
+              }
+            }
+        });
+        } catch (error) {
+          
+        }
+  }
   actualizarNombre(event: any, index: number) {
     this.usuarios[index].nombre = event.target.textContent;
   }
