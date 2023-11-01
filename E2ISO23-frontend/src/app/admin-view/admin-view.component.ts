@@ -15,13 +15,12 @@ export class AdminViewComponent {
   showAltaVehiculoComponent = false;
   showVehiculosComponent = false
  
-  constructor(private route: ActivatedRoute) {
+  constructor() {
     // Tu constructor
   }
   
   ngOnInit() {
-    this.customData = this.route.snapshot.paramMap.get('customData'); // Accede a los datos personalizados
-
+    
   }
   showRegisterAdmin() {
     this.showRegisterComponent = true;

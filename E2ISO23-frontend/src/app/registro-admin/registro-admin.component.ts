@@ -29,7 +29,6 @@ export class RegistroAdminComponent{
   }
 
   registerAdmin(){
-    console.log(this.registroAdminForm.value)
     if(this.checkDataInput()){
       this.mostrarError = 0;
       this.mostrarConfirmacion = 0;

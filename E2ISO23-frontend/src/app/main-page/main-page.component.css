@@ -112,3 +112,8 @@ button {
 button:hover {
     background-color: #e0e0e0;
 }
+#menuAdmin{
+    display: flex;
+    width: 37%;
+    justify-content: space-between;
+}

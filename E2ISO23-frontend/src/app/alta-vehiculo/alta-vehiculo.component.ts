@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-alta-vehiculo',
   templateUrl: './alta-vehiculo.component.html',
-  styleUrls: ['./alta-vehiculo.component.css']
+  styleUrls: ['../registro-admin/registro-admin.component.css']
 })
 export class AltaVehiculoComponent {
 

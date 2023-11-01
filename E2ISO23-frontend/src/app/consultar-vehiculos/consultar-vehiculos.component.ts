@@ -20,7 +20,7 @@ interface Vehiculo {
 @Component({
   selector: 'app-consultar-vehiculos',
   templateUrl: './consultar-vehiculos.component.html',
-  styleUrls: ['./consultar-vehiculos.component.css']
+  styleUrls: ['../consultar-usuarios/consultar-usuarios.component.css']
 })
 export class ConsultarVehiculosComponent {
   vehiculos: Vehiculo[] = [];
@@ -59,38 +59,55 @@ export class ConsultarVehiculosComponent {
   actualizarPlazas(event: any, index: number) {
     this.vehiculos[index].nPlaza = event.target.textContent;
   }
-
-  guardarCambios(index: number) {
-    this.vehiculos[index].editable = false;
-    const { editable, ...vehiculo } = this.vehiculos[index];
-
-    console.log(vehiculo);
+  eliminarVehiculo(index:number){
     try {
-      this.adminService.actualizarVehiculo(vehiculo).subscribe({
-        error: (error) =>{
-          if (error.status==200){
-            console.log("La actualización se ha realizado con éxito");
-            this.vehiculoBackUp[index]={...this.vehiculos[index]}
-          }
-          else{
-            console.log(error);
-          }
+          this.adminService.eliminarVehiculo(this.vehiculos[index].id).subscribe({
+            error: (error) =>{
+              if (error.status==200){
+                console.log("Se ha dado de baja correctamente");
+                this.vehiculos.splice(index,1)
+                this.vehiculoBackUp.splice(index,1)
+              }
+              else{
+                console.log(error);
+              }
+            }
+        });
+        } catch (error) {
+          
         }
-    });
-    } catch (error) {
-      
-    }
-   
   }
+  // guardarCambios(index: number) {
+  //   this.vehiculos[index].editable = false;
+  //   const { editable, ...vehiculo } = this.vehiculos[index];
+
+  //   console.log(vehiculo);
+  //   try {
+  //     this.adminService.actualizarVehiculo(vehiculo).subscribe({
+  //       error: (error) =>{
+  //         if (error.status==200){
+  //           console.log("La actualización se ha realizado con éxito");
+  //           this.vehiculoBackUp[index]={...this.vehiculos[index]}
+  //         }
+  //         else{
+  //           console.log(error);
+  //         }
+  //       }
+  //   });
+  //   } catch (error) {
+      
+  //   }
+   
+  // }
   
 
-  cancelarEdicion(index: number) {
-    this.vehiculos[index].editable = false;
-    console.log(this.vehiculos[index]);
-    console.log(this.vehiculoBackUp[index]);
+  // cancelarEdicion(index: number) {
+  //   this.vehiculos[index].editable = false;
+  //   console.log(this.vehiculos[index]);
+  //   console.log(this.vehiculoBackUp[index]);
 
-    this.vehiculos[index] = this.vehiculoBackUp[index];
-  }
+  //   this.vehiculos[index] = this.vehiculoBackUp[index];
+  // }
 
   ngOnInit() {
     this.adminService.getVehiculos().subscribe((data: any[]) => {
