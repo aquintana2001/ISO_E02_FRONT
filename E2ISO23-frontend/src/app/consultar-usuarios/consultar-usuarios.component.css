@@ -1,27 +1,86 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 20px;
-  }
-  
-  h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    background-color: #007BFF;
-    color: white;
-    padding: 10px;
-  }
-  
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 0 auto;
-  }
-  
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-    color: white;
-  }
-  
+/* Estilos para la tabla de lista de clientes */
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #322C2C;
+  min-height: 720px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #2d2a2a;
+  text-shadow: 1px 2px 2px rgb(255, 255, 255);
+}
+
+/* Estilos para la tabla */
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin-top: 2rem;
+  box-shadow: 20px 20px 60px;
+}
+
+
+th {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: #4c6fb6bc;
+  color: #251c1cee;
+  border: 1px solid #322c2ccd; /* Ancho, estilo y color del borde */
+}
+
+td {
+  background-color: #e0e0e0;
+  color: #322C2C;
+  border: 1px solid #322c2ccd;
+  padding: 0.5rem;
+  text-align: center;
+}
+tr:nth-child(even) {
+  background-color: #c0c0c0;
+}
+
+tr:nth-child(odd) {
+  background-color: #a0a0a0;
+}
+
+/* Estilos para los botones en las celdas */
+button {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  margin: 2px;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  background-color: #322C2C;
+  color: #e0e0e0;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+  color: #322C2C;
+}
+#listado{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+#clientesText{
+  display: flex;
+  justify-content: center;
+  color: #e0e0e0;
+}
+#titulo{
+  background-color: #8da5d4bc;
+  padding-top: 4%;
+}
+.editable {
+  background-color: #FFFFE0; /* Cambia el fondo a un color amarillo claro cuando es editable */
+  border: 1px solid #FFD700; /* Agrega un borde dorado */
+  color: #000; /* Cambia el color del texto para hacerlo más legible */
+}

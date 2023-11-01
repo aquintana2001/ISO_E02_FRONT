@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AccountService } from './user.service';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AdminServiceService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,private accountService : AccountService) { }
   private baseURLAdminClientes = "http://localhost:8080/admin/cliente";
   private baseURLAdminActualizarCliente = "http://localhost:8080/admin/actualizarCliente";
   private baseURLAdminEliminarCliente = "http://localhost:8080/admin/eliminarCliente";
@@ -15,63 +16,83 @@ export class AdminServiceService {
   private baseURLAdminAltaVehiculo = "http://localhost:8080/admin/darAltaVehiculo";
 
   registerAdmin (info : any) {
-    info = {...info,emailAdmin:"pepe@pepe.com",passwordAdmin:"Hola123*"}
-    return this.httpClient.post("http://localhost:8080/admin/register", info);
+    let infoUser = this.accountService.getAdmin()
+    const infoEnvio = {
+      ...info,
+      emailAdmin:infoUser.emailAdmin,
+      passwordAdmin:infoUser.passwordAdmin
+    };
+    return this.httpClient.post("http://localhost:8080/admin/register", infoEnvio);
   }
   getClientes(): Observable<any[]> {
-    const info = {
-      emailAdmin: "pepe@pepe.com",
-      passwordAdmin: "Hola123*"
-    };
-    return this.httpClient.post<any[]>(`${this.baseURLAdminClientes}`, info);
+    let infoUser = this.accountService.getAdmin()
+    return this.httpClient.post<any[]>(`${this.baseURLAdminClientes}`, infoUser);
   }
 
   getVehiculos(): Observable<any[]> {
-    const info = {
-      emailAdmin: "pepe@pepe.com",
-      passwordAdmin: "Hola123*"
-    };
-    return this.httpClient.post<any[]>(`${this.baseURLAdminVehiculos}`, info);
+    let infoUser = this.accountService.getAdmin()
+    return this.httpClient.post<any[]>(`${this.baseURLAdminVehiculos}`, infoUser);
   }
   actualizarCliente(cliente: any): Observable<any> {
+    let infoUser = this.accountService.getAdmin()
     const info = {
       ...cliente,
-      emailAdmin: "pepe@pepe.com",
-      passwordAdmin: "Hola123*"
+      emailAdmin:infoUser.emailAdmin,
+      passwordAdmin:infoUser.passwordAdmin
     };
     const url = `${this.baseURLAdminActualizarCliente}`; 
     return this.httpClient.put(url, info);
   }
-  actualizarVehiculo(vehiculo: any): Observable<any> {
-    const info = {
-      ...vehiculo,
-      emailAdmin: "pepe@pepe.com",
-      passwordAdmin: "Hola123*"
+  // actualizarVehiculo(vehiculo: any): Observable<any> {
+  //   let infoUser = this.accountService.getAdmin()
+  //   const info = {
+  //     ...vehiculo,
+  //     emailAdmin:infoUser.emailAdmin,
+  //     passwordAdmin:infoUser.passwordAdmin
+  //   };
+  //   const url = `${this.baseURLAdminVehiculos}`; 
+  //   return this.httpClient.put(url, info);
+  // }
+  eliminarCliente(emailCliente: any): Observable<any> {
+    let infoUser = this.accountService.getAdmin()
+    let dataToDelete = {
+      email:emailCliente,
+      emailAdmin:infoUser.emailAdmin,
+      passwordAdmin:infoUser.passwordAdmin
     };
-    const url = `${this.baseURLAdminVehiculos}`; 
-    return this.httpClient.put(url, info);
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: dataToDelete // Incluir los datos en la propiedad "body"
+    };
+    let url = `${this.baseURLAdminEliminarCliente}`; 
+    return this.httpClient.request('delete', url, httpOptions)
   }
-  // eliminarCliente(emailCliente: any): Observable<any> {
-  //   const info = {
-  //     ...emailCliente,
-  //     emailAdmin: "pepe@pepe.com",
-  //     passwordAdmin: "Hola123*"
-  //   };
-  //   const url = `${this.baseURLAdminEliminarCliente}`; 
-  //   return this.httpClient.delete(url, info);
-  // }
-  // eliminarVehiculo(id: any): Observable<any> {
 
-  //   const info = {
-  //     ...id,
-  //     emailAdmin: "pepe@pepe.com",
-  //     passwordAdmin: "Hola123*"
-  //   };
-  //   const url = `${this.baseURLAdminDarBajaVehiculo}`; 
-  //   return this.httpClient.delete(url, info);
-  // }
   altaVehiculo (info : any) {
-    info = {...info,emailAdmin:"pepe@pepe.com",passwordAdmin:"Hola123*"}
-    return this.httpClient.post(`${this.baseURLAdminAltaVehiculo}`, info);
+    let infoUser = this.accountService.getAdmin()
+    const infoEnvio = {
+      ...info,
+      emailAdmin:infoUser.emailAdmin,
+      passwordAdmin:infoUser.passwordAdmin
+    };
+    return this.httpClient.post(`${this.baseURLAdminAltaVehiculo}`, infoEnvio);
+  }
+  eliminarVehiculo (info : any) {
+    let infoUser = this.accountService.getAdmin()
+    let dataToDelete = {
+      id:info,
+      emailAdmin:infoUser.emailAdmin,
+      passwordAdmin:infoUser.passwordAdmin
+    };
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: dataToDelete // Incluir los datos en la propiedad "body"
+    };
+    let url = `${this.baseURLAdminDarBajaVehiculo}`; 
+    return this.httpClient.request('delete', url, httpOptions)
   }
 }
