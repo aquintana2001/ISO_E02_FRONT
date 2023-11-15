@@ -26,6 +26,7 @@ export class AdminServiceService {
   }
   getClientes(): Observable<any[]> {
     let infoUser = this.accountService.getAdmin()
+    console.log(infoUser)
     return this.httpClient.post<any[]>(`${this.baseURLAdminClientes}`, infoUser);
   }
 

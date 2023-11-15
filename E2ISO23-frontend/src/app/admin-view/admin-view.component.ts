@@ -8,8 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AdminViewComponent {
   customData: any;
-  email:string = "pepe@pepe.com";
-  password:string = "Hola123*";
   showRegisterComponent = false;
   showConsultarClientesComponent = true;
   showAltaVehiculoComponent = false;
