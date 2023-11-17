@@ -11,10 +11,22 @@ interface Vehiculo {
   bateria: string;
   estado: string;
   direccion: string;
+  // nPlaza: {
+  //   value: string;
+  //   editable: boolean;
+  // };
   nPlaza: string;
   editable: boolean;
-  casco: string;
-  color: string; // Agrega la propiedad 'editable'
+  color: string;
+  casco:string;
+  // color: {
+  //   value: string;
+  //   editable: boolean;
+  // };
+  // casco: {
+  //   value: string;
+  //   editable: boolean;
+  // };
 }
 
 @Component({
@@ -30,6 +42,27 @@ export class ConsultarVehiculosComponent {
 
   editarFila(index: number) {
     this.vehiculos[index].editable = true;
+    // const tipoVehiculo = this.vehiculos[index].tipo;
+    // console.log(tipoVehiculo)
+    // switch (tipoVehiculo) {
+    //   case 'Coche':
+    //     this.vehiculos[index].nPlaza.editable = true;
+    //     this.vehiculos[index].color.editable = false;
+    //     this.vehiculos[index].casco.editable = false;
+    //     break;
+    //   case 'Moto':
+    //     this.vehiculos[index].nPlaza.editable = false;
+    //     this.vehiculos[index].color.editable = false;
+    //     this.vehiculos[index].casco.editable = true;
+    //     break;
+    //   case 'Patinete':
+    //     this.vehiculos[index].nPlaza.editable = false;
+    //     this.vehiculos[index].color.editable = true;
+    //     this.vehiculos[index].casco.editable = false;
+    //     break;
+    //   default:
+    //     break;
+    // }
   }
   // eliminarFila(index: number) {
   //   console.log(this.vehiculoBackUp[index].id);
@@ -77,37 +110,70 @@ export class ConsultarVehiculosComponent {
           
         }
   }
-  // guardarCambios(index: number) {
-  //   this.vehiculos[index].editable = false;
-  //   const { editable, ...vehiculo } = this.vehiculos[index];
+  guardarCambios(index: number) {
+    this.vehiculos[index].editable = false;
+    const { editable, ...vehiculo } = this.vehiculos[index];
 
-  //   console.log(vehiculo);
-  //   try {
-  //     this.adminService.actualizarVehiculo(vehiculo).subscribe({
-  //       error: (error) =>{
-  //         if (error.status==200){
-  //           console.log("La actualización se ha realizado con éxito");
-  //           this.vehiculoBackUp[index]={...this.vehiculos[index]}
-  //         }
-  //         else{
-  //           console.log(error);
-  //         }
-  //       }
-  //   });
-  //   } catch (error) {
-      
-  //   }
+    console.log(vehiculo);
+    try {
+      this.adminService.actualizarVehiculo(vehiculo).subscribe({
+        error: (error) =>{
+          if (error.status==200){
+            console.log("La actualización se ha realizado con éxito");
+            this.vehiculoBackUp[index]={...this.vehiculos[index]}
+          }
+          else{
+            console.log(error);
+            this.vehiculos[index] = this.vehiculoBackUp[index];
+            this.adminService.getVehiculos().subscribe((data: any[]) => {
+              this.vehiculoBackUp = data.map(vehiculo => ({
+                id: vehiculo.id,
+                matricula: vehiculo.matricula,
+                tipo: vehiculo.tipo,
+                modelo: vehiculo.modelo,
+                bateria: vehiculo.bateria,
+                estado: vehiculo.estado,
+                direccion: vehiculo.direccion,
+                nPlaza: vehiculo.nPlaza,
+                casco: vehiculo.casco,
+                color: vehiculo.color,
+                editable: false
+              }));
+            });
+          }
+        }
+    });
+    } catch (error) {
+
+    }
    
-  // }
-  
+  }
 
-  // cancelarEdicion(index: number) {
-  //   this.vehiculos[index].editable = false;
-  //   console.log(this.vehiculos[index]);
-  //   console.log(this.vehiculoBackUp[index]);
+  cancelarEdicion(index: number) {
+    this.vehiculos[index].editable = false;
+    console.log(this.vehiculos[index]);
+    console.log(this.vehiculoBackUp[index]);
 
-  //   this.vehiculos[index] = this.vehiculoBackUp[index];
-  // }
+    this.vehiculos[index] = this.vehiculoBackUp[index];
+    this.adminService.getVehiculos().subscribe((data: any[]) => {
+
+      this.vehiculoBackUp = data.map(vehiculo => ({
+        id: vehiculo.id,
+        matricula: vehiculo.matricula,
+        tipo: vehiculo.tipo,
+        modelo: vehiculo.modelo,
+        bateria: vehiculo.bateria,
+        estado: vehiculo.estado,
+        direccion: vehiculo.direccion,
+        nPlaza: vehiculo.nPlaza,
+        casco: vehiculo.casco,
+        color: vehiculo.color,
+        editable: false
+      }));
+    });
+
+
+  }
 
   ngOnInit() {
     this.adminService.getVehiculos().subscribe((data: any[]) => {
@@ -119,10 +185,13 @@ export class ConsultarVehiculosComponent {
         estado: vehiculo.estado,
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
+        // nPlaza: { value: vehiculo.nPlaza, editable: false },
         nPlaza: vehiculo.nPlaza,
         editable: false,
-        casco: vehiculo.casco,
-        color: vehiculo.color
+        color: vehiculo.color,
+        casco: vehiculo.casco
+        // color: { value: vehiculo.color, editable: false },
+        // casco: { value: vehiculo.casco, editable: false }
       }));
       this.vehiculoBackUp = data.map(vehiculo => ({
         id: vehiculo.id,
@@ -132,10 +201,13 @@ export class ConsultarVehiculosComponent {
         estado: vehiculo.estado,
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
+        // nPlaza: { value: vehiculo.nPlaza, editable: false },
         nPlaza: vehiculo.nPlaza,
         editable: false,
-        casco: vehiculo.casco,
-        color: vehiculo.color
+        color: vehiculo.color,
+        casco: vehiculo.casco
+        // color: { value: vehiculo.color, editable: false },
+        // casco: { value: vehiculo.casco, editable: false }
       }));
     });
 

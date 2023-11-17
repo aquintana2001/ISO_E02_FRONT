@@ -13,6 +13,7 @@ export class AdminServiceService {
   private baseURLAdminEliminarCliente = "http://localhost:8080/admin/eliminarCliente";
   private baseURLAdminDarBajaVehiculo = "http://localhost:8080/admin/darBajaVehiculo";
   private baseURLAdminVehiculos = "http://localhost:8080/admin/vehiculo";
+  private baseURLAdminActualizarVehiculo = "http://localhost:8080/admin/actualizarVehiculo";
   private baseURLAdminAltaVehiculo = "http://localhost:8080/admin/darAltaVehiculo";
 
   registerAdmin (info : any) {
@@ -44,16 +45,16 @@ export class AdminServiceService {
     const url = `${this.baseURLAdminActualizarCliente}`; 
     return this.httpClient.put(url, info);
   }
-  // actualizarVehiculo(vehiculo: any): Observable<any> {
-  //   let infoUser = this.accountService.getAdmin()
-  //   const info = {
-  //     ...vehiculo,
-  //     emailAdmin:infoUser.emailAdmin,
-  //     passwordAdmin:infoUser.passwordAdmin
-  //   };
-  //   const url = `${this.baseURLAdminVehiculos}`; 
-  //   return this.httpClient.put(url, info);
-  // }
+  actualizarVehiculo(vehiculo: any): Observable<any> {
+    let infoUser = this.accountService.getAdmin()
+    const info = {
+      ...vehiculo,
+      emailAdmin:infoUser.emailAdmin,
+      passwordAdmin:infoUser.passwordAdmin
+    };
+    const url = `${this.baseURLAdminActualizarVehiculo}`; 
+    return this.httpClient.put(url, info);
+  }
   eliminarCliente(emailCliente: any): Observable<any> {
     let infoUser = this.accountService.getAdmin()
     let dataToDelete = {
