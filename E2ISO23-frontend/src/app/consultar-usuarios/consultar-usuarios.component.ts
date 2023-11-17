@@ -84,11 +84,27 @@ export class ConsultarUsuariosComponent {
           }
           else{
             console.log(error);
+            this.usuarios[index] = this.usuarioBackUp[index];
+            this.adminService.getClientes().subscribe((data: any[]) => {
+              this.usuarioBackUp = data.map(usuario => ({
+                email: usuario.email,
+                nombre: usuario.nombre,
+                apellidos: usuario.apellidos,
+                password: usuario.password,
+                activo: usuario.activo,
+                intentos: usuario.intentos,
+                fechaNacimiento: usuario.fechaNacimiento,
+                carnet: usuario.carnet,
+                telefono: usuario.telefono,
+                dni: usuario.dni,
+                editable: false
+              }));
+            });
           }
         }
     });
     } catch (error) {
-      
+
     }
    
   }
@@ -100,6 +116,24 @@ export class ConsultarUsuariosComponent {
     console.log(this.usuarioBackUp[index]);
 
     this.usuarios[index] = this.usuarioBackUp[index];
+    this.adminService.getClientes().subscribe((data: any[]) => {
+
+      this.usuarioBackUp = data.map(usuario => ({
+        email: usuario.email,
+        nombre: usuario.nombre,
+        apellidos: usuario.apellidos,
+        password: usuario.password,
+        activo: usuario.activo,
+        intentos: usuario.intentos,
+        fechaNacimiento: usuario.fechaNacimiento,
+        carnet: usuario.carnet,
+        telefono: usuario.telefono,
+        dni: usuario.dni,
+        editable: false
+      }));
+    });
+
+
   }
 
   ngOnInit() {

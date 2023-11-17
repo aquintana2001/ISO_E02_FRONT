@@ -22,7 +22,7 @@ body {
 
 h1 {
     color: #333;
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
@@ -34,6 +34,7 @@ label {
     display: block;
     margin-bottom: 5px;
     color: #333;
+    font-size: 20px;
 }
 
 input {
@@ -83,4 +84,7 @@ button[type="submit"]:disabled {
     align-items: center;
     align-items: flex-end;
     justify-content: center;
+}
+#mensajeIntentos{
+    font-size: 11px;
 }
