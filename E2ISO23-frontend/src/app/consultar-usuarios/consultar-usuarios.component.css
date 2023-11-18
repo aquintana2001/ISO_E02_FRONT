@@ -84,3 +84,11 @@ button:hover {
   border: 1px solid #FFD700; /* Agrega un borde dorado */
   color: #000; /* Cambia el color del texto para hacerlo más legible */
 }
+select {
+  width: 100%; /* Ajusta el ancho según sea necesario */
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+select[disabled] {
+  opacity: 0.5; /* Cambia la opacidad para indicar que está deshabilitado */
+  cursor: not-allowed; /* Cambia el cursor cuando está deshabilitado */
+}

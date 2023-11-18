@@ -22,7 +22,13 @@
       <td [contentEditable]="usuario.editable" (blur)="actualizarTelefono($event, i)"[ngClass]="{'editable': usuario.editable}">{{ usuario.telefono }}</td>
       <td [contentEditable]="usuario.editable" (blur)="actualizarFechaNacimiento($event, i)"[ngClass]="{'editable': usuario.editable}">{{ usuario.fechaNacimiento }}</td>
       <td [contentEditable]="usuario.editable" (blur)="actualizarCarnet($event, i)"[ngClass]="{'editable': usuario.editable}">{{ usuario.carnet }}</td>
-      <td [contentEditable]="usuario.editable" (blur)="actualizarActivo($event, i)"[ngClass]="{'editable': usuario.editable}">{{ usuario.activo }}</td>
+      <td [ngClass]="{'editable': usuario.editable}">
+        <select [disabled]="!usuario.editable" (change)="actualizarActivo($event, i)"
+          [(ngModel)]="usuario.activo">
+          <option value="true" [selected]="usuario.activo">Sí</option>
+          <option value="false" [selected]="!usuario.activo">No</option>
+        </select>
+      </td>
       <td>
         <button (click)="editarFila(i)">Editar</button>
         <button (click)="eliminarCliente(i)">Eliminar</button>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AdminServiceService } from '../admin-service.service';
-import { isNgContent } from '@angular/compiler';
+import { AdminServiceService } from '../admin-service.service'
 
 // Define una interfaz para el tipo de usuario
 interface Vehiculo {
@@ -11,22 +10,10 @@ interface Vehiculo {
   bateria: string;
   estado: string;
   direccion: string;
-  // nPlaza: {
-  //   value: string;
-  //   editable: boolean;
-  // };
   nPlaza: string;
   editable: boolean;
   color: string;
-  casco:string;
-  // color: {
-  //   value: string;
-  //   editable: boolean;
-  // };
-  // casco: {
-  //   value: string;
-  //   editable: boolean;
-  // };
+  casco: boolean;
 }
 
 @Component({
@@ -39,38 +26,9 @@ export class ConsultarVehiculosComponent {
   constructor(private adminService : AdminServiceService) { }
   vehiculoBackUp: Vehiculo[] = [];
 
-
   editarFila(index: number) {
     this.vehiculos[index].editable = true;
-    // const tipoVehiculo = this.vehiculos[index].tipo;
-    // console.log(tipoVehiculo)
-    // switch (tipoVehiculo) {
-    //   case 'Coche':
-    //     this.vehiculos[index].nPlaza.editable = true;
-    //     this.vehiculos[index].color.editable = false;
-    //     this.vehiculos[index].casco.editable = false;
-    //     break;
-    //   case 'Moto':
-    //     this.vehiculos[index].nPlaza.editable = false;
-    //     this.vehiculos[index].color.editable = false;
-    //     this.vehiculos[index].casco.editable = true;
-    //     break;
-    //   case 'Patinete':
-    //     this.vehiculos[index].nPlaza.editable = false;
-    //     this.vehiculos[index].color.editable = true;
-    //     this.vehiculos[index].casco.editable = false;
-    //     break;
-    //   default:
-    //     break;
-    // }
   }
-  // eliminarFila(index: number) {
-  //   console.log(this.vehiculoBackUp[index].id);
-
-  //   this.adminService.eliminarVehiculo(this.vehiculoBackUp[index].id);
-  //   this.vehiculos.splice(index,1)
-  //   this.vehiculoBackUp.splice(index,1)
-  // }
   actualizarMatricula(event: any, index: number) {
     this.vehiculos[index].matricula = event.target.textContent;
   }
@@ -91,6 +49,12 @@ export class ConsultarVehiculosComponent {
   }
   actualizarPlazas(event: any, index: number) {
     this.vehiculos[index].nPlaza = event.target.textContent;
+  }
+  actualizarColor(event: any, index: number) {
+    this.vehiculos[index].color = event.target.textContent;
+  }
+  actualizarCasco(event: any, index: number) {
+    this.vehiculos[index].casco = event.target.value;
   }
   eliminarVehiculo(index:number){
     try {
