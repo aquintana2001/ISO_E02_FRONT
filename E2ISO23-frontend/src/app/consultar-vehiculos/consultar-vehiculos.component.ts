@@ -57,22 +57,25 @@ export class ConsultarVehiculosComponent {
     this.vehiculos[index].casco = event.target.value;
   }
   eliminarVehiculo(index:number){
-    try {
-          this.adminService.eliminarVehiculo(this.vehiculos[index].id).subscribe({
-            error: (error) =>{
-              if (error.status==200){
-                console.log("Se ha dado de baja correctamente");
-                this.vehiculos.splice(index,1)
-                this.vehiculoBackUp.splice(index,1)
-              }
-              else{
-                console.log(error);
-              }
+    const confirmacion = window.confirm('¿Estás seguro de que quieres borrar el vehículo permanentemente?');
+
+    if (confirmacion) {
+      try {
+        this.adminService.eliminarVehiculo(this.vehiculos[index].id).subscribe({
+          error: (error) =>{
+            if (error.status==200){
+              this.vehiculos.splice(index,1)
+              this.vehiculoBackUp.splice(index,1)
             }
-        });
-        } catch (error) {
-          
-        }
+            else{
+              console.log(error);
+            }
+          }
+      });
+      } catch (error) {
+        
+      }
+    }
   }
   guardarCambios(index: number) {
     this.vehiculos[index].editable = false;
