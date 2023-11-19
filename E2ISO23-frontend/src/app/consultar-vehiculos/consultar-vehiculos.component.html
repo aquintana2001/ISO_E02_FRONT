@@ -1,7 +1,9 @@
 <div class="row" id="listado">
   <table>
     <tr>
-      <th colspan="10" id="titulo"><h1>Lista de Vehículos</h1></th>
+      <th colspan="10" id="titulo">
+        <h1>Lista de Vehículos</h1>
+      </th>
     </tr>
     <tr>
       <th>Matricula</th>
@@ -16,15 +18,30 @@
       <th>Acciones</th>
     </tr>
     <tr *ngFor="let vehiculo of vehiculos; let i = index">
-      <td [contentEditable]="vehiculo.editable" (blur)="actualizarMatricula($event, i)" [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.matricula }}</td>
-      <td [contentEditable]="vehiculo.editable" (blur)="actualizarModelo($event, i)" [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.modelo }}</td>
-      <td [contentEditable]="vehiculo.editable" (blur)="actualizarBateria($event, i)" [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.bateria }}</td>
-      <td [contentEditable]="vehiculo.editable" (blur)="actualizarEstado($event, i)" [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.estado }}</td>
-      <td [contentEditable]="vehiculo.editable" (blur)="actualizarDireccion($event, i)" [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.direccion }}</td>
+      <td [contentEditable]="vehiculo.editable" (blur)="actualizarMatricula($event, i)"
+        [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.matricula }}</td>
+      <td [contentEditable]="vehiculo.editable" (blur)="actualizarModelo($event, i)"
+        [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.modelo }}</td>
+      <td [contentEditable]="vehiculo.editable" (blur)="actualizarBateria($event, i)"
+        [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.bateria }}</td>
+      <td [contentEditable]="vehiculo.editable" (blur)="actualizarEstado($event, i)"
+        [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.estado }}</td>
+      <td [contentEditable]="vehiculo.editable" (blur)="actualizarDireccion($event, i)"
+        [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.direccion }}</td>
       <td>{{ vehiculo.tipo }}</td>
-      <td [contentEditable]="vehiculo.editable" (blur)="actualizarPlazas($event, i)" [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.nPlaza }}</td>
-      <td [contentEditable]="vehiculo.editable" (blur)="actualizarPlazas($event, i)" [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.color }}</td>
-      <td [contentEditable]="vehiculo.editable" (blur)="actualizarPlazas($event, i)" [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.casco ? 'Sí' : 'No' }}</td>
+      <td [contentEditable]="vehiculo.editable" (blur)="actualizarPlazas($event, i)"
+        [ngClass]="{'editable': (vehiculo.editable && vehiculo.tipo === 'coche') ? true : false}">{{ vehiculo.nPlaza }}
+      </td>
+      <td [contentEditable]="vehiculo.editable" (blur)="actualizarColor($event, i)"
+        [ngClass]="{'editable': (vehiculo.editable && vehiculo.tipo === 'patinete') ? true : false}">{{ vehiculo.color
+        }}</td>
+      <td [ngClass]="{'editable': (vehiculo.editable && vehiculo.tipo === 'moto') ? true : false}">
+        <select [disabled]="!vehiculo.editable || vehiculo.tipo !== 'moto'" (change)="actualizarCasco($event, i)"
+          [(ngModel)]="vehiculo.casco">
+          <option value="true" [selected]="vehiculo.casco">Sí</option>
+          <option value="false" [selected]="!vehiculo.casco">No</option>
+        </select>
+      </td>
       <td>
         <button (click)="editarFila(i)">Editar</button>
         <button (click)="eliminarVehiculo(i)">Eliminar</button>
