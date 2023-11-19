@@ -1,0 +1,31 @@
+<div class="row" id="listado">
+    <table>
+      <tr>
+        <th colspan="10" id="titulo">
+          <h1>Lista de Vehículos</h1>
+        </th>
+      </tr>
+      <tr>
+        <th>Matricula</th>
+        <th>Modelo</th>
+        <th>Direccion</th>
+        <th>Tipo</th>
+        <th>Nº de plazas</th>
+        <th>Color</th>
+        <th>Casco</th>
+        <th>Reservar</th>
+      </tr>
+      <tr *ngFor="let vehiculo of vehiculos; let i = index">
+        <td>{{ vehiculo.matricula }}</td>
+        <td>{{ vehiculo.modelo }}</td>
+        <td>{{ vehiculo.direccion }}</td>
+        <td>{{ vehiculo.tipo }}</td>
+        <td>{{ vehiculo.nPlazas }}</td>
+        <td>{{ vehiculo.color }}</td>
+        <td>{{vehiculo.casco ? "Sí" : "No"}}</td>
+        <td>
+          <button (click)="reservar(i)">Reservar</button>
+        </td>
+      </tr>
+    </table>
+  </div>

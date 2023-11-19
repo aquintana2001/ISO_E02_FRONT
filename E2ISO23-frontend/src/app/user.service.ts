@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AccountService {
-
+  private baseURLUserVehiculos = "http://localhost:8080/cliente/vehiculo";
   constructor(private httpClient: HttpClient) { }
 
   register(info: any): Observable<any> {
@@ -25,5 +25,9 @@ export class AccountService {
       return info;
     }
     return null;
+  }
+  getVehiculosDisponibles(): Observable<any[]> {
+      let infoUser = this.getUser()
+      return this.httpClient.post<any[]>(`${this.baseURLUserVehiculos}`, infoUser);
   }
 }
