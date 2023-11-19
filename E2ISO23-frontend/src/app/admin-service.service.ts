@@ -20,14 +20,13 @@ export class AdminServiceService {
     let infoUser = this.accountService.getAdmin()
     const infoEnvio = {
       ...info,
-      emailAdmin:infoUser.emailAdmin,
-      passwordAdmin:infoUser.passwordAdmin
+      emailAdmin:infoUser?.emailAdmin,
+      passwordAdmin:infoUser?.passwordAdmin
     };
     return this.httpClient.post("http://localhost:8080/admin/register", infoEnvio);
   }
   getClientes(): Observable<any[]> {
     let infoUser = this.accountService.getAdmin()
-    console.log(infoUser)
     return this.httpClient.post<any[]>(`${this.baseURLAdminClientes}`, infoUser);
   }
 
@@ -39,8 +38,8 @@ export class AdminServiceService {
     let infoUser = this.accountService.getAdmin()
     const info = {
       ...cliente,
-      emailAdmin:infoUser.emailAdmin,
-      passwordAdmin:infoUser.passwordAdmin
+      emailAdmin:infoUser?.emailAdmin,
+      passwordAdmin:infoUser?.passwordAdmin
     };
     const url = `${this.baseURLAdminActualizarCliente}`; 
     return this.httpClient.put(url, info);
@@ -49,8 +48,8 @@ export class AdminServiceService {
     let infoUser = this.accountService.getAdmin()
     const info = {
       ...vehiculo,
-      emailAdmin:infoUser.emailAdmin,
-      passwordAdmin:infoUser.passwordAdmin
+      emailAdmin:infoUser?.emailAdmin,
+      passwordAdmin:infoUser?.passwordAdmin
     };
     const url = `${this.baseURLAdminActualizarVehiculo}`; 
     return this.httpClient.put(url, info);
@@ -59,8 +58,8 @@ export class AdminServiceService {
     let infoUser = this.accountService.getAdmin()
     let dataToDelete = {
       email:emailCliente,
-      emailAdmin:infoUser.emailAdmin,
-      passwordAdmin:infoUser.passwordAdmin
+      emailAdmin:infoUser?.emailAdmin,
+      passwordAdmin:infoUser?.passwordAdmin
     };
     let httpOptions = {
       headers: new HttpHeaders({
@@ -76,8 +75,8 @@ export class AdminServiceService {
     let infoUser = this.accountService.getAdmin()
     const infoEnvio = {
       ...info,
-      emailAdmin:infoUser.emailAdmin,
-      passwordAdmin:infoUser.passwordAdmin
+      emailAdmin:infoUser?.emailAdmin,
+      passwordAdmin:infoUser?.passwordAdmin
     };
     return this.httpClient.post(`${this.baseURLAdminAltaVehiculo}`, infoEnvio);
   }
@@ -85,8 +84,8 @@ export class AdminServiceService {
     let infoUser = this.accountService.getAdmin()
     let dataToDelete = {
       id:info,
-      emailAdmin:infoUser.emailAdmin,
-      passwordAdmin:infoUser.passwordAdmin
+      emailAdmin:infoUser?.emailAdmin,
+      passwordAdmin:infoUser?.passwordAdmin
     };
     let httpOptions = {
       headers: new HttpHeaders({
