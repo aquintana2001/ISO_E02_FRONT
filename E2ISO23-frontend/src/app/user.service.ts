@@ -19,21 +19,8 @@ export class AccountService {
     if (userDataRaw){
       let userData = JSON.parse(userDataRaw)
       let info ={
-        username: userData.email,
-        password: userData.password
-      }
-      return info;
-    }
-    return null;
-
-  }
-  getAdmin() {
-    let userDataRaw = localStorage.getItem('userData');
-    if (userDataRaw){
-      let userData = JSON.parse(userDataRaw)
-      let info ={
-        emailAdmin: userData.email,
-        passwordAdmin: userData.password
+        emailUser: userData.email,
+        passwordUser: userData.password
       }
       return info;
     }

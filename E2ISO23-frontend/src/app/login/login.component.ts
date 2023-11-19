@@ -58,7 +58,6 @@ export class LoginComponent {
     this.router.navigate(['/client-view'], navigationExtras);
   }
   redirigirConDatosAdmin() {
-    customData: this.loginForm.value
     const navigationExtras: NavigationExtras = {
       state: {
         customData: this.loginForm.value

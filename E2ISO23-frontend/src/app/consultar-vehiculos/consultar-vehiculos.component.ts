@@ -10,7 +10,7 @@ interface Vehiculo {
   bateria: string;
   estado: string;
   direccion: string;
-  nPlaza: string;
+  nPlazas: string;
   editable: boolean;
   color: string;
   casco: boolean;
@@ -48,7 +48,7 @@ export class ConsultarVehiculosComponent {
     this.vehiculos[index].tipo = event.target.textContent;
   }
   actualizarPlazas(event: any, index: number) {
-    this.vehiculos[index].nPlaza = event.target.textContent;
+    this.vehiculos[index].nPlazas = event.target.textContent;
   }
   actualizarColor(event: any, index: number) {
     this.vehiculos[index].color = event.target.textContent;
@@ -101,7 +101,7 @@ export class ConsultarVehiculosComponent {
                 bateria: vehiculo.bateria,
                 estado: vehiculo.estado,
                 direccion: vehiculo.direccion,
-                nPlaza: vehiculo.nPlaza,
+                nPlazas: vehiculo.nPlaza,
                 casco: vehiculo.casco,
                 color: vehiculo.color,
                 editable: false
@@ -132,7 +132,7 @@ export class ConsultarVehiculosComponent {
         bateria: vehiculo.bateria,
         estado: vehiculo.estado,
         direccion: vehiculo.direccion,
-        nPlaza: vehiculo.nPlaza,
+        nPlazas: vehiculo.nPlaza,
         casco: vehiculo.casco,
         color: vehiculo.color,
         editable: false
@@ -153,7 +153,7 @@ export class ConsultarVehiculosComponent {
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
         // nPlaza: { value: vehiculo.nPlaza, editable: false },
-        nPlaza: vehiculo.nPlaza,
+        nPlazas: vehiculo.nPlaza,
         editable: false,
         color: vehiculo.color,
         casco: vehiculo.casco
@@ -169,7 +169,7 @@ export class ConsultarVehiculosComponent {
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
         // nPlaza: { value: vehiculo.nPlaza, editable: false },
-        nPlaza: vehiculo.nPlaza,
+        nPlazas: vehiculo.nPlaza,
         editable: false,
         color: vehiculo.color,
         casco: vehiculo.casco

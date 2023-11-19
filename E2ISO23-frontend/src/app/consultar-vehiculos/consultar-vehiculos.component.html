@@ -30,7 +30,7 @@
         [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.direccion }}</td>
       <td>{{ vehiculo.tipo }}</td>
       <td [contentEditable]="vehiculo.editable" (blur)="actualizarPlazas($event, i)"
-        [ngClass]="{'editable': (vehiculo.editable && vehiculo.tipo === 'coche') ? true : false}">{{ vehiculo.nPlaza }}
+        [ngClass]="{'editable': (vehiculo.editable && vehiculo.tipo === 'coche') ? true : false}">{{ vehiculo.nPlazas }}
       </td>
       <td [contentEditable]="vehiculo.editable" (blur)="actualizarColor($event, i)"
         [ngClass]="{'editable': (vehiculo.editable && vehiculo.tipo === 'patinete') ? true : false}">{{ vehiculo.color
