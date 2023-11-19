@@ -19,6 +19,7 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
 import { ClientViewComponent } from './client-view/client-view.component';
 import { AltaVehiculoComponent } from './alta-vehiculo/alta-vehiculo.component';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
+import { MaintenanceViewComponent } from './maintenance-view/maintenance-view.component';
 
 @NgModule({
  declarations: [
@@ -32,7 +33,8 @@ import { PasswordRecoveryComponent } from './password-recovery/password-recovery
     AdminViewComponent,
     ClientViewComponent,
     AltaVehiculoComponent,
-    PasswordRecoveryComponent
+    PasswordRecoveryComponent,
+    MaintenanceViewComponent
     
  ],
  imports: [
