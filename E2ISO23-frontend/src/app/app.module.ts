@@ -20,6 +20,7 @@ import { ClientViewComponent } from './client-view/client-view.component';
 import { AltaVehiculoComponent } from './alta-vehiculo/alta-vehiculo.component';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { MaintenanceViewComponent } from './maintenance-view/maintenance-view.component';
+import { ListadoVehiculosDisponiblesComponent } from './listado-vehiculos-disponibles/listado-vehiculos-disponibles.component';
 
 @NgModule({
  declarations: [
@@ -34,7 +35,8 @@ import { MaintenanceViewComponent } from './maintenance-view/maintenance-view.co
     ClientViewComponent,
     AltaVehiculoComponent,
     PasswordRecoveryComponent,
-    MaintenanceViewComponent
+    MaintenanceViewComponent,
+    ListadoVehiculosDisponiblesComponent
     
  ],
  imports: [
