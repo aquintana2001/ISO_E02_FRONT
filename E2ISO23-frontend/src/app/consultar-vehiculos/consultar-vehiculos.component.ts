@@ -80,8 +80,6 @@ export class ConsultarVehiculosComponent {
   guardarCambios(index: number) {
     this.vehiculos[index].editable = false;
     const { editable, ...vehiculo } = this.vehiculos[index];
-
-    console.log(vehiculo);
     try {
       this.adminService.actualizarVehiculo(vehiculo).subscribe({
         error: (error) =>{

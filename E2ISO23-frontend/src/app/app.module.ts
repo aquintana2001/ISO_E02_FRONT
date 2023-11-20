@@ -21,6 +21,7 @@ import { AltaVehiculoComponent } from './alta-vehiculo/alta-vehiculo.component';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { MaintenanceViewComponent } from './maintenance-view/maintenance-view.component';
 import { ListadoVehiculosDisponiblesComponent } from './listado-vehiculos-disponibles/listado-vehiculos-disponibles.component';
+import { ModificarParametrosComponent } from './modificar-parametros/modificar-parametros.component';
 
 @NgModule({
  declarations: [
@@ -36,7 +37,8 @@ import { ListadoVehiculosDisponiblesComponent } from './listado-vehiculos-dispon
     AltaVehiculoComponent,
     PasswordRecoveryComponent,
     MaintenanceViewComponent,
-    ListadoVehiculosDisponiblesComponent
+    ListadoVehiculosDisponiblesComponent,
+    ModificarParametrosComponent
     
  ],
  imports: [
