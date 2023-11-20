@@ -1,13 +1,13 @@
 import { AccountService } from '../user.service';
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
- selector: 'app-login',
- templateUrl: './login.component.html',
- styleUrls: ['./login.component.css']
+  selector: 'app-password-recovery',
+  templateUrl: './password-recovery.component.html',
+  styleUrls: ['./password-recovery.component.css']
 })
-export class LoginComponent {
+export class PasswordRecoveryComponent {
   mensajeinfo:string = ""
   mostrarError = 0
   mostrarConfirmacion = 0
@@ -27,13 +27,6 @@ export class LoginComponent {
         error: (error) =>{
           console.log(error);
           if(error.status === 200){
-            if(error.error.text =="cliente"){
-              this.guardarDatosEnLocalStorage(this.loginForm.value);
-              this.redirigirConDatosCliente()
-            }else{
-              this.guardarDatosEnLocalStorage(this.loginForm.value);
-              this.redirigirConDatosAdmin()
-            }
             this.mostrarConfirmacion = 1;
             this.mostrarError = 0;
             this.mensajeinfo = "Login correcto";
@@ -49,24 +42,4 @@ export class LoginComponent {
       // Realiza acciones adicionales en caso de un error en el componente
     }
  }
-  redirigirConDatosCliente() {
-    const navigationExtras: NavigationExtras = {
-      state: {
-        customData: this.loginForm.value
-      }
-    };
-    this.router.navigate(['/client-view'], navigationExtras);
-  }
-  redirigirConDatosAdmin() {
-    const navigationExtras: NavigationExtras = {
-      state: {
-        customData: this.loginForm.value
-      }
-    };
-    this.router.navigate(['/admin-view'], navigationExtras);
-  }
-  private guardarDatosEnLocalStorage(data: any) {
-    // Almacena los datos en localStorage con una clave específica
-    localStorage.setItem('userData', JSON.stringify(data));
-  }
 }

@@ -5,32 +5,29 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AccountService {
-
-  username:any;
-  password:any;
-
+  private baseURLUserVehiculos = "http://localhost:8080/cliente/vehiculo";
   constructor(private httpClient: HttpClient) { }
 
   register(info: any): Observable<any> {
     return this.httpClient.post("http://localhost:8080/users/register", info);
   }
   login(info: any): Observable<any> {
-    this.username=info.email;
-    this.password=info.password;
     return this.httpClient.put("http://localhost:8080/users/login", info);
   }
   getUser() {
-    let info ={
-      username: this.username,
-      password: this.password
+    let userDataRaw = localStorage.getItem('userData');
+    if (userDataRaw){
+      let userData = JSON.parse(userDataRaw)
+      let info ={
+        emailUser: userData.email,
+        passwordUser: userData.password
+      }
+      return info;
     }
-    return info;
+    return null;
   }
-  getAdmin() {
-    let info ={
-      emailAdmin: this.username,
-      passwordAdmin: this.password
-    }
-    return info;
+  getVehiculosDisponibles(): Observable<any[]> {
+      let infoUser = this.getUser()
+      return this.httpClient.post<any[]>(`${this.baseURLUserVehiculos}`, infoUser);
   }
 }
