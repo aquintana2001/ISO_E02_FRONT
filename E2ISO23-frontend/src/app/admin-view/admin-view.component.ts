@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-view',
@@ -11,20 +10,15 @@ export class AdminViewComponent {
   showRegisterComponent = false;
   showConsultarClientesComponent = true;
   showAltaVehiculoComponent = false;
-  showVehiculosComponent = false
+  showVehiculosComponent = false;
+  showParametrosComponent = false;
  
-  constructor() {
-    // Tu constructor
-  }
-  
-  ngOnInit() {
-    
-  }
   showRegisterAdmin() {
     this.showRegisterComponent = true;
     this.showConsultarClientesComponent = false;
     this.showAltaVehiculoComponent = false;
     this.showVehiculosComponent = false;
+    this.showParametrosComponent = false;
  }
 
  showClientes() {
@@ -32,17 +26,27 @@ export class AdminViewComponent {
     this.showRegisterComponent = false;
     this.showAltaVehiculoComponent = false;
     this.showVehiculosComponent = false;
+    this.showParametrosComponent = false;
  }
  showVehiculos(){
     this.showVehiculosComponent = true;
     this.showConsultarClientesComponent = false;
     this.showRegisterComponent = false;
     this.showAltaVehiculoComponent = false;
+    this.showParametrosComponent = false;
  }
  showAltaVehiculo(){
     this.showAltaVehiculoComponent = true;
     this.showVehiculosComponent = false;
     this.showConsultarClientesComponent = false;
     this.showRegisterComponent = false;
+    this.showParametrosComponent = false;
+ }
+ showModificarParametros(){
+   this.showAltaVehiculoComponent = false;
+   this.showVehiculosComponent = false;
+   this.showConsultarClientesComponent = false;
+   this.showRegisterComponent = false
+   this.showParametrosComponent = true;
  }
 }

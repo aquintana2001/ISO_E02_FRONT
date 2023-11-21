@@ -24,7 +24,19 @@ export class ListadoVehiculosDisponiblesComponent {
   constructor(private userService : AccountService) { }
 
   reservar(index: number){
-    
+    let infoVehiculo = {
+      idVehiculo: this.vehiculos[index].id
+    }
+    this.userService.reservarVehiculo(infoVehiculo).subscribe({
+      error: (error) =>{
+        if (error.status==200){
+          console.log("Vehiculo reservado correctamente")
+        }
+        else{
+          console.log(error);
+        }
+      }
+  });
   }
 
   ngOnInit() {

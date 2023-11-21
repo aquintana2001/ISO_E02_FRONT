@@ -15,6 +15,7 @@ export class AdminServiceService {
   private baseURLAdminVehiculos = "http://localhost:8080/admin/vehiculo";
   private baseURLAdminActualizarVehiculo = "http://localhost:8080/admin/actualizarVehiculo";
   private baseURLAdminAltaVehiculo = "http://localhost:8080/admin/darAltaVehiculo";
+  private baseURLAdminModificarParametros = "http://localhost:8080/admin/actualizarParametros";
 
   registerAdmin (info : any) {
     let infoUser = this.accountService.getUser()
@@ -90,5 +91,14 @@ export class AdminServiceService {
     };
     let url = `${this.baseURLAdminDarBajaVehiculo}`; 
     return this.httpClient.request('delete', url, httpOptions)
+  }
+  modificarParametros (info: any) {
+    let infoUser = this.accountService.getUser();
+    let infoEnvio = {
+      ...info,
+      ...infoUser
+    }
+    const url = `${this.baseURLAdminModificarParametros}`; 
+    return this.httpClient.put(url, infoEnvio);
   }
 }
