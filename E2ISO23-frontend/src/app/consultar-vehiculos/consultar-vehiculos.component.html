@@ -24,8 +24,7 @@
         [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.modelo }}</td>
       <td [contentEditable]="vehiculo.editable" (blur)="actualizarBateria($event, i)"
         [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.bateria }}</td>
-      <td [contentEditable]="vehiculo.editable" (blur)="actualizarEstado($event, i)"
-        [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.estado }}</td>
+      <td>{{ vehiculo.estado }}</td>
       <td [contentEditable]="vehiculo.editable" (blur)="actualizarDireccion($event, i)"
         [ngClass]="{'editable': vehiculo.editable}">{{ vehiculo.direccion }}</td>
       <td>{{ vehiculo.tipo }}</td>

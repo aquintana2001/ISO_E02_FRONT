@@ -22,6 +22,7 @@ import { PasswordRecoveryComponent } from './password-recovery/password-recovery
 import { MaintenanceViewComponent } from './maintenance-view/maintenance-view.component';
 import { ListadoVehiculosDisponiblesComponent } from './listado-vehiculos-disponibles/listado-vehiculos-disponibles.component';
 import { ModificarParametrosComponent } from './modificar-parametros/modificar-parametros.component';
+import { RegistroMantenimientoComponent } from './registro-mantenimiento/registro-mantenimiento.component';
 
 @NgModule({
  declarations: [
@@ -38,7 +39,8 @@ import { ModificarParametrosComponent } from './modificar-parametros/modificar-p
     PasswordRecoveryComponent,
     MaintenanceViewComponent,
     ListadoVehiculosDisponiblesComponent,
-    ModificarParametrosComponent
+    ModificarParametrosComponent,
+    RegistroMantenimientoComponent
     
  ],
  imports: [

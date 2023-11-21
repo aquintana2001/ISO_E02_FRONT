@@ -12,12 +12,13 @@ export class AdminViewComponent {
   showAltaVehiculoComponent = false;
   showVehiculosComponent = false;
   showParametrosComponent = false;
- 
+  showRegisterMaintenanceComponent = false;
   showRegisterAdmin() {
     this.showRegisterComponent = true;
     this.showConsultarClientesComponent = false;
     this.showAltaVehiculoComponent = false;
     this.showVehiculosComponent = false;
+    this.showRegisterMaintenanceComponent = false;
     this.showParametrosComponent = false;
  }
 
@@ -26,6 +27,7 @@ export class AdminViewComponent {
     this.showRegisterComponent = false;
     this.showAltaVehiculoComponent = false;
     this.showVehiculosComponent = false;
+    this.showRegisterMaintenanceComponent = false;
     this.showParametrosComponent = false;
  }
  showVehiculos(){
@@ -33,6 +35,7 @@ export class AdminViewComponent {
     this.showConsultarClientesComponent = false;
     this.showRegisterComponent = false;
     this.showAltaVehiculoComponent = false;
+    this.showRegisterMaintenanceComponent = false;
     this.showParametrosComponent = false;
  }
  showAltaVehiculo(){
@@ -40,13 +43,23 @@ export class AdminViewComponent {
     this.showVehiculosComponent = false;
     this.showConsultarClientesComponent = false;
     this.showRegisterComponent = false;
+    this.showRegisterMaintenanceComponent = false;
     this.showParametrosComponent = false;
  }
+ showRegisterMaintenance() {
+   this.showRegisterComponent = false;
+   this.showConsultarClientesComponent = false;
+   this.showAltaVehiculoComponent = false;
+   this.showVehiculosComponent = false;
+   this.showRegisterMaintenanceComponent = true;
+   this.showParametrosComponent = false;
+}
  showModificarParametros(){
    this.showAltaVehiculoComponent = false;
    this.showVehiculosComponent = false;
    this.showConsultarClientesComponent = false;
    this.showRegisterComponent = false
+   this.showRegisterMaintenanceComponent = false;
    this.showParametrosComponent = true;
  }
 }
