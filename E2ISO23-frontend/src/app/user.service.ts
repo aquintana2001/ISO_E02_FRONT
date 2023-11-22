@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 export class AccountService {
   private baseURLUserVehiculos = "http://localhost:8080/cliente/vehiculo";
   private baseURLReservaVehiculo = "http://localhost:8080/cliente/reserva";
+  private baseURLListarReserva = "http://localhost:8080/cliente/listarReservas";
+  private baseURLFinalizarReserva = "http://localhost:8080/cliente/finalizarReserva";
   constructor(private httpClient: HttpClient) { }
 
   register(info: any): Observable<any> {
@@ -38,5 +40,18 @@ export class AccountService {
       ...info
     }
     return this.httpClient.post<any[]>(`${this.baseURLReservaVehiculo}`, infoEnvio);
+  }
+  getReservas(): Observable<any[]> {
+    let infoUser = this.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLListarReserva}`, infoUser);
+  }
+  finalizarReserva (info : any) {
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      idReserva:info,
+      ...infoUser
+    };
+    const url = `${this.baseURLFinalizarReserva}`; 
+    return this.httpClient.put(url, infoEnvio);
   }
 }

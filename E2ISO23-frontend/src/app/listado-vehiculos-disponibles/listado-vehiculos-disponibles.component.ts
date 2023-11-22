@@ -9,7 +9,6 @@ interface Vehiculo {
   estado: string;
   direccion: string;
   nPlazas: string;
-  editable: boolean;
   color: string;
   casco: boolean;
 }
@@ -21,6 +20,9 @@ interface Vehiculo {
 })
 export class ListadoVehiculosDisponiblesComponent {
   vehiculos: Vehiculo[] = [];
+  mensajeinfo:any;
+  mostrarError = false;
+  mostrarConfirmacion = false;
   constructor(private userService : AccountService) { }
 
   reservar(index: number){
@@ -30,10 +32,15 @@ export class ListadoVehiculosDisponiblesComponent {
     this.userService.reservarVehiculo(infoVehiculo).subscribe({
       error: (error) =>{
         if (error.status==200){
-          console.log("Vehiculo reservado correctamente")
+          this.mensajeinfo = "Felicidades ha reservado su vehículo"
+          this.mostrarConfirmacion = true;
+          this.mostrarError = false;
+          this.vehiculos[index].estado = "reservado"
         }
         else{
-          console.log(error);
+          this.mensajeinfo = error.error.message;
+          this.mostrarError = true;
+          this.mostrarConfirmacion = false;
         }
       }
   });
@@ -49,13 +56,9 @@ export class ListadoVehiculosDisponiblesComponent {
         estado: vehiculo.estado,
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
-        // nPlaza: { value: vehiculo.nPlaza, editable: false },
         nPlazas: vehiculo.nPlaza,
-        editable: false,
         color: vehiculo.color,
         casco: vehiculo.casco
-        // color: { value: vehiculo.color, editable: false },
-        // casco: { value: vehiculo.casco, editable: false }
       }));
     });
 

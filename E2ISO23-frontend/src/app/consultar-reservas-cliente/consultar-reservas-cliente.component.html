@@ -1,0 +1,27 @@
+<div class="row" id="listado">
+    <table>
+      <tr>
+        <th colspan="10" id="titulo">
+          <h1>Mis reservas</h1>
+        </th>
+      </tr>
+      <tr>
+        <th>Vehículo</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Valoración</th>
+        <th>Comentario</th>
+        <th>Acciones</th>
+      </tr>
+      <tr *ngFor="let reserva of reservas; let i = index">
+        <td>{{ reserva.vehiculo }}</td>
+        <td>{{ reserva.fecha }}</td>
+        <td>{{ reserva.estado }}</td>
+        <td>{{ reserva.valoracion }}</td>
+        <td>{{ reserva.comentario }}</td>
+        <td>
+            <button (click)="finalizarReserva(i)" [disabled]="reserva.estado !== 'activa'">Finalizar reserva</button>
+        </td>
+      </tr>
+    </table>
+  </div>
