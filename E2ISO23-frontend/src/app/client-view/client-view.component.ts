@@ -8,8 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ClientViewComponent {
   customData: any;
-  email:string = "Guillermo.san6@alu.uclm";
-  password:string = "Hola123*";
   constructor(private route: ActivatedRoute) {
     // Tu constructor
   }
