@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AccountService {
-  private baseURLUserVehiculos = "http://localhost:8080/cliente/vehiculo";
-  private baseURLReservaVehiculo = "http://localhost:8080/cliente/reserva";
+  private baseURLUserVehiculos = "http://localhost:8080/users/vehiculo";
+  private baseURLReservaVehiculo = "http://localhost:8080/users/reserva";
   private baseURLListarReserva = "http://localhost:8080/cliente/listarReservas";
-  private baseURLFinalizarReserva = "http://localhost:8080/cliente/finalizarReserva";
+  private baseURLFinalizarReserva = "http://localhost:8080/users/finalizarReserva";
+  private baseURLGetDatos = "http://localhost:8080/cliente/getDatos";
   constructor(private httpClient: HttpClient) { }
 
   register(info: any): Observable<any> {
@@ -53,5 +54,9 @@ export class AccountService {
     };
     const url = `${this.baseURLFinalizarReserva}`; 
     return this.httpClient.put(url, infoEnvio);
+  }
+  getDatos(): Observable<any[]> {
+    let infoUser = this.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLGetDatos}`, infoUser);
   }
 }

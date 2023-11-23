@@ -12,6 +12,9 @@ interface Vehiculo {
   color: string;
   casco: boolean;
 }
+interface Cliente {
+  carnet: any;
+}
 
 @Component({
   selector: 'app-listado-vehiculos-disponibles',
@@ -20,6 +23,7 @@ interface Vehiculo {
 })
 export class ListadoVehiculosDisponiblesComponent {
   vehiculos: Vehiculo[] = [];
+  cliente: Cliente = {carnet:"no"};
   mensajeinfo:any;
   mostrarError = false;
   mostrarConfirmacion = false;
@@ -47,6 +51,11 @@ export class ListadoVehiculosDisponiblesComponent {
   }
 
   ngOnInit() {
+    this.userService.getDatos().subscribe((data: any) => {
+      this.cliente = {
+        carnet: data.carnet
+      };
+    });
     this.userService.getVehiculosDisponibles().subscribe((data: any[]) => {
       this.vehiculos = data.map(vehiculo => ({
         id: vehiculo.id,

@@ -1,4 +1,11 @@
 <div class="row" id="listado">
+  <div class="row" *ngIf="mostrarError" id="error">
+    <p>{{ mensajeinfo }}</p>
+  </div>
+  <div class="row" *ngIf="mostrarConfirmacion" id="confirmacion">
+    {{ mensajeinfo }}
+  </div>
+  <div class="row" id="tabla">
     <table>
       <tr>
         <th colspan="10" id="titulo">
@@ -20,8 +27,9 @@
         <td>{{ reserva.valoracion }}</td>
         <td>{{ reserva.comentario }}</td>
         <td>
-            <button (click)="finalizarReserva(i)" [disabled]="reserva.estado !== 'activa'">Finalizar reserva</button>
+          <button (click)="finalizarReserva(i)" [disabled]="reserva.estado !== 'activa'">Finalizar reserva</button>
         </td>
       </tr>
     </table>
   </div>
+</div>

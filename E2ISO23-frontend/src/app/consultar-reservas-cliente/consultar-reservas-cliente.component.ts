@@ -18,6 +18,10 @@ interface Reserva {
 
 export class ConsultarReservasClienteComponent {
   reservas: Reserva[] = [];
+  
+  mensajeinfo:any;
+  mostrarError = false;
+  mostrarConfirmacion = false;
   constructor(private userService : AccountService) { }
 
   finalizarReserva(index:number){
@@ -52,6 +56,5 @@ export class ConsultarReservasClienteComponent {
         comentario: reserva.comentario
       }));
     });
-
   }
 }
