@@ -23,6 +23,7 @@ import { MaintenanceViewComponent } from './maintenance-view/maintenance-view.co
 import { ListadoVehiculosDisponiblesComponent } from './listado-vehiculos-disponibles/listado-vehiculos-disponibles.component';
 import { ModificarParametrosComponent } from './modificar-parametros/modificar-parametros.component';
 import { RegistroMantenimientoComponent } from './registro-mantenimiento/registro-mantenimiento.component';
+import { ConsultarReservasClienteComponent } from './consultar-reservas-cliente/consultar-reservas-cliente.component';
 
 @NgModule({
  declarations: [
@@ -40,7 +41,8 @@ import { RegistroMantenimientoComponent } from './registro-mantenimiento/registr
     MaintenanceViewComponent,
     ListadoVehiculosDisponiblesComponent,
     ModificarParametrosComponent,
-    RegistroMantenimientoComponent
+    RegistroMantenimientoComponent,
+    ConsultarReservasClienteComponent
     
  ],
  imports: [

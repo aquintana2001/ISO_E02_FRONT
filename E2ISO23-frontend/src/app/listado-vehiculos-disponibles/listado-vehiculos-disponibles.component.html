@@ -1,7 +1,14 @@
 <div class="row" id="listado">
+  <div class="row" *ngIf="mostrarError" id="error">
+    <p>{{ mensajeinfo }}</p>
+  </div>
+  <div class="row" *ngIf="mostrarConfirmacion" id="confirmacion">
+    {{ mensajeinfo }}
+  </div>
+  <div class="row" id="tabla">
     <table>
       <tr>
-        <th colspan="10" id="titulo">
+        <th colspan="12" id="titulo">
           <h1>Lista de Vehículos</h1>
         </th>
       </tr>
@@ -24,8 +31,9 @@
         <td>{{ vehiculo.color }}</td>
         <td>{{vehiculo.casco ? "Sí" : "No"}}</td>
         <td>
-          <button (click)="reservar(i)">Reservar</button>
+          <button (click)="reservar(i)" [disabled]="vehiculo.estado !== 'disponible' || (vehiculo.tipo === 'coche' && cliente.carnet !== 'A')|| (vehiculo.tipo === 'moto' && (cliente.carnet !== 'A' &&  cliente.carnet !=='B'))">Reservar</button>
         </td>
       </tr>
     </table>
   </div>
+</div>

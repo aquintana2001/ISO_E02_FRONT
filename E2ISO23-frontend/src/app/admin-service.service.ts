@@ -15,6 +15,7 @@ export class AdminServiceService {
   private baseURLAdminVehiculos = "http://localhost:8080/admin/vehiculo";
   private baseURLAdminActualizarVehiculo = "http://localhost:8080/admin/actualizarVehiculo";
   private baseURLAdminAltaVehiculo = "http://localhost:8080/admin/darAltaVehiculo";
+  private baseURLAdminParametros = "http://localhost:8080/admin/getParametros";
   private baseURLAdminModificarParametros = "http://localhost:8080/admin/actualizarParametros";
 
   registerAdmin (info : any) {
@@ -91,6 +92,10 @@ export class AdminServiceService {
     };
     let url = `${this.baseURLAdminDarBajaVehiculo}`; 
     return this.httpClient.request('delete', url, httpOptions)
+  }
+  getParametros(): Observable<any[]> {
+    let infoUser = this.accountService.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLAdminParametros}`, infoUser);
   }
   modificarParametros (info: any) {
     let infoUser = this.accountService.getUser();
