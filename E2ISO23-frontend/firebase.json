@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/e2-iso23-frontend",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

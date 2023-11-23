@@ -27,10 +27,17 @@ export class AccountService {
     }
     return null;
   }
+  
   getVehiculosDisponibles(): Observable<any[]> {
       let infoUser = this.getUser()
       return this.httpClient.post<any[]>(`${this.baseURLUserVehiculos}`, infoUser);
   }
+
+  getVehiculosNoDisponibles(): Observable<any[]> {
+    let infoUser = this.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLUserVehiculos}`, infoUser);
+}
+
   reservarVehiculo(info: any): Observable<any[]>{
     let infoUser = this.getUser()
     let infoEnvio = {
