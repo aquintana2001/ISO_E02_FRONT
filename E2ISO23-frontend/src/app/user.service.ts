@@ -5,7 +5,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AccountService {
-  private baseURLUserVehiculos = "http://localhost:8080/cliente/vehiculo";
+  private baseURLUserVehiculos = "http://localhost:8080/users/vehiculo";
+  private baseURLReservaVehiculo = "http://localhost:8080/users/reserva";
+  private baseURLListarReserva = "http://localhost:8080/cliente/listarReservas";
+  private baseURLFinalizarReserva = "http://localhost:8080/users/finalizarReserva";
+  private baseURLGetDatos = "http://localhost:8080/cliente/getDatos";
   constructor(private httpClient: HttpClient) { }
 
   register(info: any): Observable<any> {
@@ -26,8 +30,40 @@ export class AccountService {
     }
     return null;
   }
+  
   getVehiculosDisponibles(): Observable<any[]> {
       let infoUser = this.getUser()
       return this.httpClient.post<any[]>(`${this.baseURLUserVehiculos}`, infoUser);
+  }
+
+  getVehiculosNoDisponibles(): Observable<any[]> {
+    let infoUser = this.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLUserVehiculos}`, infoUser);
+}
+
+  reservarVehiculo(info: any): Observable<any[]>{
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      ...infoUser,
+      ...info
+    }
+    return this.httpClient.post<any[]>(`${this.baseURLReservaVehiculo}`, infoEnvio);
+  }
+  getReservas(): Observable<any[]> {
+    let infoUser = this.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLListarReserva}`, infoUser);
+  }
+  finalizarReserva (info : any) {
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      idReserva:info,
+      ...infoUser
+    };
+    const url = `${this.baseURLFinalizarReserva}`; 
+    return this.httpClient.put(url, infoEnvio);
+  }
+  getDatos(): Observable<any[]> {
+    let infoUser = this.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLGetDatos}`, infoUser);
   }
 }

@@ -38,9 +38,9 @@ export class ConsultarVehiculosComponent {
   actualizarBateria(event: any, index: number) {
     this.vehiculos[index].bateria = event.target.textContent;
   }
-  actualizarEstado(event: any, index: number) {
-    this.vehiculos[index].estado = event.target.textContent;
-  }
+  // actualizarEstado(event: any, index: number) {
+  //   this.vehiculos[index].estado = event.target.textContent;
+  // }
   actualizarDireccion(event: any, index: number) {
     this.vehiculos[index].direccion = event.target.textContent;
   }
@@ -80,8 +80,6 @@ export class ConsultarVehiculosComponent {
   guardarCambios(index: number) {
     this.vehiculos[index].editable = false;
     const { editable, ...vehiculo } = this.vehiculos[index];
-
-    console.log(vehiculo);
     try {
       this.adminService.actualizarVehiculo(vehiculo).subscribe({
         error: (error) =>{

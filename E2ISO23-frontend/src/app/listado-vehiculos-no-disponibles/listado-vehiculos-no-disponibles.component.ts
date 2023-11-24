@@ -9,24 +9,18 @@ interface Vehiculo {
   estado: string;
   direccion: string;
   nPlazas: string;
+  editable: boolean;
   color: string;
   casco: boolean;
 }
-interface Cliente {
-  carnet: any;
-}
 
 @Component({
-  selector: 'app-listado-vehiculos-disponibles',
-  templateUrl: './listado-vehiculos-disponibles.component.html',
+  selector: 'app-listado-vehiculos-no-disponibles',
+  templateUrl: './listado-vehiculos-no-disponibles.component.html',
   styleUrls: ['../consultar-usuarios/consultar-usuarios.component.css']
 })
-export class ListadoVehiculosDisponiblesComponent {
+export class ListadoVehiculosNoDisponiblesComponent {
   vehiculos: Vehiculo[] = [];
-  cliente: Cliente = {carnet:"no"};
-  mensajeinfo:any;
-  mostrarError = false;
-  mostrarConfirmacion = false;
   constructor(private userService : AccountService) { }
 
   reservar(index: number){
@@ -36,27 +30,17 @@ export class ListadoVehiculosDisponiblesComponent {
     this.userService.reservarVehiculo(infoVehiculo).subscribe({
       error: (error) =>{
         if (error.status==200){
-          this.mensajeinfo = "Felicidades ha reservado su vehículo"
-          this.mostrarConfirmacion = true;
-          this.mostrarError = false;
-          this.vehiculos[index].estado = "reservado"
+          console.log("Vehiculo reservado correctamente")
         }
         else{
-          this.mensajeinfo = error.error.message;
-          this.mostrarError = true;
-          this.mostrarConfirmacion = false;
+          console.log(error);
         }
       }
   });
   }
 
   ngOnInit() {
-    this.userService.getDatos().subscribe((data: any) => {
-      this.cliente = {
-        carnet: data.carnet
-      };
-    });
-    this.userService.getVehiculosDisponibles().subscribe((data: any[]) => {
+    this.userService.getVehiculosNoDisponibles().subscribe((data: any[]) => {
       this.vehiculos = data.map(vehiculo => ({
         id: vehiculo.id,
         matricula: vehiculo.matricula,
@@ -66,6 +50,7 @@ export class ListadoVehiculosDisponiblesComponent {
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
         nPlazas: vehiculo.nPlaza,
+        editable: false,
         color: vehiculo.color,
         casco: vehiculo.casco
       }));

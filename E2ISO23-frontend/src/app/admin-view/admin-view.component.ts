@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-view',
@@ -11,20 +10,16 @@ export class AdminViewComponent {
   showRegisterComponent = false;
   showConsultarClientesComponent = true;
   showAltaVehiculoComponent = false;
-  showVehiculosComponent = false
- 
-  constructor() {
-    // Tu constructor
-  }
-  
-  ngOnInit() {
-    
-  }
+  showVehiculosComponent = false;
+  showParametrosComponent = false;
+  showRegisterMaintenanceComponent = false;
   showRegisterAdmin() {
     this.showRegisterComponent = true;
     this.showConsultarClientesComponent = false;
     this.showAltaVehiculoComponent = false;
     this.showVehiculosComponent = false;
+    this.showRegisterMaintenanceComponent = false;
+    this.showParametrosComponent = false;
  }
 
  showClientes() {
@@ -32,17 +27,39 @@ export class AdminViewComponent {
     this.showRegisterComponent = false;
     this.showAltaVehiculoComponent = false;
     this.showVehiculosComponent = false;
+    this.showRegisterMaintenanceComponent = false;
+    this.showParametrosComponent = false;
  }
  showVehiculos(){
     this.showVehiculosComponent = true;
     this.showConsultarClientesComponent = false;
     this.showRegisterComponent = false;
     this.showAltaVehiculoComponent = false;
+    this.showRegisterMaintenanceComponent = false;
+    this.showParametrosComponent = false;
  }
  showAltaVehiculo(){
     this.showAltaVehiculoComponent = true;
     this.showVehiculosComponent = false;
     this.showConsultarClientesComponent = false;
     this.showRegisterComponent = false;
+    this.showRegisterMaintenanceComponent = false;
+    this.showParametrosComponent = false;
+ }
+ showRegisterMaintenance() {
+   this.showRegisterComponent = false;
+   this.showConsultarClientesComponent = false;
+   this.showAltaVehiculoComponent = false;
+   this.showVehiculosComponent = false;
+   this.showRegisterMaintenanceComponent = true;
+   this.showParametrosComponent = false;
+}
+ showModificarParametros(){
+   this.showAltaVehiculoComponent = false;
+   this.showVehiculosComponent = false;
+   this.showConsultarClientesComponent = false;
+   this.showRegisterComponent = false
+   this.showRegisterMaintenanceComponent = false;
+   this.showParametrosComponent = true;
  }
 }
