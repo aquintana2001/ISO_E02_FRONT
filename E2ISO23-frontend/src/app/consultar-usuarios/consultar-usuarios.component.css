@@ -60,6 +60,28 @@ button {
   color: #e0e0e0;
   transition: background-color 0.2s;
 }
+button:disabled {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  margin: 2px;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  background-color: #7b7676;
+  color: #e0e0e0;
+  transition: background-color 0.2s;
+}
+button:disabled:hover {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  margin: 2px;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  background-color: #7b7676;
+  color: #e0e0e0;
+  transition: background-color 0.2s;
+}
 
 button:hover {
   background-color: #e0e0e0;
@@ -68,7 +90,9 @@ button:hover {
 #listado{
   display: flex;
   justify-content: center;
+  flex-direction: column;
   margin-bottom: 20px;
+  align-self: center;
 }
 #clientesText{
   display: flex;
@@ -91,4 +115,35 @@ select {
 select[disabled] {
   opacity: 0.5; /* Cambia la opacidad para indicar que está deshabilitado */
   cursor: not-allowed; /* Cambia el cursor cuando está deshabilitado */
+}
+#confirmacion{
+  background-color: #c6ecc6;
+  height: 75px;
+  width: 400px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 16px;
+  align-self: center;
+  align-items: center;
+  align-items: flex-end;
+  justify-content: center;
+}
+#error{
+  display: flex;
+  padding: 5px;
+  background-color: #ffd6cc;
+  height: 75px;
+  width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  align-items: center;
+  align-self: center;
+  align-items: flex-end;
+  justify-content: center;
+}
+#tabla{
+  display: flex;
+  justify-content: center;
 }
