@@ -11,6 +11,7 @@ export class ClientViewComponent {
   showVehiculosComponent = true;
   showReservasComponent = false;
   showPerfilComponent = false;
+
   constructor(private route: ActivatedRoute) {
     // Tu constructor
   }
