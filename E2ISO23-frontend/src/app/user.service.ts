@@ -10,10 +10,19 @@ export class AccountService {
   private baseURLListarReserva = "http://localhost:8080/cliente/listarReservas";
   private baseURLFinalizarReserva = "http://localhost:8080/users/finalizarReserva";
   private baseURLGetDatos = "http://localhost:8080/cliente/getDatos";
+  private baseURLRecuperarContrasena = "http://localhost:8080/users/reset-password"
+  private baseURLCambiarContrasena = "http://localhost:8080/users/modificarContrasena"
+  private baseURLConfirmarRegister = "http://localhost:8080/users/confirmarRegister"
   constructor(private httpClient: HttpClient) { }
 
   register(info: any): Observable<any> {
-    return this.httpClient.post("http://localhost:8080/users/register", info);
+    // Especifica el tipo de respuesta que esperas (arraybuffer)
+    const options = { responseType: 'arraybuffer' as 'json' };
+
+    return this.httpClient.post<any>("http://localhost:8080/users/register", info, options);
+  }
+  confirmarRegister(info: any): Observable<any> {
+    return this.httpClient.post<any[]>(`${this.baseURLConfirmarRegister}`, info);
   }
   login(info: any): Observable<any> {
     return this.httpClient.put("http://localhost:8080/users/login", info);
@@ -66,4 +75,13 @@ export class AccountService {
     let infoUser = this.getUser()
     return this.httpClient.post<any[]>(`${this.baseURLGetDatos}`, infoUser);
   }
+  changePassword(info: any): Observable<any[]> {
+    console.log(info)
+    return this.httpClient.post<any[]>(`${this.baseURLCambiarContrasena}`, info);
+  }
+  recoveryPassword(info: any): Observable<any[]> {
+    console.log(info)
+    return this.httpClient.post<any[]>(`${this.baseURLRecuperarContrasena}`, info);
+  }
+  
 }
