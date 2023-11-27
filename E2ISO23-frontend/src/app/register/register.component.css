@@ -62,6 +62,10 @@ h1 {
     border-radius: 10px;
     font-size: 16px;
 }
+#divcodigo{
+    display:flex;
+    flex-direction:column;
+}
 
 label {
     display: block;
@@ -77,7 +81,7 @@ input {
     font-size: 16px;
 }
 
-button[type="submit"] {
+button {
     background-color: #4CAF50;
     color: white;
     padding: 12px 20px;
@@ -89,11 +93,11 @@ button[type="submit"] {
     width: 100%;
 }
 
-button[type="submit"]:hover {
+button:hover {
     background-color: #45a049;
 }
 
-button[type="submit"]:disabled {
+button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }

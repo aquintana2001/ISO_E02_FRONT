@@ -1,4 +1,5 @@
 <div class="row" id="listado">
+  <div class="row" id="tabla">
     <table>
       <tr>
         <th colspan="10" id="titulo">
@@ -16,10 +17,12 @@
         <td [contentEditable]="true" (blur)="actualizarPrecioViaje($event)">{{ parametros.precioViaje }}</td>
         <td [contentEditable]="true" (blur)="actualizarMinimoBateria($event)">{{ parametros.minimoBateria }}</td>
         <td [contentEditable]="true" (blur)="actualizarBateriaViaje($event)">{{ parametros.bateriaViaje }}</td>
-        <td [contentEditable]="true" (blur)="actualizarMaxVehiculosMantenimiento($event)">{{ parametros.maxVehiculosMantenimiento }}</td>
+        <td [contentEditable]="true" (blur)="actualizarMaxVehiculosMantenimiento($event)">{{
+          parametros.maxVehiculosMantenimiento }}</td>
         <td>
           <button (click)="modificarParametros()">Guardar</button>
         </td>
       </tr>
     </table>
   </div>
+</div>

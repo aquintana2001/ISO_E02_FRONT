@@ -9,7 +9,9 @@ export class AccountService {
   private baseURLReservaVehiculo = "http://localhost:8080/users/reserva";
   private baseURLListarReserva = "http://localhost:8080/cliente/listarReservas";
   private baseURLFinalizarReserva = "http://localhost:8080/users/finalizarReserva";
+  private baseURLCancelarReserva = "http://localhost:8080/users/cancelarReserva";
   private baseURLGetDatos = "http://localhost:8080/cliente/getDatos";
+  private baseURLModificarDatos = "http://localhost:8080/cliente/actualizarDatos";
   private baseURLRecuperarContrasena = "http://localhost:8080/users/reset-password"
   private baseURLCambiarContrasena = "http://localhost:8080/users/modificarContrasena"
   private baseURLConfirmarRegister = "http://localhost:8080/users/confirmarRegister"
@@ -71,17 +73,31 @@ export class AccountService {
     const url = `${this.baseURLFinalizarReserva}`; 
     return this.httpClient.put(url, infoEnvio);
   }
+  cancelarReserva (info : any) {
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      idReserva:info,
+      ...infoUser
+    };
+    const url = `${this.baseURLCancelarReserva}`; 
+    return this.httpClient.put(url, infoEnvio);
+  }
   getDatos(): Observable<any[]> {
     let infoUser = this.getUser()
     return this.httpClient.post<any[]>(`${this.baseURLGetDatos}`, infoUser);
   }
   changePassword(info: any): Observable<any[]> {
-    console.log(info)
     return this.httpClient.post<any[]>(`${this.baseURLCambiarContrasena}`, info);
   }
   recoveryPassword(info: any): Observable<any[]> {
-    console.log(info)
     return this.httpClient.post<any[]>(`${this.baseURLRecuperarContrasena}`, info);
   }
-  
+  modificarDatos(info: any): Observable<any[]> {
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      ...info,
+      password:infoUser?.passwordUser
+    }
+    return this.httpClient.put<any[]>(`${this.baseURLModificarDatos}`, infoEnvio);
+  }
 }

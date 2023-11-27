@@ -26,6 +26,7 @@ import { RegistroMantenimientoComponent } from './registro-mantenimiento/registr
 import { ConsultarReservasClienteComponent } from './consultar-reservas-cliente/consultar-reservas-cliente.component';
 import { ConsultarFacturacionComponent } from './consultar-facturacion/consultar-facturacion.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { MisDatosClienteComponent } from './mis-datos-cliente/mis-datos-cliente.component';
 
 @NgModule({
  declarations: [
@@ -46,7 +47,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     RegistroMantenimientoComponent,
     ConsultarReservasClienteComponent,
     ConsultarFacturacionComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    MisDatosClienteComponent
     
  ],
  imports: [

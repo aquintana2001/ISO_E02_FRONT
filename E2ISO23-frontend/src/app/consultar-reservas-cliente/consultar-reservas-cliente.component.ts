@@ -32,8 +32,27 @@ export class ConsultarReservasClienteComponent {
         this.userService.finalizarReserva(this.reservas[index].id).subscribe({
           error: (error) =>{
             if (error.status==200){
-              this.reservas[index].estado="finalizada"
-              console.log("Finalizada tarea");
+              this.reservas[index].estado="finalizada";
+            }
+            else{
+              console.log(error);
+            }
+          }
+      });
+      } catch (error) {
+        
+      }
+    }
+  }
+  cancelarReserva(index:number){
+    const confirmacion = window.confirm('¿Estás seguro de que quieres finalizar la reserva?');
+
+    if (confirmacion) {
+      try {
+        this.userService.cancelarReserva(this.reservas[index].id).subscribe({
+          error: (error) =>{
+            if (error.status==200){
+              this.reservas[index].estado="cancelada"
             }
             else{
               console.log(error);
