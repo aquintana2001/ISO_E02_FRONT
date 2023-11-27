@@ -7,6 +7,7 @@ import { ConsultarVehiculosComponent } from './consultar-vehiculos/consultar-veh
 import { ClientViewComponent } from './client-view/client-view.component'
 import { AdminViewComponent } from './admin-view/admin-view.component'
 import { MaintenanceViewComponent } from './maintenance-view/maintenance-view.component'
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -17,9 +18,10 @@ const routes: Routes = [
     { path: 'client-view', component: ClientViewComponent },
     { path: 'admin-view', component: AdminViewComponent },// Ruta para registrar administrador o personal de mantenimiento
     { path: 'maintenance-view', component: MaintenanceViewComponent },
-    { path: 'password-recovery', component: PasswordRecoveryComponent }
-    
-
+    { path: 'password-recovery', component: PasswordRecoveryComponent },
+    { path: 'restablecerContrasena', component: ChangePasswordComponent },
+    { path: 'restablecerContrasena/:token', component: ChangePasswordComponent },
+    { path: '**', redirectTo: '/' } 
 ];
 
 @NgModule({

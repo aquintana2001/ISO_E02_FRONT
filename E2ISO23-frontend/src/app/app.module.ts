@@ -21,9 +21,13 @@ import { AltaVehiculoComponent } from './alta-vehiculo/alta-vehiculo.component';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { MaintenanceViewComponent } from './maintenance-view/maintenance-view.component';
 import { ListadoVehiculosDisponiblesComponent } from './listado-vehiculos-disponibles/listado-vehiculos-disponibles.component';
+import { ListadoVehiculosNoDisponiblesComponent } from './listado-vehiculos-no-disponibles/listado-vehiculos-no-disponibles.component';
 import { ModificarParametrosComponent } from './modificar-parametros/modificar-parametros.component';
 import { RegistroMantenimientoComponent } from './registro-mantenimiento/registro-mantenimiento.component';
 import { ConsultarReservasClienteComponent } from './consultar-reservas-cliente/consultar-reservas-cliente.component';
+import { ConsultarFacturacionComponent } from './consultar-facturacion/consultar-facturacion.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { MisDatosClienteComponent } from './mis-datos-cliente/mis-datos-cliente.component';
 
 @NgModule({
  declarations: [
@@ -40,9 +44,13 @@ import { ConsultarReservasClienteComponent } from './consultar-reservas-cliente/
     PasswordRecoveryComponent,
     MaintenanceViewComponent,
     ListadoVehiculosDisponiblesComponent,
+    ListadoVehiculosNoDisponiblesComponent,
     ModificarParametrosComponent,
     RegistroMantenimientoComponent,
-    ConsultarReservasClienteComponent
+    ConsultarReservasClienteComponent,
+    ConsultarFacturacionComponent,
+    ChangePasswordComponent,
+    MisDatosClienteComponent
     
  ],
  imports: [
