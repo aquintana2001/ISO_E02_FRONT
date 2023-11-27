@@ -31,7 +31,7 @@
         <td>{{ vehiculo.color }}</td>
         <td>{{vehiculo.casco ? "Sí" : "No"}}</td>
         <td>
-          <button (click)="reservar(i)" [disabled]="vehiculo.estado !== 'disponible' || (vehiculo.tipo === 'coche' && cliente.carnet !== 'A')|| (vehiculo.tipo === 'moto' && (cliente.carnet !== 'A' &&  cliente.carnet !=='B'))">Reservar</button>
+          <button (click)="reservar(i)" [disabled]="vehiculo.estado !== 'disponible' || (vehiculo.tipo === 'coche' && cliente.carnet !== 'B')|| (vehiculo.tipo === 'moto' && (cliente.carnet !== 'A' &&  cliente.carnet !=='B'))">Reservar</button>
         </td>
       </tr>
     </table>

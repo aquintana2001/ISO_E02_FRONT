@@ -28,6 +28,7 @@
         <td>{{ reserva.comentario }}</td>
         <td>
           <button (click)="finalizarReserva(i)" [disabled]="reserva.estado !== 'activa'">Finalizar reserva</button>
+          <button (click)="cancelarReserva(i)" [disabled]="reserva.estado !== 'activa'">Cancelar reserva</button>
         </td>
       </tr>
     </table>

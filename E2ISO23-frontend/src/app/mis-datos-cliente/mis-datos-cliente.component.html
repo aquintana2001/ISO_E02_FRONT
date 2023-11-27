@@ -1,0 +1,41 @@
+<div class="row" id="listado">
+  <div class="row" *ngIf="mostrarError" id="error">
+    <p>{{ mensajeinfo }}</p>
+  </div>
+  <div class="row" *ngIf="mostrarConfirmacion" id="confirmacion">
+    {{ mensajeinfo }}
+  </div>
+  <div class="row" id="tabla">
+    <table>
+      <tr>
+        <th colspan="10" id="titulo">
+          <h1>Datos modificables</h1>
+        </th>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Dni</th>
+        <th>Telefono</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Carnet</th>
+        <th>Acciones</th>
+      </tr>
+      <tr>
+        <td [contentEditable]="false">{{ datos?.email }}</td>
+        <td [contentEditable]="editable" (blur)="actualizarNombre($event)" [ngClass]="{editable}">{{datos?.nombre}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarApellidos($event)" [ngClass]="{editable}">{{datos?.apellidos}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarDni($event)" [ngClass]="{editable}">{{datos?.dni}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarTelefono($event)" [ngClass]="{editable}">{{datos?.telefono}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarFechaNacimiento($event)" [ngClass]="{editable}">{{datos?.fechaNacimiento}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarCarnet($event)" [ngClass]="{editable}">{{datos?.carnet}}</td>
+        <td>
+          <button (click)="editarDatos()" [disabled]="editable">Editar datos</button>
+          <button (click)="cancelarEdicion()" [disabled]="!editable">Cancelar cambios</button>
+          <button (click)="modificarDatos()" [disabled]="!editable">Guardar cambios</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
