@@ -25,6 +25,9 @@ import { ListadoVehiculosNoDisponiblesComponent } from './listado-vehiculos-no-d
 import { ModificarParametrosComponent } from './modificar-parametros/modificar-parametros.component';
 import { RegistroMantenimientoComponent } from './registro-mantenimiento/registro-mantenimiento.component';
 import { ConsultarReservasClienteComponent } from './consultar-reservas-cliente/consultar-reservas-cliente.component';
+import { ConsultarFacturacionComponent } from './consultar-facturacion/consultar-facturacion.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { MisDatosClienteComponent } from './mis-datos-cliente/mis-datos-cliente.component';
 
 @NgModule({
  declarations: [
@@ -44,7 +47,10 @@ import { ConsultarReservasClienteComponent } from './consultar-reservas-cliente/
     ListadoVehiculosNoDisponiblesComponent,
     ModificarParametrosComponent,
     RegistroMantenimientoComponent,
-    ConsultarReservasClienteComponent
+    ConsultarReservasClienteComponent,
+    ConsultarFacturacionComponent,
+    ChangePasswordComponent,
+    MisDatosClienteComponent
     
  ],
  imports: [
