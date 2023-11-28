@@ -13,8 +13,12 @@
         <div class="col-3">
             <button (click)="showVehiculos()">Reserva ya</button>
         </div>
+        <div class="col-3">
+            <button (click)="showReservas()">Reservas</button>
+        </div>
     </div>
     <app-listado-vehiculos-no-disponibles *ngIf="showVehiculosComponent"></app-listado-vehiculos-no-disponibles>
+    <app-consultar-reservas-cliente *ngIf="showReservasComponent"></app-consultar-reservas-cliente>
 </div>
 
 
