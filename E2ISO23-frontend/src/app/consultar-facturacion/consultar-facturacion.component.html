@@ -1,1 +1,56 @@
-<p>consultar-facturacion works!</p>
+<div id="container" class="row">
+    <div id="login-container" class="row">
+        <div id="login-card" class="col-12">
+            <div class="row">
+                <h1>Busqueda de facturación</h1>
+            </div>
+            <div class="row">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-control">
+                        <div id="form-control" class="row">
+                            <div class="col-5">
+                                <label for="fechaNacimiento">Fecha inicio: </label>
+                            </div>
+                            <div class="col-6">
+                                <input type="date" id="fechaInicio" formControlName="primerDia" name="trip-start"
+                                    value="1999-11-12" min="1910-01-01" max="2005-01-01" />
+                            </div>
+                        </div>
+                        <div id="form-control" class="row">
+                            <div class="col-5">
+                                <label for="fechaNacimiento">Fecha límite: </label>
+                            </div>
+                            <div class="col-6">
+                                <input type="date" id="fechaFin" formControlName="ultimoDia" name="trip-start"
+                                    value="1999-11-12" min="1910-01-01" max="2005-01-01" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="mostrarError==1" id="error">
+                        <p>{{ mensajeinfo }}</p>
+                    </div>
+                    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="listado">
+        <div class="row" id="tabla">
+          <table>
+            <tr>
+              <th colspan="10" id="titulo">
+                <h1>Lista de facturas</h1>
+              </th>
+            </tr>
+            <tr>
+              <th>Nombre</th>
+              <th>Deuda</th>
+            </tr>
+            <tr *ngFor="let factura of facturas; let i = index">
+              <td>{{ factura.nombre }}</td>
+              <td>{{ factura.deuda }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+</div>

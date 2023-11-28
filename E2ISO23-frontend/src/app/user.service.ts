@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class AccountService {
   private baseURLUserVehiculos = "http://localhost:8080/users/vehiculo";
   private baseURLReservaVehiculo = "http://localhost:8080/users/reserva";
-  private baseURLListarReserva = "http://localhost:8080/cliente/listarReservas";
+  private baseURLListarReserva = "http://localhost:8080/users/listarReservas";
   private baseURLFinalizarReserva = "http://localhost:8080/users/finalizarReserva";
   private baseURLCancelarReserva = "http://localhost:8080/users/cancelarReserva";
   private baseURLGetDatos = "http://localhost:8080/cliente/getDatos";

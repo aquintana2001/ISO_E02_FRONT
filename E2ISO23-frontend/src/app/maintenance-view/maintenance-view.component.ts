@@ -9,12 +9,18 @@ import { ActivatedRoute } from '@angular/router';
 export class MaintenanceViewComponent {
   customData: any;
   showVehiculosComponent = true;
+  showReservasComponent = false;
 
-  constructor(private route: ActivatedRoute) {
+  constructor() {
     // Tu constructor
   }
   showVehiculos() {
     this.showVehiculosComponent = true;
+    this.showReservasComponent = false;
+  }
+  showReservas(){
+    this.showReservasComponent = true;
+    this.showVehiculosComponent= false;
   }
  
 }
