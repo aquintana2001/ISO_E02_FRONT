@@ -20,6 +20,9 @@ interface Vehiculo {
   styleUrls: ['../consultar-usuarios/consultar-usuarios.component.css']
 })
 export class ListadoVehiculosNoDisponiblesComponent {
+  mensajeinfo:any;
+  mostrarError = false;
+  mostrarConfirmacion = false;
   vehiculos: Vehiculo[] = [];
   constructor(private userService : AccountService) { }
 
