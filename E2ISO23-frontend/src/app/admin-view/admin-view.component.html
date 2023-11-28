@@ -26,6 +26,11 @@
             <button (click)="showModificarParametros()">Modificar Parametros</button>
         </div>
     </div>
+    <div class="row" id="menuAdmin3">
+        <div class="col-3">
+            <button (click)="showFacturacion()">Consultar facturación</button>
+        </div>
+    </div>
     <div class="row">
         <app-consultar-usuarios *ngIf="showConsultarClientesComponent"></app-consultar-usuarios>
         <app-consultar-vehiculos *ngIf="showVehiculosComponent"></app-consultar-vehiculos>
@@ -33,6 +38,7 @@
         <app-alta-vehiculo *ngIf="showAltaVehiculoComponent"></app-alta-vehiculo>
         <app-registro-mantenimiento *ngIf="showRegisterMaintenanceComponent"></app-registro-mantenimiento>
         <app-modificar-parametros *ngIf="showParametrosComponent"></app-modificar-parametros>
+        <app-consultar-facturacion *ngIf="showFacturacionComponent"></app-consultar-facturacion>
     </div>
 </div>
 
