@@ -12,7 +12,7 @@
                                 <label for="fechaNacimiento">Fecha inicio: </label>
                             </div>
                             <div class="col-6">
-                                <input type="date" id="fechaInicio" formControlName="fechaInicio" name="trip-start"
+                                <input type="date" id="fechaInicio" formControlName="primerDia" name="trip-start"
                                     value="1999-11-12" min="1910-01-01" max="2005-01-01" />
                             </div>
                         </div>
@@ -21,22 +21,36 @@
                                 <label for="fechaNacimiento">Fecha límite: </label>
                             </div>
                             <div class="col-6">
-                                <input type="date" id="fechaFin" formControlName="fechaFin" name="trip-start"
+                                <input type="date" id="fechaFin" formControlName="ultimoDia" name="trip-start"
                                     value="1999-11-12" min="1910-01-01" max="2005-01-01" />
                             </div>
                         </div>
                     </div>
                     <div class="row" *ngIf="mostrarError==1" id="error">
                         <p>{{ mensajeinfo }}</p>
-
-                    </div>
-                    <div class="row" *ngIf="mostrarConfirmacion==1" id="confirmacion">
-                        {{ mensajeinfo }}
                     </div>
                     <button type="submit" [disabled]="!loginForm.valid">Login</button>
                 </form>
             </div>
         </div>
     </div>
-
+    <div class="row" id="listado">
+        <div class="row" id="tabla">
+          <table>
+            <tr>
+              <th colspan="10" id="titulo">
+                <h1>Lista de facturas</h1>
+              </th>
+            </tr>
+            <tr>
+              <th>Nombre</th>
+              <th>Deuda</th>
+            </tr>
+            <tr *ngFor="let factura of facturas; let i = index">
+              <td>{{ factura.nombre }}</td>
+              <td>{{ factura.deuda }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
 </div>
