@@ -22,7 +22,7 @@ export class MisDatosClienteComponent {
   mensajeinfo:string="";
   mostrarError:boolean=false;
   mostrarConfirmacion:boolean=false;
-  constructor(private userSerivce : AccountService) { }
+  constructor(private userService : AccountService) { }
   actualizarNombre(event: any) {
     this.datos.nombre = event.target.textContent;
   }
@@ -45,7 +45,7 @@ export class MisDatosClienteComponent {
   
   modificarDatos() {
     try {
-      this.userSerivce.modificarDatos(this.datos).subscribe({
+      this.userService.modificarDatos(this.datos).subscribe({
         error: (error) =>{
           if (error.status==200){
             console.log("La actualización se ha realizado con éxito");
@@ -71,7 +71,7 @@ export class MisDatosClienteComponent {
     console.log(this.datosBackup)
     this.datos = {...this.datosBackup};
     console.log(this.datos)
-    this.userSerivce.getDatos().subscribe((data: any) => {
+    this.userService.getDatos().subscribe((data: any) => {
       if (data) {
         this.datosBackup = {
           email: data.email,
@@ -86,7 +86,7 @@ export class MisDatosClienteComponent {
     });    
   }
   ngOnInit() {
-    this.userSerivce.getDatos().subscribe((data: any) => {
+    this.userService.getDatos().subscribe((data: any) => {
       if (data) {
         console.log(data)
         this.datos = {
