@@ -65,3 +65,14 @@
   .filled {
     color: gold;
   }
+  #confirmacion{
+    background-color: #c6ecc6;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    align-self: center;
+    align-items: center;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+  }

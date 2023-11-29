@@ -37,7 +37,6 @@ export class ConsultarReservasClienteComponent {
             if (error.status==200){
               this.reservas[index].estado="finalizada";
               if(this.reservas[index].estadoVehiculo==="reservado"){
-                console.log(this.reservas[index].id)
                 this.reservaCompartidaService.actualizarIdReserva(this.reservas[index].id);
                 this.mostrarValorarReserva = true;
               }
@@ -74,7 +73,6 @@ export class ConsultarReservasClienteComponent {
   }
   ngOnInit() {
     this.userService.getReservas().subscribe((data: any[]) => {
-      console.log(data);
       this.reservas = data.map(reserva => ({
         id: reserva.id,
         vehiculo: reserva.vehiculo.modelo,

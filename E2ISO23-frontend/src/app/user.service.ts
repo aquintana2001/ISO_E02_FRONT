@@ -112,13 +112,13 @@ export class AccountService {
     }
     return this.httpClient.put<any[]>(`${this.baseURLModificarDatos}`, infoEnvio);
   }
-  valorarReserva(info: any): Observable<any> {
+  valorarReserva(info: any): Observable<any[]> {
     let infoUser = this.getUser()
     let infoEnvio = {
       ...info,
       idReserva:this.idReserva,
       ...infoUser
     } 
-    return this.httpClient.put(`${this.baseURLValorarReserva}`, infoEnvio);
+    return this.httpClient.put<any[]>(`${this.baseURLValorarReserva}`, infoEnvio);
   }
 }

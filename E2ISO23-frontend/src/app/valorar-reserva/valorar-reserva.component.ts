@@ -9,33 +9,37 @@ import { NgClass } from '@angular/common';
 export class ValorarReservaComponent {
   rating: number = 0;
   comentario: string = '';
+  mensajeinfo: any;
+  mostrarConfirmacion = false;
 
-  constructor(private userService : AccountService) { }
+  constructor(private userService: AccountService) { }
 
   onStarClick(selectedRating: number): void {
     this.rating = selectedRating;
   }
-  valorar(){
-  // Aquí puedes usar this.rating y this.comentario como desees
-    console.log('Valoración:', this.rating);
-    console.log('Comentario:', this.comentario);
+  valorar() {
+    // Aquí puedes usar this.rating y this.comentario como desees
+
     let info = {
       valoracion: this.rating,
       comentario: this.comentario
     }
     try {
       this.userService.valorarReserva(info).subscribe({
-        error: (error) =>{
-          if (error.status==200){
-            console.log("Se ha registrado la valoración");
-          }
-          else{
-            console.log(error);
-          }
-        }
-    });
-    } catch (error) {
+        next: (response) => {
+          console.log("Se ha registrado la valoración");
+          this.mensajeinfo = "Se ha registrado la valoración y se ha finalizado la reserva";
+          this.mostrarConfirmacion = true;
+          console.log(response);
 
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    } catch (error) {
+      // Manejo de errores sincrónicos (fuera de observables)
     }
+
   }
 }
