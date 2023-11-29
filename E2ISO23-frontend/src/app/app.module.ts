@@ -28,6 +28,7 @@ import { ConsultarReservasClienteComponent } from './consultar-reservas-cliente/
 import { ConsultarFacturacionComponent } from './consultar-facturacion/consultar-facturacion.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { MisDatosClienteComponent } from './mis-datos-cliente/mis-datos-cliente.component';
+import { ValorarReservaComponent } from './valorar-reserva/valorar-reserva.component';
 
 @NgModule({
  declarations: [
@@ -50,7 +51,8 @@ import { MisDatosClienteComponent } from './mis-datos-cliente/mis-datos-cliente.
     ConsultarReservasClienteComponent,
     ConsultarFacturacionComponent,
     ChangePasswordComponent,
-    MisDatosClienteComponent
+    MisDatosClienteComponent,
+    ValorarReservaComponent
     
  ],
  imports: [

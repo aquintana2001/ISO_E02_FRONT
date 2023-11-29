@@ -1,0 +1,67 @@
+#valorarDiv {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 80%;
+  }
+  
+  #titulo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #estrellas {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #estrellas i {
+    font-size: 24px;
+    color: #ffd700; /* Color de las estrellas seleccionadas */
+    cursor: pointer;
+  }
+  
+  #comentarioLabel {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  #comentario input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  #valorar {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #valorar button {
+    padding: 10px 20px;
+    background-color: #4caf50; /* Color de fondo del botón */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #valorar button:hover {
+    background-color: #45a049; /* Color de fondo del botón al pasar el ratón */
+  }
+  .rating {
+    font-size: 24px;
+  }
+  
+  span {
+    cursor: pointer;
+    color: #ccc;
+    display: inline-block;
+    font-size: 50px; /* Ajusta este valor según tu preferencia */
+  }
+  
+  .filled {
+    color: gold;
+  }

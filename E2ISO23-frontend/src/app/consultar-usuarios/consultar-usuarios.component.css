@@ -147,3 +147,7 @@ select[disabled] {
   display: flex;
   justify-content: center;
 }
+#div-valorar{
+  min-width: 70%;
+  align-self: center;
+}
