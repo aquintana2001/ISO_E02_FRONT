@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ReservaServiceService } from './reserva-service.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
+  idReserva:any="";
   private baseURLUserVehiculos = "http://localhost:8080/users/vehiculo";
   private baseURLReservaVehiculo = "http://localhost:8080/users/reserva";
   private baseURLListarReserva = "http://localhost:8080/users/listarReservas";
@@ -16,7 +18,12 @@ export class AccountService {
   private baseURLCambiarContrasena = "http://localhost:8080/users/modificarContrasena"
   private baseURLConfirmarRegister = "http://localhost:8080/users/confirmarRegister"
   private baseURLConfirmarLogin = "http://localhost:8080/users/confirmarLoginCliente"
-  constructor(private httpClient: HttpClient) { }
+  private baseURLValorarReserva = "http://localhost:8080/cliente/valorarReserva"
+  constructor(private httpClient: HttpClient,private reservaCompartidaService: ReservaServiceService) { 
+    this.reservaCompartidaService.idReserva$.subscribe(idReserva => {
+      this.idReserva = idReserva;
+    });
+  }
 
   register(info: any): Observable<any> {
     // Especifica el tipo de respuesta que esperas (arraybuffer)
@@ -104,5 +111,14 @@ export class AccountService {
       password:infoUser?.passwordUser
     }
     return this.httpClient.put<any[]>(`${this.baseURLModificarDatos}`, infoEnvio);
+  }
+  valorarReserva(info: any): Observable<any[]> {
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      ...info,
+      idReserva:this.idReserva,
+      ...infoUser
+    } 
+    return this.httpClient.put<any[]>(`${this.baseURLValorarReserva}`, infoEnvio);
   }
 }

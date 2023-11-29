@@ -128,6 +128,7 @@ select[disabled] {
   align-items: center;
   align-items: flex-end;
   justify-content: center;
+  text-align: center;
 }
 #error{
   display: flex;
@@ -146,4 +147,8 @@ select[disabled] {
 #tabla{
   display: flex;
   justify-content: center;
+}
+#div-valorar{
+  min-width: 70%;
+  align-self: center;
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../user.service';
-
+import { ValorarReservaComponent } from '../valorar-reserva/valorar-reserva.component';
+import { ReservaServiceService } from '../reserva-service.service';
 interface Reserva {
   id: string;
   vehiculo: string;
@@ -8,6 +9,7 @@ interface Reserva {
   estado: string;
   valoracion:string;
   comentario: string;
+  estadoVehiculo: string;
 }
 
 @Component({
@@ -22,7 +24,8 @@ export class ConsultarReservasClienteComponent {
   mensajeinfo:any;
   mostrarError = false;
   mostrarConfirmacion = false;
-  constructor(private userService : AccountService) { }
+  mostrarValorarReserva = false;
+  constructor(private userService : AccountService,private reservaCompartidaService: ReservaServiceService) { }
 
   finalizarReserva(index:number){
     const confirmacion = window.confirm('¿Estás seguro de que quieres finalizar la reserva?');
@@ -33,6 +36,10 @@ export class ConsultarReservasClienteComponent {
           error: (error) =>{
             if (error.status==200){
               this.reservas[index].estado="finalizada";
+              if(this.reservas[index].estadoVehiculo==="reservado"){
+                this.reservaCompartidaService.actualizarIdReserva(this.reservas[index].id);
+                this.mostrarValorarReserva = true;
+              }
             }
             else{
               console.log(error);
@@ -72,7 +79,8 @@ export class ConsultarReservasClienteComponent {
         fecha: reserva.fecha,
         estado: reserva.estado,
         valoracion:reserva.valoracion,
-        comentario: reserva.comentario
+        comentario: reserva.comentario,
+        estadoVehiculo: reserva.vehiculo.estado
       }));
     });
   }
