@@ -33,6 +33,7 @@ export class ListadoVehiculosNoDisponiblesComponent {
     this.userService.reservarVehiculo(infoVehiculo).subscribe({
       error: (error) =>{
         if (error.status==200){
+          this.vehiculos[index].estado = "en carga"
           console.log("Vehiculo reservado correctamente")
         }
         else{

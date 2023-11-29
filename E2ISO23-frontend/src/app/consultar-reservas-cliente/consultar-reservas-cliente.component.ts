@@ -45,7 +45,7 @@ export class ConsultarReservasClienteComponent {
     }
   }
   cancelarReserva(index:number){
-    const confirmacion = window.confirm('¿Estás seguro de que quieres finalizar la reserva?');
+    const confirmacion = window.confirm('¿Estás seguro de que quieres cancelar la reserva?');
 
     if (confirmacion) {
       try {
