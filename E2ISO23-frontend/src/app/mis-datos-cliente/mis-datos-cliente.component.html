@@ -23,13 +23,13 @@
         <th>Acciones</th>
       </tr>
       <tr>
-        <td [contentEditable]="false">{{ datos?.email }}</td>
-        <td [contentEditable]="editable" (blur)="actualizarNombre($event)" [ngClass]="{editable}">{{datos?.nombre}}</td>
-        <td [contentEditable]="editable" (blur)="actualizarApellidos($event)" [ngClass]="{editable}">{{datos?.apellidos}}</td>
-        <td [contentEditable]="editable" (blur)="actualizarDni($event)" [ngClass]="{editable}">{{datos?.dni}}</td>
-        <td [contentEditable]="editable" (blur)="actualizarTelefono($event)" [ngClass]="{editable}">{{datos?.telefono}}</td>
-        <td [contentEditable]="editable" (blur)="actualizarFechaNacimiento($event)" [ngClass]="{editable}">{{datos?.fechaNacimiento}}</td>
-        <td [contentEditable]="editable" (blur)="actualizarCarnet($event)" [ngClass]="{editable}">{{datos?.carnet}}</td>
+        <td [contentEditable]="false">{{ datos.email }}</td>
+        <td [contentEditable]="editable" (blur)="actualizarNombre($event)" [ngClass]="{editable}">{{datos.nombre}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarApellidos($event)" [ngClass]="{editable}">{{datos.apellidos}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarDni($event)" [ngClass]="{editable}">{{datos.dni}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarTelefono($event)" [ngClass]="{editable}">{{datos.telefono}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarFechaNacimiento($event)" [ngClass]="{editable}">{{datos.fechaNacimiento}}</td>
+        <td [contentEditable]="editable" (blur)="actualizarCarnet($event)" [ngClass]="{editable}">{{datos.carnet}}</td>
         <td>
           <button (click)="editarDatos()" [disabled]="editable">Editar datos</button>
           <button (click)="cancelarEdicion()" [disabled]="!editable">Cancelar cambios</button>

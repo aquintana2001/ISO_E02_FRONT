@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class AccountService {
   private baseURLUserVehiculos = "http://localhost:8080/users/vehiculo";
   private baseURLReservaVehiculo = "http://localhost:8080/users/reserva";
-  private baseURLListarReserva = "http://localhost:8080/cliente/listarReservas";
+  private baseURLListarReserva = "http://localhost:8080/users/listarReservas";
   private baseURLFinalizarReserva = "http://localhost:8080/users/finalizarReserva";
   private baseURLCancelarReserva = "http://localhost:8080/users/cancelarReserva";
   private baseURLGetDatos = "http://localhost:8080/cliente/getDatos";
@@ -15,6 +15,7 @@ export class AccountService {
   private baseURLRecuperarContrasena = "http://localhost:8080/users/reset-password"
   private baseURLCambiarContrasena = "http://localhost:8080/users/modificarContrasena"
   private baseURLConfirmarRegister = "http://localhost:8080/users/confirmarRegister"
+  private baseURLConfirmarLogin = "http://localhost:8080/users/confirmarLoginCliente"
   constructor(private httpClient: HttpClient) { }
 
   register(info: any): Observable<any> {
@@ -28,6 +29,10 @@ export class AccountService {
   }
   login(info: any): Observable<any> {
     return this.httpClient.put("http://localhost:8080/users/login", info);
+  }
+  confirmarLogin(info: any): Observable<any> {
+    console.log(info);
+    return this.httpClient.post<any[]>(`${this.baseURLConfirmarLogin}`, info);
   }
   getUser() {
     let userDataRaw = localStorage.getItem('userData');

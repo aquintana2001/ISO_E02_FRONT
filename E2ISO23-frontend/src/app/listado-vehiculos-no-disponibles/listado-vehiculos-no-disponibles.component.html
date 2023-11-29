@@ -1,7 +1,14 @@
 <div class="row" id="listado">
+  <div class="row" *ngIf="mostrarError" id="error">
+    <p>{{ mensajeinfo }}</p>
+  </div>
+  <div class="row" *ngIf="mostrarConfirmacion" id="confirmacion">
+    {{ mensajeinfo }}
+  </div>
+  <div class="row" id="tabla">
     <table>
       <tr>
-        <th colspan="10" id="titulo">
+        <th colspan="12" id="titulo">
           <h1>Lista de Vehículos</h1>
         </th>
       </tr>
@@ -13,6 +20,7 @@
         <th>Nº de plazas</th>
         <th>Color</th>
         <th>Casco</th>
+        <th>Batería</th>
         <th>Reservar</th>
       </tr>
       <tr *ngFor="let vehiculo of vehiculos; let i = index">
@@ -23,9 +31,11 @@
         <td>{{ vehiculo.nPlazas }}</td>
         <td>{{ vehiculo.color }}</td>
         <td>{{vehiculo.casco ? "Sí" : "No"}}</td>
+        <td>{{vehiculo.bateria}}</td>
         <td>
-          <button (click)="reservar(i)">Recargar</button>
+          <button (click)="reservar(i)" [disabled]="vehiculo.estado !== 'descargado'">Reservar</button>
         </td>
       </tr>
     </table>
   </div>
+</div>
