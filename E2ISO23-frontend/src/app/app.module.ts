@@ -19,6 +19,15 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
 import { ClientViewComponent } from './client-view/client-view.component';
 import { AltaVehiculoComponent } from './alta-vehiculo/alta-vehiculo.component';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
+import { MaintenanceViewComponent } from './maintenance-view/maintenance-view.component';
+import { ListadoVehiculosDisponiblesComponent } from './listado-vehiculos-disponibles/listado-vehiculos-disponibles.component';
+import { ListadoVehiculosNoDisponiblesComponent } from './listado-vehiculos-no-disponibles/listado-vehiculos-no-disponibles.component';
+import { ModificarParametrosComponent } from './modificar-parametros/modificar-parametros.component';
+import { RegistroMantenimientoComponent } from './registro-mantenimiento/registro-mantenimiento.component';
+import { ConsultarReservasClienteComponent } from './consultar-reservas-cliente/consultar-reservas-cliente.component';
+import { ConsultarFacturacionComponent } from './consultar-facturacion/consultar-facturacion.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { MisDatosClienteComponent } from './mis-datos-cliente/mis-datos-cliente.component';
 
 @NgModule({
  declarations: [
@@ -32,7 +41,16 @@ import { PasswordRecoveryComponent } from './password-recovery/password-recovery
     AdminViewComponent,
     ClientViewComponent,
     AltaVehiculoComponent,
-    PasswordRecoveryComponent
+    PasswordRecoveryComponent,
+    MaintenanceViewComponent,
+    ListadoVehiculosDisponiblesComponent,
+    ListadoVehiculosNoDisponiblesComponent,
+    ModificarParametrosComponent,
+    RegistroMantenimientoComponent,
+    ConsultarReservasClienteComponent,
+    ConsultarFacturacionComponent,
+    ChangePasswordComponent,
+    MisDatosClienteComponent
     
  ],
  imports: [

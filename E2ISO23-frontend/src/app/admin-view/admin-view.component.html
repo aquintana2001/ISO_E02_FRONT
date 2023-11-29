@@ -18,11 +18,27 @@
             <button (click)="showAltaVehiculo()">Alta Vehículo</button>
         </div>
     </div>
+    <div class="row" id="menuAdmin2">
+        <div class="col-3">
+            <button (click)="showRegisterMaintenance()">Registrar Mantenimiento</button>
+        </div>
+        <div class="col-3">
+            <button (click)="showModificarParametros()">Modificar Parametros</button>
+        </div>
+    </div>
+    <div class="row" id="menuAdmin3">
+        <div class="col-3">
+            <button (click)="showFacturacion()">Consultar facturación</button>
+        </div>
+    </div>
     <div class="row">
         <app-consultar-usuarios *ngIf="showConsultarClientesComponent"></app-consultar-usuarios>
         <app-consultar-vehiculos *ngIf="showVehiculosComponent"></app-consultar-vehiculos>
         <app-registro-admin *ngIf="showRegisterComponent"></app-registro-admin>
         <app-alta-vehiculo *ngIf="showAltaVehiculoComponent"></app-alta-vehiculo>
+        <app-registro-mantenimiento *ngIf="showRegisterMaintenanceComponent"></app-registro-mantenimiento>
+        <app-modificar-parametros *ngIf="showParametrosComponent"></app-modificar-parametros>
+        <app-consultar-facturacion *ngIf="showFacturacionComponent"></app-consultar-facturacion>
     </div>
 </div>
 

@@ -9,6 +9,21 @@
             <h1>La manera de desplazarte fácilmente por Ciudad Real ha llegado</h1>
         </div>
     </div>
+    <div class="row" id="menuAdmin">
+        <div class="col-3">
+            <button (click)="showVehiculos()">Reserva ya</button>
+        </div>
+        <div class="col-3">
+            <button (click)="showReservas()">Mis reservas</button>
+        </div>
+        <div class="col-3">
+            <button (click)="showPerfil()">Mi perfil</button>
+        </div>
+
+    </div>
+    <app-listado-vehiculos-disponibles *ngIf="showVehiculosComponent"></app-listado-vehiculos-disponibles>
+    <app-consultar-reservas-cliente *ngIf="showReservasComponent"></app-consultar-reservas-cliente>
+    <app-mis-datos-cliente *ngIf="showPerfilComponent"></app-mis-datos-cliente>
     <div class="row">
         <div class="col-12" id="rowMover">
             <h1>¿Cómo te quieres mover?</h1>

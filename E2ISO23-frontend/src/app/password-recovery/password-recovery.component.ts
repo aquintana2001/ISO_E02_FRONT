@@ -9,31 +9,24 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class PasswordRecoveryComponent {
   mensajeinfo:string = ""
-  mostrarError = 0
   mostrarConfirmacion = 0
   loginForm: FormGroup;
   
   constructor(private userService : AccountService, private router: Router, private route: ActivatedRoute) { 
     this.loginForm = new FormGroup({
-      'email': new FormControl('', [Validators.required, Validators.email]),
-      'password': new FormControl('', Validators.required),
+      'email': new FormControl('', [Validators.required, Validators.email])
   });
   }
  onSubmit() {
     console.log('Login Form Submitted', this.loginForm.value);
     
     try {
-      this.userService.login(this.loginForm.value).subscribe({
+      this.userService.recoveryPassword(this.loginForm.value).subscribe({
         error: (error) =>{
           console.log(error);
           if(error.status === 200){
             this.mostrarConfirmacion = 1;
-            this.mostrarError = 0;
-            this.mensajeinfo = "Login correcto";
-          }else{
-            this.mostrarError = 1;
-            this.mostrarConfirmacion = 0;
-            this.mensajeinfo = error.error.message;
+            this.mensajeinfo = "Se ha enviado un correo electrónico de recuperación de contraseña";
           }
         }
     });

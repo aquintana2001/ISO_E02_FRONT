@@ -1,9 +1,5 @@
-//import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AdminServiceService } from '../admin-service.service';
 import { Component } from '@angular/core';
-
-
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
@@ -32,8 +28,12 @@ export class RegistroAdminComponent{
     if(this.checkDataInput()){
       this.mostrarError = 0;
       this.mostrarConfirmacion = 0;
+      let info = {
+        ...this.registroAdminForm.value,
+        tipoUsuario: "admin"
+      }
       try {
-        this.adminService.registerAdmin(this.registroAdminForm.value).subscribe({
+        this.adminService.registerAdmin(info).subscribe({
           error: (error) =>{
             this.mostrarError = 1;
             this.mostrarConfirmacion = 0;
@@ -46,7 +46,7 @@ export class RegistroAdminComponent{
       }
       if(this.mostrarError==0){
         this.mostrarConfirmacion = 1;
-        this.mostrarError==0;
+        this.mostrarError = 0;
         this.mensajeinfo = "Registrado correctamente";
       }
     }

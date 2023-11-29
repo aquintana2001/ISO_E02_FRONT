@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AdminServiceService } from '../admin-service.service';
-import { isNgContent } from '@angular/compiler';
+import { AdminServiceService } from '../admin-service.service'
 
 // Define una interfaz para el tipo de usuario
 interface Vehiculo {
@@ -11,10 +10,10 @@ interface Vehiculo {
   bateria: string;
   estado: string;
   direccion: string;
-  nPlaza: string;
+  nPlazas: string;
   editable: boolean;
-  casco: string;
-  color: string; // Agrega la propiedad 'editable'
+  color: string;
+  casco: boolean;
 }
 
 @Component({
@@ -27,17 +26,9 @@ export class ConsultarVehiculosComponent {
   constructor(private adminService : AdminServiceService) { }
   vehiculoBackUp: Vehiculo[] = [];
 
-
   editarFila(index: number) {
     this.vehiculos[index].editable = true;
   }
-  // eliminarFila(index: number) {
-  //   console.log(this.vehiculoBackUp[index].id);
-
-  //   this.adminService.eliminarVehiculo(this.vehiculoBackUp[index].id);
-  //   this.vehiculos.splice(index,1)
-  //   this.vehiculoBackUp.splice(index,1)
-  // }
   actualizarMatricula(event: any, index: number) {
     this.vehiculos[index].matricula = event.target.textContent;
   }
@@ -47,9 +38,9 @@ export class ConsultarVehiculosComponent {
   actualizarBateria(event: any, index: number) {
     this.vehiculos[index].bateria = event.target.textContent;
   }
-  actualizarEstado(event: any, index: number) {
-    this.vehiculos[index].estado = event.target.textContent;
-  }
+  // actualizarEstado(event: any, index: number) {
+  //   this.vehiculos[index].estado = event.target.textContent;
+  // }
   actualizarDireccion(event: any, index: number) {
     this.vehiculos[index].direccion = event.target.textContent;
   }
@@ -57,57 +48,94 @@ export class ConsultarVehiculosComponent {
     this.vehiculos[index].tipo = event.target.textContent;
   }
   actualizarPlazas(event: any, index: number) {
-    this.vehiculos[index].nPlaza = event.target.textContent;
+    this.vehiculos[index].nPlazas = event.target.textContent;
+  }
+  actualizarColor(event: any, index: number) {
+    this.vehiculos[index].color = event.target.textContent;
+  }
+  actualizarCasco(event: any, index: number) {
+    this.vehiculos[index].casco = event.target.value;
   }
   eliminarVehiculo(index:number){
-    try {
-          this.adminService.eliminarVehiculo(this.vehiculos[index].id).subscribe({
-            error: (error) =>{
-              if (error.status==200){
-                console.log("Se ha dado de baja correctamente");
-                this.vehiculos.splice(index,1)
-                this.vehiculoBackUp.splice(index,1)
-              }
-              else{
-                console.log(error);
-              }
+    const confirmacion = window.confirm('¿Estás seguro de que quieres borrar el vehículo permanentemente?');
+
+    if (confirmacion) {
+      try {
+        this.adminService.eliminarVehiculo(this.vehiculos[index].id).subscribe({
+          error: (error) =>{
+            if (error.status==200){
+              this.vehiculos.splice(index,1)
+              this.vehiculoBackUp.splice(index,1)
             }
-        });
-        } catch (error) {
-          
-        }
+            else{
+              console.log(error);
+            }
+          }
+      });
+      } catch (error) {
+        
+      }
+    }
   }
-  // guardarCambios(index: number) {
-  //   this.vehiculos[index].editable = false;
-  //   const { editable, ...vehiculo } = this.vehiculos[index];
+  guardarCambios(index: number) {
+    this.vehiculos[index].editable = false;
+    const { editable, ...vehiculo } = this.vehiculos[index];
+    try {
+      this.adminService.actualizarVehiculo(vehiculo).subscribe({
+        error: (error) =>{
+          if (error.status==200){
+            console.log("La actualización se ha realizado con éxito");
+            this.vehiculoBackUp[index]={...this.vehiculos[index]}
+          }
+          else{
+            console.log(error);
+            this.vehiculos[index] = this.vehiculoBackUp[index];
+            this.adminService.getVehiculos().subscribe((data: any[]) => {
+              this.vehiculoBackUp = data.map(vehiculo => ({
+                id: vehiculo.id,
+                matricula: vehiculo.matricula,
+                tipo: vehiculo.tipo,
+                modelo: vehiculo.modelo,
+                bateria: vehiculo.bateria,
+                estado: vehiculo.estado,
+                direccion: vehiculo.direccion,
+                nPlazas: vehiculo.nPlaza,
+                casco: vehiculo.casco,
+                color: vehiculo.color,
+                editable: false
+              }));
+            });
+          }
+        }
+    });
+    } catch (error) {
 
-  //   console.log(vehiculo);
-  //   try {
-  //     this.adminService.actualizarVehiculo(vehiculo).subscribe({
-  //       error: (error) =>{
-  //         if (error.status==200){
-  //           console.log("La actualización se ha realizado con éxito");
-  //           this.vehiculoBackUp[index]={...this.vehiculos[index]}
-  //         }
-  //         else{
-  //           console.log(error);
-  //         }
-  //       }
-  //   });
-  //   } catch (error) {
-      
-  //   }
+    }
    
-  // }
-  
+  }
 
-  // cancelarEdicion(index: number) {
-  //   this.vehiculos[index].editable = false;
-  //   console.log(this.vehiculos[index]);
-  //   console.log(this.vehiculoBackUp[index]);
+  cancelarEdicion(index: number) {
+    this.vehiculos[index].editable = false;
+    this.vehiculos[index] = this.vehiculoBackUp[index];
+    this.adminService.getVehiculos().subscribe((data: any[]) => {
 
-  //   this.vehiculos[index] = this.vehiculoBackUp[index];
-  // }
+      this.vehiculoBackUp = data.map(vehiculo => ({
+        id: vehiculo.id,
+        matricula: vehiculo.matricula,
+        tipo: vehiculo.tipo,
+        modelo: vehiculo.modelo,
+        bateria: vehiculo.bateria,
+        estado: vehiculo.estado,
+        direccion: vehiculo.direccion,
+        nPlazas: vehiculo.nPlaza,
+        casco: vehiculo.casco,
+        color: vehiculo.color,
+        editable: false
+      }));
+    });
+
+
+  }
 
   ngOnInit() {
     this.adminService.getVehiculos().subscribe((data: any[]) => {
@@ -119,10 +147,13 @@ export class ConsultarVehiculosComponent {
         estado: vehiculo.estado,
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
-        nPlaza: vehiculo.nPlaza,
+        // nPlaza: { value: vehiculo.nPlaza, editable: false },
+        nPlazas: vehiculo.nPlaza,
         editable: false,
-        casco: vehiculo.casco,
-        color: vehiculo.color
+        color: vehiculo.color,
+        casco: vehiculo.casco
+        // color: { value: vehiculo.color, editable: false },
+        // casco: { value: vehiculo.casco, editable: false }
       }));
       this.vehiculoBackUp = data.map(vehiculo => ({
         id: vehiculo.id,
@@ -132,10 +163,13 @@ export class ConsultarVehiculosComponent {
         estado: vehiculo.estado,
         direccion: vehiculo.direccion,
         tipo: vehiculo.tipo,
-        nPlaza: vehiculo.nPlaza,
+        // nPlaza: { value: vehiculo.nPlaza, editable: false },
+        nPlazas: vehiculo.nPlaza,
         editable: false,
-        casco: vehiculo.casco,
-        color: vehiculo.color
+        color: vehiculo.color,
+        casco: vehiculo.casco
+        // color: { value: vehiculo.color, editable: false },
+        // casco: { value: vehiculo.casco, editable: false }
       }));
     });
 

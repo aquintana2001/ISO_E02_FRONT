@@ -5,32 +5,99 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AccountService {
-
-  username:any;
-  password:any;
-
+  private baseURLUserVehiculos = "http://localhost:8080/users/vehiculo";
+  private baseURLReservaVehiculo = "http://localhost:8080/users/reserva";
+  private baseURLListarReserva = "http://localhost:8080/users/listarReservas";
+  private baseURLFinalizarReserva = "http://localhost:8080/users/finalizarReserva";
+  private baseURLCancelarReserva = "http://localhost:8080/users/cancelarReserva";
+  private baseURLGetDatos = "http://localhost:8080/cliente/getDatos";
+  private baseURLModificarDatos = "http://localhost:8080/cliente/actualizarDatos";
+  private baseURLRecuperarContrasena = "http://localhost:8080/users/reset-password"
+  private baseURLCambiarContrasena = "http://localhost:8080/users/modificarContrasena"
+  private baseURLConfirmarRegister = "http://localhost:8080/users/confirmarRegister"
   constructor(private httpClient: HttpClient) { }
 
   register(info: any): Observable<any> {
-    return this.httpClient.post("http://localhost:8080/users/register", info);
+    // Especifica el tipo de respuesta que esperas (arraybuffer)
+    const options = { responseType: 'arraybuffer' as 'json' };
+
+    return this.httpClient.post<any>("http://localhost:8080/users/register", info, options);
+  }
+  confirmarRegister(info: any): Observable<any> {
+    return this.httpClient.post<any[]>(`${this.baseURLConfirmarRegister}`, info);
   }
   login(info: any): Observable<any> {
-    this.username=info.email;
-    this.password=info.password;
     return this.httpClient.put("http://localhost:8080/users/login", info);
   }
   getUser() {
-    let info ={
-      username: this.username,
-      password: this.password
+    let userDataRaw = localStorage.getItem('userData');
+    if (userDataRaw){
+      let userData = JSON.parse(userDataRaw)
+      let info ={
+        emailUser: userData.email,
+        passwordUser: userData.password
+      }
+      return info;
     }
-    return info;
+    return null;
   }
-  getAdmin() {
-    let info ={
-      emailAdmin: this.username,
-      passwordAdmin: this.password
+  
+  getVehiculosDisponibles(): Observable<any[]> {
+      let infoUser = this.getUser()
+      return this.httpClient.post<any[]>(`${this.baseURLUserVehiculos}`, infoUser);
+  }
+
+  getVehiculosNoDisponibles(): Observable<any[]> {
+    let infoUser = this.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLUserVehiculos}`, infoUser);
+}
+
+  reservarVehiculo(info: any): Observable<any[]>{
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      ...infoUser,
+      ...info
     }
-    return info;
+    return this.httpClient.post<any[]>(`${this.baseURLReservaVehiculo}`, infoEnvio);
+  }
+  getReservas(): Observable<any[]> {
+    let infoUser = this.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLListarReserva}`, infoUser);
+  }
+  finalizarReserva (info : any) {
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      idReserva:info,
+      ...infoUser
+    };
+    const url = `${this.baseURLFinalizarReserva}`; 
+    return this.httpClient.put(url, infoEnvio);
+  }
+  cancelarReserva (info : any) {
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      idReserva:info,
+      ...infoUser
+    };
+    const url = `${this.baseURLCancelarReserva}`; 
+    return this.httpClient.put(url, infoEnvio);
+  }
+  getDatos(): Observable<any[]> {
+    let infoUser = this.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLGetDatos}`, infoUser);
+  }
+  changePassword(info: any): Observable<any[]> {
+    return this.httpClient.post<any[]>(`${this.baseURLCambiarContrasena}`, info);
+  }
+  recoveryPassword(info: any): Observable<any[]> {
+    return this.httpClient.post<any[]>(`${this.baseURLRecuperarContrasena}`, info);
+  }
+  modificarDatos(info: any): Observable<any[]> {
+    let infoUser = this.getUser()
+    let infoEnvio = {
+      ...info,
+      password:infoUser?.passwordUser
+    }
+    return this.httpClient.put<any[]>(`${this.baseURLModificarDatos}`, infoEnvio);
   }
 }

@@ -28,9 +28,14 @@ export class LoginComponent {
           console.log(error);
           if(error.status === 200){
             if(error.error.text =="cliente"){
+              this.guardarDatosEnLocalStorage(this.loginForm.value);
               this.redirigirConDatosCliente()
-            }else{
+            }else if(error.error.text =="admin"){
+              this.guardarDatosEnLocalStorage(this.loginForm.value);
               this.redirigirConDatosAdmin()
+            }else{
+              this.guardarDatosEnLocalStorage(this.loginForm.value);
+              this.redirigirConDatosMantenimiento()
             }
             this.mostrarConfirmacion = 1;
             this.mostrarError = 0;
@@ -56,12 +61,23 @@ export class LoginComponent {
     this.router.navigate(['/client-view'], navigationExtras);
   }
   redirigirConDatosAdmin() {
-    customData: this.loginForm.value
     const navigationExtras: NavigationExtras = {
       state: {
         customData: this.loginForm.value
       }
     };
     this.router.navigate(['/admin-view'], navigationExtras);
+  }
+  redirigirConDatosMantenimiento() {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        customData: this.loginForm.value
+      }
+    };
+    this.router.navigate(['/maintenance-view'], navigationExtras);
+  }
+  private guardarDatosEnLocalStorage(data: any) {
+    // Almacena los datos en localStorage con una clave específica
+    localStorage.setItem('userData', JSON.stringify(data));
   }
 }
