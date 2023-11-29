@@ -10,7 +10,6 @@ export class AdminServiceService {
   constructor(private httpClient:HttpClient,private accountService : AccountService) { }
   private baseURLAdminClientes = "http://localhost:8080/admin/cliente";
   private baseURLAdminActualizarCliente = "http://localhost:8080/admin/actualizarCliente";
-  private baseURLAdminEliminarCliente = "http://localhost:8080/admin/eliminarCliente";
   private baseURLAdminDarBajaVehiculo = "http://localhost:8080/admin/darBajaVehiculo";
   private baseURLAdminVehiculos = "http://localhost:8080/admin/vehiculo";
   private baseURLAdminActualizarVehiculo = "http://localhost:8080/admin/actualizarVehiculo";
@@ -55,21 +54,7 @@ export class AdminServiceService {
     const url = `${this.baseURLAdminActualizarVehiculo}`; 
     return this.httpClient.put(url, info);
   }
-  eliminarCliente(emailCliente: any): Observable<any> {
-    let infoUser = this.accountService.getUser()
-    let dataToDelete = {
-      email:emailCliente,
-      ...infoUser
-    };
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      body: dataToDelete // Incluir los datos en la propiedad "body"
-    };
-    let url = `${this.baseURLAdminEliminarCliente}`; 
-    return this.httpClient.request('delete', url, httpOptions)
-  }
+
 
   altaVehiculo (info : any) {
     let infoUser = this.accountService.getUser()

@@ -38,7 +38,6 @@
         </td>
         <td>
           <button (click)="editarFila(i)">Editar</button>
-          <button (click)="eliminarCliente(i)">Eliminar</button>
           <button *ngIf="usuario.editable" (click)="guardarCambios(i)">Guardar</button>
           <button *ngIf="usuario.editable" (click)="cancelarEdicion(i)">Cancelar</button>
         </td>

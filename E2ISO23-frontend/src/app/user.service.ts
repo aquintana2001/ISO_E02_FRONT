@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReservaServiceService } from './reserva-service.service';
 @Injectable({
@@ -19,6 +19,7 @@ export class AccountService {
   private baseURLConfirmarRegister = "http://localhost:8080/users/confirmarRegister"
   private baseURLConfirmarLogin = "http://localhost:8080/users/confirmarLoginCliente"
   private baseURLValorarReserva = "http://localhost:8080/cliente/valorarReserva"
+  private baseURLEliminarCliente = "http://localhost:8080/cliente/darDeBaja";
   constructor(private httpClient: HttpClient,private reservaCompartidaService: ReservaServiceService) { 
     this.reservaCompartidaService.idReserva$.subscribe(idReserva => {
       this.idReserva = idReserva;
@@ -120,5 +121,16 @@ export class AccountService {
       ...infoUser
     } 
     return this.httpClient.put<any[]>(`${this.baseURLValorarReserva}`, infoEnvio);
+  }
+  eliminarCliente(): Observable<any> {
+    let infoUser = this.getUser()
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: infoUser // Incluir los datos en la propiedad "body"
+    };
+    let url = `${this.baseURLEliminarCliente}`; 
+    return this.httpClient.request('delete', url, httpOptions)
   }
 }
