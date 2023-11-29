@@ -35,6 +35,8 @@ export class ListadoVehiculosNoDisponiblesComponent {
         if (error.status==200){
           this.vehiculos[index].estado = "en carga"
           console.log("Vehiculo reservado correctamente")
+          this.mensajeinfo = "Ha reservado un vehículo para recargar"
+          this.mostrarConfirmacion=true
         }
         else{
           console.log(error);
