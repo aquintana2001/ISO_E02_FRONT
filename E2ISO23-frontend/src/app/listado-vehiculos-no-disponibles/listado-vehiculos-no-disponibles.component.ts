@@ -40,6 +40,8 @@ export class ListadoVehiculosNoDisponiblesComponent {
         }
         else{
           console.log(error);
+          this.mensajeinfo = "No puedes reservar mas vehiculos para recargar"
+          this.mostrarConfirmacion=true
         }
       }
   });
