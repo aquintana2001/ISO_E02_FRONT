@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../user.service'
+import { Router } from '@angular/router';
 interface Datos {
   email: string,
   nombre: string,
-  apellidos:string,
+  apellidos: string,
   dni: string,
   telefono: string,
   fechaNacimiento: string,
@@ -18,11 +19,11 @@ export class MisDatosClienteComponent {
 
   datos!: Datos;
   datosBackup!: Datos;
-  editable:boolean = false;
-  mensajeinfo:string="";
-  mostrarError:boolean=false;
-  mostrarConfirmacion:boolean=false;
-  constructor(private userService : AccountService) { }
+  editable: boolean = false;
+  mensajeinfo: string = "";
+  mostrarError: boolean = false;
+  mostrarConfirmacion: boolean = false;
+  constructor(private userService: AccountService, private router: Router) { }
   actualizarNombre(event: any) {
     this.datos.nombre = event.target.textContent;
   }
@@ -41,35 +42,35 @@ export class MisDatosClienteComponent {
   actualizarCarnet(event: any) {
     this.datos.carnet = event.target.textContent;
   }
-  
-  
+
+
   modificarDatos() {
     try {
       this.userService.modificarDatos(this.datos).subscribe({
-        error: (error) =>{
-          if (error.status==200){
+        error: (error) => {
+          if (error.status == 200) {
             console.log("La actualización se ha realizado con éxito");
             this.editable = false;
             this.datosBackup = this.datos
           }
-          else{
+          else {
             console.log(error);
           }
         }
-    });
+      });
     } catch (error) {
 
     }
-   
+
   }
-  editarDatos(){
-    this.editable=true;
+  editarDatos() {
+    this.editable = true;
   }
-  cancelarEdicion(){
-    this.editable=false;
+  cancelarEdicion() {
+    this.editable = false;
     console.log(this.datos)
     console.log(this.datosBackup)
-    this.datos = {...this.datosBackup};
+    this.datos = { ...this.datosBackup };
     console.log(this.datos)
     this.userService.getDatos().subscribe((data: any) => {
       if (data) {
@@ -83,26 +84,47 @@ export class MisDatosClienteComponent {
           carnet: data.carnet
         };
       }
-    });    
+    });
   }
-  ngOnInit() {
-    this.userService.getDatos().subscribe((data: any) => {
-      if (data) {
-        console.log(data)
-        this.datos = {
-          email: data.email,
-          nombre: data.nombre,
-          apellidos: data.apellidos,
-          dni: data.dni,
-          telefono: data.telefono,
-          fechaNacimiento: data.fechaNacimiento,
-          carnet: data.carnet
-        };
-        this.datosBackup = {...this.datos};
+  borrarDatos() {
+      const confirmacion = window.confirm('¿Estás seguro de que quieres borrar tus datos y quedarte sin acceso a la aplicación?');
+
+      if (confirmacion) {
+        try {
+          this.userService.eliminarCliente().subscribe({
+            error: (error) => {
+              if (error.status == 200) {
+                this.router.navigate(['/']);
+              }
+              else {
+                console.log(error);
+              }
+            }
+          });
+        } catch (error) {
+
+        }
+        this.router.navigate(['/']);
       }
-    });    
-      
     }
-}
+  ngOnInit() {
+      this.userService.getDatos().subscribe((data: any) => {
+        if (data) {
+          console.log(data)
+          this.datos = {
+            email: data.email,
+            nombre: data.nombre,
+            apellidos: data.apellidos,
+            dni: data.dni,
+            telefono: data.telefono,
+            fechaNacimiento: data.fechaNacimiento,
+            carnet: data.carnet
+          };
+          this.datosBackup = { ...this.datos };
+        }
+      });
+
+    }
+  }
 
 
