@@ -93,6 +93,7 @@ button:hover {
   flex-direction: column;
   margin-bottom: 20px;
   align-self: center;
+  align-items: center;
 }
 #clientesText{
   display: flex;
@@ -151,4 +152,16 @@ select[disabled] {
 #div-valorar{
   min-width: 70%;
   align-self: center;
+}
+#borrarDatosDiv{
+  display: flex;
+  padding: 5px;
+  background-color: #ffd6cc;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  align-self: center;
+  align-items: center;
+  flex-direction: column;
 }
