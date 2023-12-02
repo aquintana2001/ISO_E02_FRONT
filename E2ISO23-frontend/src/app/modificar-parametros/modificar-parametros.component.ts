@@ -41,11 +41,19 @@ export class ModificarParametrosComponent {
    
   }
   ngOnInit() {
-    this.parametros = {
-      precioViaje:5,
-      minimoBateria:20,
-      bateriaViaje:20,
-      maxVehiculosMantenimiento:6
+    this.adminService.getParametros().subscribe((data: any) => {
+      if (data) {
+        this.parametros = {
+          precioViaje: data.precioViaje,
+          minimoBateria: data.minimoBateria,
+          bateriaViaje: data.bateriaViaje,
+          maxVehiculosMantenimiento: data.maxVehiculosMantenimiento
+        };
+      } else {
+        // Manejar el caso en el que no haya datos
+      }
+    });    
+      
     }
-  }
 }
+

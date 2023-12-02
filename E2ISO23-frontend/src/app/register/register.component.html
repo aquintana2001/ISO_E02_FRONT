@@ -82,17 +82,32 @@
                        </select>
                     </div>
                 </div>
-                <div class="row" *ngIf="mostrarError==1" id="error">
-                    <p>{{ mensajeinfo }}</p>
-                    
-                </div>
-                <div class="row" *ngIf="mostrarConfirmacion==1" id="confirmacion">
-                    {{ mensajeinfo }}
-                </div>
                 <div class="row">
                     <button type="submit" [disabled]="!registerForm.valid">Registrarse</button>
                 </div>
             </form>
+            <div class="row" id="error" *ngIf="mostrarError==1">
+                <p>{{ mensajeinfo }}</p>
+                
+            </div>
+            <div class="row" id="confirmacion" *ngIf="mostrarConfirmacion==1">
+                {{ mensajeinfo }}
+                <img [src]="imagenUrl" alt="Imagen">
+                <div class="col-12" id="divcodigo">
+                    <div class="row">
+                        <div class="col-5">
+                            <label>Código de verificación:</label>
+                        </div>
+                        <div class="col-7">
+                            <input [(ngModel)]="codigo" type="text">
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                        <button (click)="confirmarRegister()">Confirmar código</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

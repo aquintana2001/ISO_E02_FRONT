@@ -10,12 +10,13 @@ export class AdminServiceService {
   constructor(private httpClient:HttpClient,private accountService : AccountService) { }
   private baseURLAdminClientes = "http://localhost:8080/admin/cliente";
   private baseURLAdminActualizarCliente = "http://localhost:8080/admin/actualizarCliente";
-  private baseURLAdminEliminarCliente = "http://localhost:8080/admin/eliminarCliente";
   private baseURLAdminDarBajaVehiculo = "http://localhost:8080/admin/darBajaVehiculo";
   private baseURLAdminVehiculos = "http://localhost:8080/admin/vehiculo";
   private baseURLAdminActualizarVehiculo = "http://localhost:8080/admin/actualizarVehiculo";
   private baseURLAdminAltaVehiculo = "http://localhost:8080/admin/darAltaVehiculo";
+  private baseURLAdminParametros = "http://localhost:8080/admin/getParametros";
   private baseURLAdminModificarParametros = "http://localhost:8080/admin/actualizarParametros";
+  private baseURLAdminObtenerFacturacion = "http://localhost:8080/admin/obtenerFacturacion";
 
   registerAdmin (info : any) {
     let infoUser = this.accountService.getUser()
@@ -53,21 +54,7 @@ export class AdminServiceService {
     const url = `${this.baseURLAdminActualizarVehiculo}`; 
     return this.httpClient.put(url, info);
   }
-  eliminarCliente(emailCliente: any): Observable<any> {
-    let infoUser = this.accountService.getUser()
-    let dataToDelete = {
-      email:emailCliente,
-      ...infoUser
-    };
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      body: dataToDelete // Incluir los datos en la propiedad "body"
-    };
-    let url = `${this.baseURLAdminEliminarCliente}`; 
-    return this.httpClient.request('delete', url, httpOptions)
-  }
+
 
   altaVehiculo (info : any) {
     let infoUser = this.accountService.getUser()
@@ -92,6 +79,10 @@ export class AdminServiceService {
     let url = `${this.baseURLAdminDarBajaVehiculo}`; 
     return this.httpClient.request('delete', url, httpOptions)
   }
+  getParametros(): Observable<any[]> {
+    let infoUser = this.accountService.getUser()
+    return this.httpClient.post<any[]>(`${this.baseURLAdminParametros}`, infoUser);
+  }
   modificarParametros (info: any) {
     let infoUser = this.accountService.getUser();
     let infoEnvio = {
@@ -100,5 +91,13 @@ export class AdminServiceService {
     }
     const url = `${this.baseURLAdminModificarParametros}`; 
     return this.httpClient.put(url, infoEnvio);
+  }
+  obtenerFacturacion (info : any) {
+    let infoUser = this.accountService.getUser()
+    const infoEnvio = {
+      ...info,
+      ...infoUser
+    };
+    return this.httpClient.post(`${this.baseURLAdminObtenerFacturacion}`, infoEnvio);
   }
 }

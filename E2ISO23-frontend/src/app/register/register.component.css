@@ -43,25 +43,28 @@ h1 {
 
 #error {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #ffd6cc;
     min-height: 50px;
     border: 1px solid #ddd;
     border-radius: 10px;
     font-size: 16px;
-    align-items: center;
-    align-items: flex-end;
-    justify-content: center;
 }
 
 #confirmacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #c6ecc6;
     min-height: 50px;
     border: 1px solid #ddd;
     border-radius: 10px;
     font-size: 16px;
-    align-items: center;
-    align-items: flex-end;
-    justify-content: center;
+}
+#divcodigo{
+    display:flex;
+    flex-direction:column;
 }
 
 label {
@@ -78,7 +81,7 @@ input {
     font-size: 16px;
 }
 
-button[type="submit"] {
+button {
     background-color: #4CAF50;
     color: white;
     padding: 12px 20px;
@@ -90,11 +93,11 @@ button[type="submit"] {
     width: 100%;
 }
 
-button[type="submit"]:hover {
+button:hover {
     background-color: #45a049;
 }
 
-button[type="submit"]:disabled {
+button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }

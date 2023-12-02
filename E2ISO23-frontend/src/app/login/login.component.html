@@ -1,6 +1,6 @@
 <!-- login.component.html -->
-<div class="login-container">
-    <div class="login-card">
+<div id="login-container" class="row">
+    <div id="login-card" class="row">
         <h1>Iniciar sesión</h1>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-control">
@@ -13,14 +13,27 @@
                 <label for="mensajeIntentos" id="mensajeIntentos">Recuerde que tiene un máximo de 5 intentos antes de que se bloquee la cuenta</label>
                 <a routerLink="/password-recovery">¿Has olvidado tu contraseña?</a>
             </div>
-            <div class="row" *ngIf="mostrarError==1" id="error">
-                <p>{{ mensajeinfo }}</p>
-                
-            </div>
-            <div class="row" *ngIf="mostrarConfirmacion==1" id="confirmacion">
-                {{ mensajeinfo }}
-            </div>
             <button type="submit" [disabled]="!loginForm.valid">Login</button>
         </form>
+    </div>
+    <div class="row" *ngIf="mostrarError==1" id="error">
+        <p>{{ mensajeinfo }}</p>
+        
+    </div>
+    <div class="row" *ngIf="mostrarConfirmacion==1" id="confirmacion">
+        {{ mensajeinfo }}
+        <div class="col-12" id="divcodigo">
+            <div class="row" id="introducirCodigo">
+                <div class="col-5">
+                    <label>Código:</label>
+                </div>
+                <div class="col-5">
+                    <input id="inputCodigo" [(ngModel)]="codigo" type="text">
+                </div>
+            </div>
+            <div class="row" id="confirmarCodigoButton">
+                <button (click)="confirmarLogin()">Confirmar código</button>
+            </div>
+        </div>
     </div>
 </div>

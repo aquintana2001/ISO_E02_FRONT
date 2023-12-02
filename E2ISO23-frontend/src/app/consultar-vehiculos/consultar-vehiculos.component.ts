@@ -116,9 +116,6 @@ export class ConsultarVehiculosComponent {
 
   cancelarEdicion(index: number) {
     this.vehiculos[index].editable = false;
-    console.log(this.vehiculos[index]);
-    console.log(this.vehiculoBackUp[index]);
-
     this.vehiculos[index] = this.vehiculoBackUp[index];
     this.adminService.getVehiculos().subscribe((data: any[]) => {
 

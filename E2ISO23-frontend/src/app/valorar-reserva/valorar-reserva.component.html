@@ -1,0 +1,25 @@
+<div class="row" id="valorarDiv">
+  <div class="row" *ngIf="mostrarConfirmacion" id="confirmacion">
+    {{ mensajeinfo }}
+  </div>
+    <div class="row" id="titulo">
+      <h3>Valora tu reserva</h3>
+    </div>
+    <div class="row" id="estrellas">
+        <span (click)="onStarClick(1)" [ngClass]="{ 'filled': rating >= 1 }">&#9733;</span>
+        <span (click)="onStarClick(2)" [ngClass]="{ 'filled': rating >= 2 }">&#9733;</span>
+        <span (click)="onStarClick(3)" [ngClass]="{ 'filled': rating >= 3 }">&#9733;</span>
+        <span (click)="onStarClick(4)" [ngClass]="{ 'filled': rating >= 4 }">&#9733;</span>
+        <span (click)="onStarClick(5)" [ngClass]="{ 'filled': rating >= 5 }">&#9733;</span>
+      </div>
+    <div class="row" id="comentarioLabel">
+      <label for="comentario">¿Alguna observación?</label>
+    </div>
+    <div class="row" id="comentario">
+      <input type="text" [(ngModel)]="comentario">
+    </div>
+    <div class="row" id="valorar">
+      <button (click)="valorar()">Valorar</button>
+    </div>
+  </div>
+  
