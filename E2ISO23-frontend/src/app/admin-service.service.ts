@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
 export class AdminServiceService {
 
   constructor(private httpClient:HttpClient,private accountService : AccountService) { }
-  private baseURLAdminClientes = "http://localhost:8080/admin/cliente";
-  private baseURLAdminActualizarCliente = "http://localhost:8080/admin/actualizarCliente";
-  private baseURLAdminDarBajaVehiculo = "http://localhost:8080/admin/darBajaVehiculo";
-  private baseURLAdminVehiculos = "http://localhost:8080/admin/vehiculo";
-  private baseURLAdminActualizarVehiculo = "http://localhost:8080/admin/actualizarVehiculo";
-  private baseURLAdminAltaVehiculo = "http://localhost:8080/admin/darAltaVehiculo";
-  private baseURLAdminParametros = "http://localhost:8080/admin/getParametros";
-  private baseURLAdminModificarParametros = "http://localhost:8080/admin/actualizarParametros";
-  private baseURLAdminObtenerFacturacion = "http://localhost:8080/admin/obtenerFacturacion";
+  private baseURLAdminClientes = "https://e2iso23.onrender.com/admin/cliente";
+  private baseURLAdminActualizarCliente = "https://e2iso23.onrender.com/admin/actualizarCliente";
+  private baseURLAdminDarBajaVehiculo = "https://e2iso23.onrender.com/admin/darBajaVehiculo";
+  private baseURLAdminVehiculos = "https://e2iso23.onrender.com/admin/vehiculo";
+  private baseURLAdminActualizarVehiculo = "https://e2iso23.onrender.com/admin/actualizarVehiculo";
+  private baseURLAdminAltaVehiculo = "https://e2iso23.onrender.com/admin/darAltaVehiculo";
+  private baseURLAdminParametros = "https://e2iso23.onrender.com/admin/getParametros";
+  private baseURLAdminModificarParametros = "https://e2iso23.onrender.com/admin/actualizarParametros";
+  private baseURLAdminObtenerFacturacion = "https://e2iso23.onrender.com/admin/obtenerFacturacion";
 
   registerAdmin (info : any) {
     let infoUser = this.accountService.getUser()
@@ -24,7 +24,7 @@ export class AdminServiceService {
       ...info,
       ...infoUser
     };
-    return this.httpClient.post("http://localhost:8080/admin/register", infoEnvio);
+    return this.httpClient.post("https://e2iso23.onrender.com/admin/register", infoEnvio);
   }
   getClientes(): Observable<any[]> {
     let infoUser = this.accountService.getUser()

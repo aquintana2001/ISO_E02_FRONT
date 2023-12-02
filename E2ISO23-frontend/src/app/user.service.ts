@@ -7,19 +7,19 @@ import { ReservaServiceService } from './reserva-service.service';
 })
 export class AccountService {
   idReserva:any="";
-  private baseURLUserVehiculos = "http://localhost:8080/users/vehiculo";
-  private baseURLReservaVehiculo = "http://localhost:8080/users/reserva";
-  private baseURLListarReserva = "http://localhost:8080/users/listarReservas";
-  private baseURLFinalizarReserva = "http://localhost:8080/users/finalizarReserva";
-  private baseURLCancelarReserva = "http://localhost:8080/users/cancelarReserva";
-  private baseURLGetDatos = "http://localhost:8080/cliente/getDatos";
-  private baseURLModificarDatos = "http://localhost:8080/cliente/actualizarDatos";
-  private baseURLRecuperarContrasena = "http://localhost:8080/users/reset-password"
-  private baseURLCambiarContrasena = "http://localhost:8080/users/modificarContrasena"
-  private baseURLConfirmarRegister = "http://localhost:8080/users/confirmarRegister"
-  private baseURLConfirmarLogin = "http://localhost:8080/users/confirmarLoginCliente"
-  private baseURLValorarReserva = "http://localhost:8080/cliente/valorarReserva"
-  private baseURLEliminarCliente = "http://localhost:8080/cliente/darDeBaja";
+  private baseURLUserVehiculos = "https://e2iso23.onrender.com/users/vehiculo";
+  private baseURLReservaVehiculo = "https://e2iso23.onrender.com/users/reserva";
+  private baseURLListarReserva = "https://e2iso23.onrender.com/users/listarReservas";
+  private baseURLFinalizarReserva = "https://e2iso23.onrender.com/users/finalizarReserva";
+  private baseURLCancelarReserva = "https://e2iso23.onrender.com/users/cancelarReserva";
+  private baseURLGetDatos = "https://e2iso23.onrender.com/cliente/getDatos";
+  private baseURLModificarDatos = "https://e2iso23.onrender.com/cliente/actualizarDatos";
+  private baseURLRecuperarContrasena = "https://e2iso23.onrender.com/users/reset-password"
+  private baseURLCambiarContrasena = "https://e2iso23.onrender.com/users/modificarContrasena"
+  private baseURLConfirmarRegister = "https://e2iso23.onrender.com/users/confirmarRegister"
+  private baseURLConfirmarLogin = "https://e2iso23.onrender.com/users/confirmarLoginCliente"
+  private baseURLValorarReserva = "https://e2iso23.onrender.com/cliente/valorarReserva"
+  private baseURLEliminarCliente = "https://e2iso23.onrender.com/cliente/darDeBaja";
   constructor(private httpClient: HttpClient,private reservaCompartidaService: ReservaServiceService) { 
     this.reservaCompartidaService.idReserva$.subscribe(idReserva => {
       this.idReserva = idReserva;
@@ -30,13 +30,13 @@ export class AccountService {
     // Especifica el tipo de respuesta que esperas (arraybuffer)
     const options = { responseType: 'arraybuffer' as 'json' };
 
-    return this.httpClient.post<any>("http://localhost:8080/users/register", info, options);
+    return this.httpClient.post<any>("https://e2iso23.onrender.com/users/register", info, options);
   }
   confirmarRegister(info: any): Observable<any> {
     return this.httpClient.post<any[]>(`${this.baseURLConfirmarRegister}`, info);
   }
   login(info: any): Observable<any> {
-    return this.httpClient.put("http://localhost:8080/users/login", info);
+    return this.httpClient.put("https://e2iso23.onrender.com/users/login", info);
   }
   confirmarLogin(info: any): Observable<any> {
     console.log(info);
